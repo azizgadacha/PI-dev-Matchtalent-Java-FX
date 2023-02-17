@@ -4,32 +4,54 @@
  */
 package entities;
 
+import java.sql.Date;
+
+
+
+
+
+
 /**
  *
  * @author Hend
  */
 public class reclamation {
-    private int id;
+    private int id_reclamation, id_utilisateur;
     private String description,titre,type;
-
-    public reclamation(int id, String description, String titre, String type) {
-        this.id = id;
-        this.description = description;
-        this.titre = titre;
-        this.type = type;
-    }
+    private Date date;
 
     public reclamation() {
     }
-
-    public int getId() {
-        return id;
+    
+    
+   
+    public reclamation(int id_utilisateur,String description, String titre, String type, Date date) {
+        
+        this.id_utilisateur= id_utilisateur;
+        this.description = description;
+        this.titre = titre;
+        this.type = type;
+        this.date = date;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId_reclamation() {
+        return id_reclamation;
     }
 
+    public void setId_reclamation(int id_reclamation) {
+        this.id_reclamation = id_reclamation;
+    }
+
+    public int getId_utilisateur() {
+        return id_utilisateur;
+    }
+
+    public void setId_utilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
+    }
+
+    
+    
     public String getDescription() {
         return description;
     }
@@ -54,10 +76,16 @@ public class reclamation {
         this.type = type;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
-        return "reclamation{" + "id=" + id + ", description=" + description + ", titre=" + titre + ", type=" + type + '}';
+        return "reclamation{" + "id_reclamation=" + id_reclamation + ", id_utilisateur=" + id_utilisateur + ", description=" + description + ", titre=" + titre + ", type=" + type + ", date=" + date + '}';
     }
-    
-    
 }

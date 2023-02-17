@@ -4,6 +4,7 @@
  */
 package services;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -11,8 +12,8 @@ import java.util.List;
  * @author Hend
  */
 public interface IService<T> {
-    void Ajouter(T t);
-    void Modifier(T t);
-    void Supprimer(T t);
-    List<T> Recuperer();
+    public void ajouter(T t) throws SQLException;
+    public void modifier(T t) throws SQLException;
+    public void supprimer(T t) throws SQLException;
+    public List<T> recuperer(T t) throws SQLException;
 }

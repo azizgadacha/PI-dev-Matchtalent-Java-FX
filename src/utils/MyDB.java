@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author Hend
  */
 public class MyDB {
-   private String url ="jdbc:mysql://localhost:3306/firstproject";
+   private String url ="jdbc:mysql://localhost:3306/pi_dev";
    private String user ="root";
    private String password ="";
     
@@ -35,6 +35,10 @@ public class MyDB {
             instance = new MyDB();
         }
         return instance;
+    }
+    
+    public Connection getCnx() {
+        return cnx;
     }
    
 }
