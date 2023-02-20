@@ -27,8 +27,15 @@
 
 .button
 {
+-fx-background-color : #FFFFFF;
+}
+
+.buttonn
+{
 -fx-background-color : #9F73AB;
 }
+
+
 .button:hover
 {
 -fx-background-color : #D0B3D8 ;

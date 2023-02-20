@@ -10,6 +10,8 @@ import entities.reponse_reclamation;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
 import services.NotificationService;
 import services.ReclamationService;
 import services.Reponse_ReclamationService;
@@ -26,8 +28,8 @@ public class Test {
     public static void main(String[] args){
               try {
              /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
-             
-            reclamation p = new reclamation(1,"desc", "titre", "type", new Date(25-8-2023));
+             LocalDate date = LocalDate.of(2023, Month.FEBRUARY, 20);
+            reclamation p = new reclamation(1,"desc", "titre", "Technical issues", date, "Solved");
         ReclamationService ps = new ReclamationService();
         System.out.println("h01");
             ps.ajouter(p);
@@ -77,6 +79,7 @@ public class Test {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+       
     }
 }
 

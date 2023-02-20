@@ -5,6 +5,7 @@
 package entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 
@@ -17,21 +18,20 @@ import java.sql.Date;
  */
 public class reclamation {
     private int id_reclamation, id_utilisateur;
-    private String description,titre,type;
-    private Date date;
+    private String description,titre,type,statut;
+    private LocalDate date;
 
     public reclamation() {
     }
-    
-    
    
-    public reclamation(int id_utilisateur,String description, String titre, String type, Date date) {
+    public reclamation(int id_utilisateur,String description, String titre, String type, LocalDate date, String statut) {
         
         this.id_utilisateur= id_utilisateur;
         this.description = description;
         this.titre = titre;
         this.type = type;
         this.date = date;
+        this.statut = statut;
     }
 
     public int getId_reclamation() {
@@ -76,16 +76,25 @@ public class reclamation {
         this.type = type;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    
     @Override
     public String toString() {
-        return "reclamation{" + "id_reclamation=" + id_reclamation + ", id_utilisateur=" + id_utilisateur + ", description=" + description + ", titre=" + titre + ", type=" + type + ", date=" + date + '}';
+        return "reclamation{" + "id_reclamation=" + id_reclamation + ", id_utilisateur=" + id_utilisateur + ", description=" + description + ", titre=" + titre + ", type=" + type + ", date=" + date +  ", statut=" + statut +  '}';
     }
 }
