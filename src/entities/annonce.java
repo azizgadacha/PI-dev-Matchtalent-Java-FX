@@ -22,6 +22,13 @@ public class annonce {
         this.description = description;
         this.type_contrat = type_contrat;
     }
+    public annonce(int id_annonce, String titre, String categorie, String nom_societé) {
+        this.id_annonce = id_annonce;
+        this.titre = titre;
+        this.categorie = categorie;
+        this.nom_societé = nom_societé;
+
+    }
     public annonce(int id_annonce) {
         this.id_annonce = id_annonce;
 
