@@ -1,4 +1,4 @@
-package Controleur;
+package gui;
 
 import entities.candidature;
 import entities.utilisateur;
@@ -32,22 +32,29 @@ public class detailControlleur implements Initializable {
 candidature c;
     public void setDialogPane(candidature u){
         this.c=u;
+        System.out.println("hello "+c.getReponse());
     name.setText(u.getUtilisateur().getUsername());
     email.setText(u.getUtilisateur().getEmail());
     note.setText(String.valueOf(u.getNote()));
     contact.setText(u.getUtilisateur().getContact());
+        System.out.println("hello 20 "+c.getReponse().length());
+        int longeur =0;
+
+        try {
+            for(int i=0;i<c.getReponse().length();i++){
+
+                grid.add(new Label(String.valueOf(c.getReponse().charAt(i))), longeur, 0);
+            longeur++;
+
+            grid.add(new Label("      "), longeur,0);
+            }
+    }catch (Exception e){
+            System.out.println(e);
+        }
 }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    try {
 
-for(int i=0;i<c.getReponse().length();i++){
-        grid.add(new Label("Node 1"), 0, 0);
-        Label element =(Label) grid.getChildren().get(1);
-        element.setText(String.valueOf(c.getReponse().charAt(i)));}
-    }catch (Exception e){
-        System.out.println(e);
-    }
 }
 }

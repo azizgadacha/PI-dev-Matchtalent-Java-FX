@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<DialogPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RDVControlleur">
+   <content>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="509.0">
+         <children>
+            <DatePicker fx:id="date_Picker" layoutX="173.0" layoutY="105.0" prefHeight="28.0" prefWidth="187.0" />
+            <Text layoutX="47.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisir une date">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Text>
+            <Label layoutX="155.0" layoutY="14.0" text="Faire un rendez-vous" textFill="#26bfbc">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Text layoutX="43.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisir une heure">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="CB1" layoutX="185.0" layoutY="154.0" prefHeight="28.0" prefWidth="54.0" />
+            <ChoiceBox fx:id="CB2" layoutX="267.0" layoutY="154.0" prefHeight="28.0" prefWidth="54.0" />
+         </children>
+      </AnchorPane>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="CLOSE" />
+      <ButtonType fx:constant="OK" />
+   </buttonTypes>
+</DialogPane>
