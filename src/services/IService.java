@@ -9,7 +9,8 @@ import java.util.List;
 
 /**
  *
- * @author Hend
+ * @author Istabrak
+ * @param <T>
  */
 public interface IService<T> {
     public void ajouter(T t) throws SQLException;

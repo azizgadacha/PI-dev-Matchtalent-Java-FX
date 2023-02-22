@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Hend
+ * @author Istabrak
  */
 public class MyDB {
    private String url ="jdbc:mysql://localhost:3306/pi_dev";

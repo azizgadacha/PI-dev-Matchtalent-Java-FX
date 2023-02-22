@@ -4,79 +4,37 @@
  */
 package test;
 
-import entities.notification;
-import entities.reclamation;
-import entities.reponse_reclamation;
-import java.sql.Date;
+import entities.File;
+//import entities.Postulation;
+import entities.Type;
+//import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import services.NotificationService;
-import services.ReclamationService;
-import services.Reponse_ReclamationService;
-import utils.MyDB;
+import services.FileService;
+//import services.PostulationService;
 
 /**
  *
- * @author Hend
+ * @author Istabrak
  */
 public class Test {
-    
-    
-    
-    public static void main(String[] args){
-              try {
-             /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
-             
-            reclamation p = new reclamation(1,"desc", "titre", "type", new Date(25-8-2023));
-        ReclamationService ps = new ReclamationService();
-        System.out.println("h01");
-            ps.ajouter(p);
-            System.out.println("h02");
-            ps.modifier(p);
-            System.out.println("h03");
-            ps.supprimer(p);
-            System.out.println("h04");
-            System.out.println(ps.recuperer(p));
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        /*MyDB db = MyDB.getInstance();
-        MyDB db2 = MyDB.getInstance();
-        System.out.println(db);
-        System.out.println(db2);*/
-         try {
-             /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
-             
-            notification n = new notification(1,"description", new Date(17-02-2023));
-        NotificationService nt = new NotificationService();
-        System.out.println("h001");
-          nt.ajouter(n);
-           System.out.println("h002");
-           nt.modifier(n);
-           System.out.println("h003");
-           nt.supprimer(n);
-           System.out.println("h004");
-           System.out.println(nt.recuperer(n));
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+  
+    public static void main(String[] args) throws SQLException{
          
-          try {
-             /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
-             
-            reponse_reclamation r = new reponse_reclamation(1,"reponse", new Date(20-01-2023));
-        Reponse_ReclamationService rp = new Reponse_ReclamationService();
-        System.out.println("h0001");
-            rp.ajouter(r);
-            System.out.println("h0002");
-            rp.modifier(r);
-            System.out.println("h0003");
-            rp.supprimer(r);
-            System.out.println("h0004");
-            System.out.println(rp.recuperer(r));
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+          // Postulation p = new Postulation(2,2,"accepter",1,new Date(20-02-2023));
+          // PostulationService ps = new PostulationService();
+           // ps.ajouter(p);
+           // ps.modifier(p);
+           // ps.supprimer(p);
+           //System.out.println(ps.recuperer(p));
+       
+           
+           File f = new File(1,Type.lettre_de_motivation,1);
+           FileService fs = new FileService();
+          // fs.ajouter(f);
+          // fs.modifier(f);
+          // fs.supprimer(f);
+          System.out.println(fs.recuperer(f));
+          
+           
     }
 }
-
