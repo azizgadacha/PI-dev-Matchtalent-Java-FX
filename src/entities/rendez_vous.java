@@ -12,7 +12,18 @@ public class rendez_vous {
     private String Heure_rendez_vous;
     private entities.annonce annonce;
 
-    public rendez_vous(utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
+    public rendez_vous(int id_rendez_vous,utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
+        this.id_rendez_vous=id_rendez_vous;
+        this.user = user;
+        this.date_rendez_vous = date_rendez_vous;
+        Heure_rendez_vous = heure_rendez_vous;
+        this.annonce = annonce;
+    }public rendez_vous(int id_rendez_vous, Date date_rendez_vous, String heure_rendez_vous) {
+        this.id_rendez_vous=id_rendez_vous;
+        this.date_rendez_vous = date_rendez_vous;
+        Heure_rendez_vous = heure_rendez_vous;
+
+    }public rendez_vous(utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
         this.user = user;
         this.date_rendez_vous = date_rendez_vous;
         Heure_rendez_vous = heure_rendez_vous;

@@ -20,7 +20,7 @@
       </Label>
       <Label fx:id="heure" layoutX="213.0" layoutY="23.0" prefHeight="28.0" prefWidth="115.0" text="heure" />
       <Label fx:id="username" layoutX="424.0" layoutY="23.0" prefHeight="28.0" prefWidth="115.0" text="username" />
-      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="162.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #00b2ff ;" text="ajouter rdv">
+      <Button mnemonicParsing="false" onAction="#supprimerAnnonce" prefHeight="27.0" prefWidth="162.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #00b2ff ;" text="supprimer">
          <HBox.margin>
             <Insets right="10.0" />
          </HBox.margin>

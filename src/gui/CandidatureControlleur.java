@@ -82,6 +82,13 @@ public class CandidatureControlleur implements Initializable {
         stage.close();
     }
 
+
+
+
+
+
+
+
     ObservableList<candidature> candidaturesListe;
     public void remplirliste(ObservableList<candidature> candidaturesListe){
         nombre.setText(String.valueOf(candidaturesListe.size()));

@@ -138,6 +138,10 @@ public class RDVViewerControlleur implements Initializable {
                     System.out.println("im here3 "+newvalue);
 
                     return true;
+                }if (String.valueOf(rendez_vous.getUser().getUsername()).toLowerCase().indexOf(typedText) != -1) {
+                    System.out.println("im here3 "+newvalue);
+
+                    return true;
                 }
                 return false;
             });
@@ -160,13 +164,24 @@ public class RDVViewerControlleur implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             rendez_vousListe= (ObservableList<rendez_vous>) rs.recuperer();
+            remplirliste(rendez_vousListe);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+
+
+    }
+    @FXML
+    void refrech(MouseEvent event) throws SQLException {
+        pnItems.getChildren().clear();
+        pnItems.getChildren().removeAll();
+
+
+        rendez_vousListe= (ObservableList<rendez_vous>) rs.recuperer();
         remplirliste(rendez_vousListe);
 
     }
-
 
 
     @FXML

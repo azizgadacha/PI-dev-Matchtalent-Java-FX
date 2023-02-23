@@ -16,6 +16,17 @@ public class candidature {
         this.note = note;
         this.reponse = reponse;
     }
+    public candidature(int id_candidature) {
+        this.id_candidature = id_candidature;
+
+    }
+
+    public candidature(entities.utilisateur utilisateur, entities.annonce annonce, float note, String reponse) {
+        this.utilisateur = utilisateur;
+        this.annonce = annonce;
+        this.note = note;
+        this.reponse = reponse;
+    }
 
     public int getId_candidature() {
         return id_candidature;
