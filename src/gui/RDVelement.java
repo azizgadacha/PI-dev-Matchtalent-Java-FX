@@ -1,6 +1,7 @@
 package gui;
 
 import entities.candidature;
+import entities.rendez_vous;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
-public class elementController  {
+public class RDVelement {
 
     @FXML
     private Label contact;
@@ -32,13 +33,22 @@ public class elementController  {
 
     @FXML
     private Label note;
-    candidature candidatureInstance;
-public  void  setValues(candidature c){
-    this.candidatureInstance=c;
-    name.setText(c.getUtilisateur().getUsername());
-    note.setText(String.valueOf(c.getNote()));
-}
     @FXML
+    private Label username;
+    @FXML
+    private Label date;
+    @FXML
+    private Label heure;
+    rendez_vous Rendez_vousInstance;
+    public  void  setValues(rendez_vous c){
+        System.out.println("hello "+c.getUser().getUsername());
+        this.Rendez_vousInstance=c;
+        name.setText(c.getAnnonce().getTitre());
+        date.setText(String.valueOf(c.getDate_rendez_vous()));
+        heure.setText(String.valueOf(c.getHeure_rendez_vous()));
+        username.setText(c.getUser().getUsername());
+    }
+   /* @FXML
     void AddRdv(ActionEvent event) {
         Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();
         double x=detail.getX();
@@ -46,9 +56,9 @@ public  void  setValues(candidature c){
         try {
             FXMLLoader loader=new FXMLLoader();
             loader.setLocation(getClass().getResource("../gui/RDVPopup.fxml"));
-            DialogPane  detailPage=loader.load();
+            DialogPane detailPage=loader.load();
             addRDVControlleur detailControlleur =loader.getController();
-            detailControlleur.setValues(candidatureInstance);
+            detailControlleur.setValues(Rendez_vousInstance);
 
             Dialog<ButtonType> dialog =new Dialog<>();
             dialog.setDialogPane(detailPage);
@@ -62,8 +72,8 @@ public  void  setValues(candidature c){
     }
 
 
-
-    @FXML
+*/
+  /*  @FXML
     void onClick(ActionEvent event) {
         System.out.println("jefefef");
         Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -74,7 +84,7 @@ public  void  setValues(candidature c){
             loader.setLocation(getClass().getResource("../gui/popup.fxml"));
             DialogPane  detailPage=loader.load();
             detailControlleur detailControlleur =loader.getController();
-            detailControlleur.setDialogPane(candidatureInstance);
+            detailControlleur.setDialogPane(Rendez_vousInstance);
             Dialog<ButtonType> dialog =new Dialog<>();
             dialog.setDialogPane(detailPage);
             Optional<ButtonType> clickButtonp=dialog.showAndWait();
@@ -82,7 +92,5 @@ public  void  setValues(candidature c){
 
         }catch (Exception e){
         }
-    }
-
-
+    }*/
 }

@@ -18,6 +18,11 @@ public class rendez_vous {
         Heure_rendez_vous = heure_rendez_vous;
         this.annonce = annonce;
     }
+    public rendez_vous( Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
+        this.date_rendez_vous = date_rendez_vous;
+        Heure_rendez_vous = heure_rendez_vous;
+        this.annonce = annonce;
+    }
 
     public int getId_rendez_vous() {
         return id_rendez_vous;

@@ -42,10 +42,12 @@ public class utilisateur {
         this.role = role;
     }
 
+    public utilisateur(int id,String username) {
+        this.id = id;
+        this.username = username;
+    }
     public utilisateur(int id) {
         this.id = id;
-
-
     }
     public String getContact() {
         return contact;
