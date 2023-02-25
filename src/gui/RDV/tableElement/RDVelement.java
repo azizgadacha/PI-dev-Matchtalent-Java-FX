@@ -1,4 +1,4 @@
-package gui;
+package gui.RDV.tableElement;
 
 import entities.candidature;
 import entities.rendez_vous;

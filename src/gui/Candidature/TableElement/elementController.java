@@ -1,6 +1,8 @@
-package gui;
+package gui.Candidature.TableElement;
 
 import entities.candidature;
+import gui.RDV.AddRDV.addRDVControlleur;
+import gui.Candidature.PopupInformation.detailControlleur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

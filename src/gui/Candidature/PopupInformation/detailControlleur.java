@@ -1,4 +1,4 @@
-package gui;
+package gui.Candidature.PopupInformation;
 
 import entities.candidature;
 import entities.utilisateur;

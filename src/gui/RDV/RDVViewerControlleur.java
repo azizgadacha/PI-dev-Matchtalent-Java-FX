@@ -1,8 +1,7 @@
 package gui.RDV;
 
-import entities.candidature;
 import entities.rendez_vous;
-import gui.RDVelement;
+import gui.RDV.tableElement.RDVelement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

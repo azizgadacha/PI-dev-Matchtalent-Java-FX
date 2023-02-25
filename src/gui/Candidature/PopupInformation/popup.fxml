@@ -12,13 +12,13 @@
 <?import javafx.scene.text.Text?>
 
 
-<DialogPane prefHeight="475.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.detailControlleur">
+<DialogPane prefHeight="475.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Candidature.PopupInformation.detailControlleur">
    <content>
       <AnchorPane prefHeight="425.0" prefWidth="399.0">
          <children>
             <ImageView fitHeight="118.0" fitWidth="123.0" layoutX="144.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/photo.jpg" />
+                  <Image url="@../../../images/photo.jpg" />
                </image>
             </ImageView>
             <Text layoutX="149.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile">

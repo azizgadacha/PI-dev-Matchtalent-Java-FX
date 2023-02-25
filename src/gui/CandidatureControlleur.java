@@ -1,7 +1,7 @@
 package gui;
 
 import entities.candidature;
-import gui.elementController;
+import gui.Candidature.TableElement.elementController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -91,7 +91,7 @@ public class CandidatureControlleur implements Initializable {
                 try {
 
                     final int j = i;
-                    FXMLLoader loader=new FXMLLoader(getClass().getResource("../gui/Item.fxml"));
+                    FXMLLoader loader=new FXMLLoader(getClass().getResource("Candidature/TableElement/Item.fxml"));
 
                     nodes.add(  loader.load());
                     elementController f=loader.getController();

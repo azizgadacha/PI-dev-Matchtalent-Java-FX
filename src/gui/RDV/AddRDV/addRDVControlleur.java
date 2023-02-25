@@ -1,4 +1,4 @@
-package gui;
+package gui.RDV.AddRDV;
 
 import entities.candidature;
 import entities.rendez_vous;
