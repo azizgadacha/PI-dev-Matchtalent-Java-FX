@@ -6,12 +6,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import services.Rendez_vous_service;
 
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Optional;
 
 public class RDVelement {
@@ -40,8 +45,16 @@ public class RDVelement {
     private Label heure;
     rendez_vous Rendez_vousInstance;
     Rendez_vous_service rs=new Rendez_vous_service();
+    public interface PopupListener {
+        void onInfoSent( rendez_vous Rendez_vousInstance);
+    }
+    private PopupListener listener;
+
+    public void setListener(PopupListener listener) {
+        this.listener = listener;
+    }
+
     public  void  setValues(rendez_vous c){
-        System.out.println("hello "+c.getUser().getUsername());
         this.Rendez_vousInstance=c;
         name.setText(c.getAnnonce().getTitre());
         date.setText(String.valueOf(c.getDate_rendez_vous()));
@@ -49,12 +62,22 @@ public class RDVelement {
         username.setText(c.getUser().getUsername());
     }
     @FXML
-    void supprimerAnnonce(ActionEvent event) throws SQLException {
+    void supprimerAnnonce(ActionEvent event) throws SQLException, IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("success");
+        alert.setHeaderText("");
+        alert.setContentText("voulez vous supprimer un personnel");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            {
+                rs.supprimer(Rendez_vousInstance);
+        listener.onInfoSent(Rendez_vousInstance);
 
-  rs.supprimer(Rendez_vousInstance);
+        if (listener != null) {
+            listener.onInfoSent(Rendez_vousInstance);
+        }
 
-
-    }
+    }}}
    /* @FXML
     void AddRdv(ActionEvent event) {
         Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();

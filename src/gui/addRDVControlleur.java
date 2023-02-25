@@ -53,9 +53,7 @@ private  Boolean succes=false ;
         LocalDate localDate = LocalDate.now();
         Rendez_vous_service rs=new Rendez_vous_service();
        Date res=Date.from(date_Picker.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        System.out.println("heelp"+res);
         String time=(CB1.getValue())+":"+(CB2.getValue()).toString();
-        System.out.println(time);
 
       if((((date_Picker).getValue()).isAfter(localDate))&&(rs.getSpecified(new rendez_vous(res,time,c.getAnnonce())).size()==0)){
 rs.ajouter(new rendez_vous( new utilisateur(c.getId_candidature()),res,time,c.getAnnonce()));
@@ -73,14 +71,12 @@ rs.ajouter(new rendez_vous( new utilisateur(c.getId_candidature()),res,time,c.ge
     @FXML
     void changedDate() {
         LocalDate localDate = LocalDate.now();
-        System.out.println(localDate);
         if(((date_Picker).getValue()).isAfter(localDate)){
             erroraria.setText("");
 
             succes=true;
 }else {            erroraria.setText("vous avez entrez une date invalid");
             succes=false;
-            System.out.println("samani nbb");
     }}
 
     public void setValues(candidature candidatureInstance){

@@ -51,7 +51,6 @@ public class Rendez_vous_service implements IService<rendez_vous> {
     @Override
     public void supprimer(rendez_vous rendez_vous) throws SQLException {
         try {
-            System.out.println("hgr "+rendez_vous.getId_rendez_vous());
         PreparedStatement s = cnx.prepareStatement("delete from rendez_vous where  id_rendez_vous=?");
         s.setInt(1, rendez_vous.getId_rendez_vous());
         s.executeUpdate();

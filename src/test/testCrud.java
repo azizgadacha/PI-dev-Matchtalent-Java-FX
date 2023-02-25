@@ -20,6 +20,7 @@ public class testCrud {
           //  rs.modifier(new candidature(1,new utilisateur(3,"test1"),new annonce(3),12,"aaaaaaaaaab"));
   //  rs.supprimer(new candidature(4));
         Rendez_vous_service rendezS=new Rendez_vous_service();
-        rendezS.modifier(new rendez_vous(5,new Date(),"8:16"));
+       // rendezS.modifier(new rendez_vous(5,new Date(),"8:16"));
+        rendezS.supprimer(new rendez_vous(5));
     }
 }

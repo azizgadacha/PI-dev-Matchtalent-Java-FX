@@ -13,7 +13,7 @@ public class test2 extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/RDV_Viewer.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/RDV/RDV_Viewer.fxml"));
         primaryStage.setScene(new Scene(root));
         //set stage borderless
         primaryStage.initStyle(StageStyle.UNDECORATED);

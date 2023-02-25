@@ -32,12 +32,10 @@ public class detailControlleur implements Initializable {
 candidature c;
     public void setDialogPane(candidature u){
         this.c=u;
-        System.out.println("hello "+c.getReponse());
     name.setText(u.getUtilisateur().getUsername());
     email.setText(u.getUtilisateur().getEmail());
     note.setText(String.valueOf(u.getNote()));
     contact.setText(u.getUtilisateur().getContact());
-        System.out.println("hello 20 "+c.getReponse().length());
         int longeur =0;
 
         try {
@@ -49,7 +47,6 @@ candidature c;
             grid.add(new Label("      "), longeur,0);
             }
     }catch (Exception e){
-            System.out.println(e);
         }
 }
 

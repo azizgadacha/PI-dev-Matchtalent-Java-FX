@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package test;
+package gui.test;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,16 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
-public class Test extends Application {
-
-
+public class main extends Application {
     private double x, y;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../gui/SideBar/SideBar.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../SideBar/SideBar.fxml"));
             primaryStage.setScene(new Scene(root));
             //set stage borderless
             primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -40,12 +33,10 @@ public class Test extends Application {
         }catch (Exception e){
 
         }
-        }
+    }
 
 
     public static void main(String[] args) {
         launch(args);
     }
 }
-
-

@@ -82,13 +82,6 @@ public class CandidatureControlleur implements Initializable {
         stage.close();
     }
 
-
-
-
-
-
-
-
     ObservableList<candidature> candidaturesListe;
     public void remplirliste(ObservableList<candidature> candidaturesListe){
         nombre.setText(String.valueOf(candidaturesListe.size()));
@@ -102,7 +95,6 @@ public class CandidatureControlleur implements Initializable {
 
                     nodes.add(  loader.load());
                     elementController f=loader.getController();
-                    System.out.println(candidaturesListe.get(i).getReponse());
                     f.setValues(candidaturesListe.get(i));
                     //give the items some effect
 
@@ -113,11 +105,9 @@ public class CandidatureControlleur implements Initializable {
                 }
             }
 
-            System.out.println("im here b");
-            System.out.println(pnItems.getChildren());
+
             pnItems.getChildren().removeAll();
 
-            System.out.println(pnItems.getChildren());
 
         }
     }
@@ -145,19 +135,15 @@ public class CandidatureControlleur implements Initializable {
         FilteredList<candidature> filterData = new FilteredList<>(candidaturesListe, p -> true);
         searchBox.textProperty().addListener((obsevable, oldvalue, newvalue) -> {
             filterData.setPredicate(candida -> {
-                System.out.println("im here1 "+newvalue);
                 if (newvalue == null || newvalue.isEmpty()) {
-                    System.out.println("im here2 "+newvalue);
 
                     return true;
                 }
                 String typedText = newvalue.toLowerCase();
                 if (String.valueOf(candida.getUtilisateur().getUsername()).toLowerCase().indexOf(typedText) != -1) {
-                    System.out.println("im here3 "+newvalue);
 
                     return true;
                 }if (String.valueOf(candida.getNote()).indexOf(typedText) != -1) {
-                    System.out.println("im here4 "+newvalue);
 
                     return true;
                 }
@@ -182,10 +168,12 @@ public class CandidatureControlleur implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
           candidaturesListe= (ObservableList<candidature>) cs.recuperer();
+            System.out.println(candidaturesListe.get(0));
+            remplirliste(candidaturesListe);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        remplirliste(candidaturesListe);
 
     }
 
@@ -194,20 +182,20 @@ public class CandidatureControlleur implements Initializable {
     @FXML
     public void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnCustomers) {
-            pnlCustomer.setStyle("-fx-background-color : #1620A1");
+            //pnlCustomer.setStyle("-fx-background-color : #1620A1");
             pnlCustomer.toFront();
         }
         if (actionEvent.getSource() == btnMenus) {
-            pnlMenus.setStyle("-fx-background-color : #53639F");
+            //pnlMenus.setStyle("-fx-background-color : #53639F");
             pnlMenus.toFront();
         }
         if (actionEvent.getSource() == btnOverview) {
-            pnlOverview.setStyle("-fx-background-color : #e7e5e5");
+            //pnlOverview.setStyle("-fx-background-color : #e7e5e5");
             pnlOverview.toFront();
         }
         if(actionEvent.getSource()==btnOrders)
         {
-            pnlOrders.setStyle("-fx-background-color : #464F67");
+            //pnlOrders.setStyle("-fx-background-color : #464F67");
             pnlOrders.toFront();
         }
     }

@@ -33,6 +33,8 @@ public class elementController  {
     @FXML
     private Label note;
     candidature candidatureInstance;
+
+
 public  void  setValues(candidature c){
     this.candidatureInstance=c;
     name.setText(c.getUtilisateur().getUsername());
@@ -41,8 +43,7 @@ public  void  setValues(candidature c){
     @FXML
     void AddRdv(ActionEvent event) {
         Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();
-        double x=detail.getX();
-        double y=detail.getY();
+
         try {
             FXMLLoader loader=new FXMLLoader();
             loader.setLocation(getClass().getResource("../gui/RDVPopup.fxml"));
@@ -56,7 +57,6 @@ public  void  setValues(candidature c){
             dialog.setTitle("detail");
 
 
-
         }catch (Exception e){
         }
     }
@@ -65,7 +65,6 @@ public  void  setValues(candidature c){
 
     @FXML
     void onClick(ActionEvent event) {
-        System.out.println("jefefef");
         Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();
         double x=detail.getX();
         double y=detail.getY();

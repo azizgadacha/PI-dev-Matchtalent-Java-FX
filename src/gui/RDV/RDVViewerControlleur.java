@@ -1,7 +1,8 @@
-package gui;
+package gui.RDV;
 
 import entities.candidature;
 import entities.rendez_vous;
+import gui.RDVelement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -91,8 +92,17 @@ public class RDVViewerControlleur implements Initializable {
                     FXMLLoader loader=new FXMLLoader(getClass().getResource("../gui/itemRendezvou.fxml"));
 
                     nodes.add(  loader.load());
-                    RDVelement f=loader.getController();
-                    f.setValues(rendez_vousListe.get(i));
+                    RDVelement element=loader.getController();
+                    element.setListener(new RDVelement.PopupListener() {
+                        @Override
+                        public void onInfoSent( rendez_vous Rendez_vousInstance) {
+                            pnItems.getChildren().removeAll();
+                            pnItems.getChildren().clear();
+                            rendez_vousListe.remove(Rendez_vousInstance);
+                            remplirliste(rendez_vousListe);
+                }
+                    });
+                    element.setValues(rendez_vousListe.get(i));
                     //give the items some effect
 
 
@@ -102,11 +112,9 @@ public class RDVViewerControlleur implements Initializable {
                 }
             }
 
-            System.out.println("im here b");
-            System.out.println(pnItems.getChildren());
+
             pnItems.getChildren().removeAll();
 
-            System.out.println(pnItems.getChildren());
 
         }
     }
@@ -127,19 +135,15 @@ public class RDVViewerControlleur implements Initializable {
         FilteredList<rendez_vous> filterData = new FilteredList<>(rendez_vousListe, p -> true);
         searchBox.textProperty().addListener((obsevable, oldvalue, newvalue) -> {
             filterData.setPredicate(rendez_vous -> {
-                System.out.println("im here1 "+newvalue);
                 if (newvalue == null || newvalue.isEmpty()) {
-                    System.out.println("im here2 "+newvalue);
 
                     return true;
                 }
                 String typedText = newvalue.toLowerCase();
                 if (String.valueOf(rendez_vous.getAnnonce().getTitre()).toLowerCase().indexOf(typedText) != -1) {
-                    System.out.println("im here3 "+newvalue);
 
                     return true;
                 }if (String.valueOf(rendez_vous.getUser().getUsername()).toLowerCase().indexOf(typedText) != -1) {
-                    System.out.println("im here3 "+newvalue);
 
                     return true;
                 }
@@ -167,11 +171,9 @@ public class RDVViewerControlleur implements Initializable {
             remplirliste(rendez_vousListe);
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
+        }    }
 
 
-
-    }
     @FXML
     void refrech(MouseEvent event) throws SQLException {
         pnItems.getChildren().clear();
