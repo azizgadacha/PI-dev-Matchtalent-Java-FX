@@ -48,7 +48,7 @@ public  void  setValues(candidature c){
 
         try {
             FXMLLoader loader=new FXMLLoader();
-            loader.setLocation(getClass().getResource("../gui/RDVPopup.fxml"));
+            loader.setLocation(getClass().getResource("../../RDV/AddRDV/RDVPopup.fxml"));
             DialogPane  detailPage=loader.load();
             addRDVControlleur detailControlleur =loader.getController();
             detailControlleur.setValues(candidatureInstance);
@@ -72,7 +72,7 @@ public  void  setValues(candidature c){
         double y=detail.getY();
         try {
             FXMLLoader loader=new FXMLLoader();
-            loader.setLocation(getClass().getResource("../gui/popup.fxml"));
+            loader.setLocation(getClass().getResource("../PopupInformation/popup_User_Info.fxml"));
             DialogPane  detailPage=loader.load();
             detailControlleur detailControlleur =loader.getController();
             detailControlleur.setDialogPane(candidatureInstance);

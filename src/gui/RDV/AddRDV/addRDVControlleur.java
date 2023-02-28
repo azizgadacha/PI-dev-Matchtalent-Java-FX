@@ -17,6 +17,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
@@ -50,6 +51,7 @@ private  Boolean succes=false ;
     }
     @FXML
     void clickAdd(ActionEvent event) throws SQLException {
+        ArrayList<utilisateur> f=new ArrayList<>();
         LocalDate localDate = LocalDate.now();
         Rendez_vous_service rs=new Rendez_vous_service();
        Date res=Date.from(date_Picker.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());

@@ -1,4 +1,4 @@
-package gui;
+package gui.Candidature;
 
 import entities.candidature;
 import gui.Candidature.TableElement.elementController;
@@ -91,7 +91,7 @@ public class CandidatureControlleur implements Initializable {
                 try {
 
                     final int j = i;
-                    FXMLLoader loader=new FXMLLoader(getClass().getResource("Candidature/TableElement/Item.fxml"));
+                    FXMLLoader loader=new FXMLLoader(getClass().getResource("TableElement/Item.fxml"));
 
                     nodes.add(  loader.load());
                     elementController f=loader.getController();
@@ -176,28 +176,4 @@ public class CandidatureControlleur implements Initializable {
         }
 
     }
-
-
-
-    @FXML
-    public void handleClicks(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == btnCustomers) {
-            //pnlCustomer.setStyle("-fx-background-color : #1620A1");
-            pnlCustomer.toFront();
-        }
-        if (actionEvent.getSource() == btnMenus) {
-            //pnlMenus.setStyle("-fx-background-color : #53639F");
-            pnlMenus.toFront();
-        }
-        if (actionEvent.getSource() == btnOverview) {
-            //pnlOverview.setStyle("-fx-background-color : #e7e5e5");
-            pnlOverview.toFront();
-        }
-        if(actionEvent.getSource()==btnOrders)
-        {
-            //pnlOrders.setStyle("-fx-background-color : #464F67");
-            pnlOrders.toFront();
-        }
-    }
-
 }

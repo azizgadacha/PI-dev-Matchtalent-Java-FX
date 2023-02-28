@@ -26,35 +26,27 @@ public class SideBarControlleur {
     private Map<String, Node> pages = new HashMap<>();
 
     @FXML
-    private void initialize() {
-        // Load the FXML pages and add them to the pages map
-        try {
-            pages.put("page1", loadPage("../Candidature/Candidature.fxml"));
-            pages.put("page2", loadPage("Page2.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    private void initialize() throws IOException {
         // Set the first page as the content
-        content.getChildren().add(pages.get("page1"));
+        content.getChildren().add(loadPage("../Candidature/Candidature.fxml"));
     }
 
     @FXML
-    private void loadPage1() {
-        loadPageToContent("page1");
+    private void loadPage1() throws IOException {
+        loadPageToContent("../Candidature/Candidature.fxml");
     }
 
     @FXML
-    private void loadPage2() {
-        loadPageToContent("page2");
+    private void loadPage2() throws IOException {
+        loadPageToContent("../RDV/RDV_Viewer.fxml");
     }
 
-    private void loadPageToContent(String pageName) {
+    private void loadPageToContent(String pageName) throws IOException {
         // Remove any existing content from the content region
         content.getChildren().clear();
 
         // Add the new content to the content region
-        content.getChildren().add(pages.get(pageName));
+        content.getChildren().add(loadPage(pageName));
     }
 
     private Node loadPage(String fxmlFileName) throws IOException {

@@ -88,7 +88,7 @@ public class RDVViewerControlleur implements Initializable {
                 try {
 
                     final int j = i;
-                    FXMLLoader loader=new FXMLLoader(getClass().getResource("../gui/itemRendezvou.fxml"));
+                    FXMLLoader loader=new FXMLLoader(getClass().getResource("tableElement/itemRendezvou.fxml"));
 
                     nodes.add(  loader.load());
                     RDVelement element=loader.getController();
@@ -185,24 +185,5 @@ public class RDVViewerControlleur implements Initializable {
     }
 
 
-    @FXML
-    public void handleClicks(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == btnCustomers) {
-            pnlCustomer.setStyle("-fx-background-color : #1620A1");
-            pnlCustomer.toFront();
-        }
-        if (actionEvent.getSource() == btnMenus) {
-            pnlMenus.setStyle("-fx-background-color : #53639F");
-            pnlMenus.toFront();
-        }
-        if (actionEvent.getSource() == btnOverview) {
-            pnlOverview.setStyle("-fx-background-color : #e7e5e5");
-            pnlOverview.toFront();
-        }
-        if(actionEvent.getSource()==btnOrders)
-        {
-            pnlOrders.setStyle("-fx-background-color : #464F67");
-            pnlOrders.toFront();
-        }
-    }
+
 }
