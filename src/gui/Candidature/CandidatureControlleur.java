@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -73,6 +74,22 @@ public class CandidatureControlleur implements Initializable {
     @FXML
     private Pane pnlOverview;
     CondidatureService cs=new CondidatureService();
+
+
+    @FXML
+    private ComboBox<String> comboBox;
+    @FXML
+    private ImageView imageView;
+
+
+
+    @FXML
+    private void onImageViewClicked() {
+        comboBox.getItems().add("ffff");
+        System.out.println("ffff");
+        comboBox.setVisible(!comboBox.isVisible());
+    }
+
 
     @FXML
     private ImageView img;

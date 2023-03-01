@@ -9,9 +9,12 @@ import java.util.Map;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class SideBarControlleur {
     @FXML
@@ -19,7 +22,8 @@ public class SideBarControlleur {
 
     @FXML
     private VBox sidebar;
-
+    @FXML
+    private ImageView img;
     @FXML
     private StackPane content;
 
@@ -29,6 +33,11 @@ public class SideBarControlleur {
     private void initialize() throws IOException {
         // Set the first page as the content
         content.getChildren().add(loadPage("../Candidature/Candidature.fxml"));
+    }
+    @FXML
+    void closePage(MouseEvent event) {
+        Stage stage = (Stage) img.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane fx:id="pnlOverview" prefHeight="595.0" prefWidth="793.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RDV.RDVViewerControlleur">
    <children>
       <TextField fx:id="searchBox" layoutX="590.0" layoutY="47.0" onKeyPressed="#rechercher" onKeyTyped="#rechercher" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #e7e5e5; -fx-border-color: #000000; -fx-border-radius: 2em;" />
@@ -78,10 +77,5 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fx:id="img" fitHeight="26.0" fitWidth="27.0" layoutX="751.0" layoutY="12.0" onMouseClicked="#closePage" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/close-removebg-preview.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>

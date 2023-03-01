@@ -121,21 +121,26 @@
    <top>
       <AnchorPane prefHeight="28.0" prefWidth="1050.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="49.0" prefWidth="256.0" style="-fx-background-color: #293A88;" />
-            <Pane layoutX="255.0" layoutY="-3.0" prefHeight="45.0" prefWidth="795.0" style="-fx-border-color: black; -fx-background-color: #FFFFFF;">
+            <Pane layoutX="255.0" layoutY="-3.0" prefHeight="45.0" prefWidth="795.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="747.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="747.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/Windows_Settings_app_icon.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="706.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="688.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/notification.png" />
                      </image>
                   </ImageView>
+                  <ImageView fx:id="img" fitHeight="26.0" fitWidth="27.0" layoutX="768.0" layoutY="1.0" onMouseClicked="#closePage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/close-removebg-preview.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
+            <Pane layoutX="-3.0" prefHeight="49.0" prefWidth="259.0" style="-fx-background-color: #293A88;" />
          </children>
       </AnchorPane>
    </top>

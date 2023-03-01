@@ -54,15 +54,20 @@ private  Boolean succes=false ;
         ArrayList<utilisateur> f=new ArrayList<>();
         LocalDate localDate = LocalDate.now();
         Rendez_vous_service rs=new Rendez_vous_service();
+        System.out.println("kkk");
+        System.out.println(date_Picker.getValue()==null);
+        if(date_Picker.getValue()==null){
+            erroraria.setText("entrez une date s'il vous plait");
+        }else{
        Date res=Date.from(date_Picker.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
         String time=(CB1.getValue())+":"+(CB2.getValue()).toString();
 
-      if((((date_Picker).getValue()).isAfter(localDate))&&(rs.getSpecified(new rendez_vous(res,time,c.getAnnonce())).size()==0)){
+      if((!date_Picker.getValue().isEqual(null))&&(((date_Picker).getValue()).isAfter(localDate))&&(rs.getSpecified(new rendez_vous(res,time,c.getAnnonce())).size()==0)){
 rs.ajouter(new rendez_vous( new utilisateur(c.getId_candidature()),res,time,c.getAnnonce()));
           Stage stage = (Stage) buttonok.getScene().getWindow();
           stage.close();
 
-        }else erroraria.setText("vous avez entrez une date deja existant");
+        }else erroraria.setText("vous avez entrez une date deja existant");}
   }
 
     @FXML
