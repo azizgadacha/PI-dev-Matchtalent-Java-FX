@@ -51,7 +51,6 @@ private  Boolean succes=false ;
     }
     @FXML
     void clickAdd(ActionEvent event) throws SQLException {
-        ArrayList<utilisateur> f=new ArrayList<>();
         LocalDate localDate = LocalDate.now();
         Rendez_vous_service rs=new Rendez_vous_service();
         System.out.println("kkk");

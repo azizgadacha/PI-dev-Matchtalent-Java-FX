@@ -2,14 +2,18 @@ package gui.RDV.tableElement;
 
 import entities.candidature;
 import entities.rendez_vous;
+import gui.Candidature.PopupInformation.detailControlleur;
+import gui.RDV.Modify_RDV.ModifyRDVControlleur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import services.Rendez_vous_service;
 
 import java.io.IOException;
@@ -45,8 +49,9 @@ public class RDVelement {
     private Label heure;
     rendez_vous Rendez_vousInstance;
     Rendez_vous_service rs=new Rendez_vous_service();
+
     public interface PopupListener {
-        void onInfoSent( rendez_vous Rendez_vousInstance);
+        void onInfoSent( rendez_vous Rendez_vousInstance,String Action);
     }
     private PopupListener listener;
 
@@ -62,46 +67,48 @@ public class RDVelement {
         username.setText(c.getUser().getUsername());
     }
     @FXML
-    void supprimerAnnonce(ActionEvent event) throws SQLException, IOException {
+    void modierRDV(MouseEvent event) throws IOException {
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getResource("../Modify_RDV/ModifyRDVPopup.fxml"));
+        DialogPane  detailPage=loader.load();
+        ModifyRDVControlleur detailControlleur =loader.getController();
+        detailControlleur.setModifyListner(new ModifyRDVControlleur.ModifyListener() {
+                @Override
+                public void onInfoSentModify( rendez_vous Rendez_vousInstance) {
+                    if (listener != null) {
+                        listener.onInfoSent(Rendez_vousInstance,"Modify");
+                    }
+                }
+
+        });
+        detailControlleur.setAttribute(Rendez_vousInstance);
+        Dialog<ButtonType> dialog =new Dialog<>();
+        dialog.initStyle(StageStyle.UNDECORATED);
+
+        dialog.setDialogPane(detailPage);
+        Optional<ButtonType> clickButtonp=dialog.showAndWait();
+        dialog.setTitle("detail");
+    }
+
+    @FXML
+    void supprimerAnnonce() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("success");
-        alert.setHeaderText("");
-        alert.setContentText("voulez vous supprimer un personnel");
+        alert.setTitle("Suppression rendez-vous");
+
+        alert.setContentText("la suppression implique le refus de condidature");
+alert.setHeaderText("voulez vous supprimer un rendez-vous");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             {
                 rs.supprimer(Rendez_vousInstance);
-        listener.onInfoSent(Rendez_vousInstance);
 
         if (listener != null) {
-            listener.onInfoSent(Rendez_vousInstance);
+            listener.onInfoSent(Rendez_vousInstance,"supprimer");
         }
 
     }}}
-   /* @FXML
-    void AddRdv(ActionEvent event) {
-        Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();
-        double x=detail.getX();
-        double y=detail.getY();
-        try {
-            FXMLLoader loader=new FXMLLoader();
-            loader.setLocation(getClass().getResource("../gui/RDVPopup.fxml"));
-            DialogPane detailPage=loader.load();
-            addRDVControlleur detailControlleur =loader.getController();
-            detailControlleur.setValues(Rendez_vousInstance);
-
-            Dialog<ButtonType> dialog =new Dialog<>();
-            dialog.setDialogPane(detailPage);
-            Optional<ButtonType> clickButtonp=dialog.showAndWait();
-            dialog.setTitle("detail");
 
 
 
-        }catch (Exception e){
-        }
-    }
-
-
-*/
 
 }

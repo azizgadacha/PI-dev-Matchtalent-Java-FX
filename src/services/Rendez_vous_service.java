@@ -46,6 +46,7 @@ public class Rendez_vous_service implements IService<rendez_vous> {
         s.setInt(3, rendez_vous.getId_rendez_vous());
         s.executeUpdate();
         System.out.println("succesful ");
+
     }
 
     @Override

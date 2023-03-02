@@ -2,6 +2,7 @@ package gui.Candidature;
 
 import entities.candidature;
 import gui.Candidature.TableElement.elementController;
+import gui.Chart.barChartControlleur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -11,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -103,6 +106,7 @@ public class CandidatureControlleur implements Initializable {
     public void remplirliste(ObservableList<candidature> candidaturesListe){
         nombre.setText(String.valueOf(candidaturesListe.size()));
         nodes=new ArrayList<>();
+        System.out.println(candidaturesListe.size());
         if(candidaturesListe.size()>=1){
             for (int i = 0; i < candidaturesListe.size(); i++) {
                 try {
@@ -127,6 +131,25 @@ public class CandidatureControlleur implements Initializable {
 
 
         }
+    }
+    @FXML
+    void moveToChart(ActionEvent event) throws IOException {
+       /* FXMLLoader loader =new FXMLLoader(getClass().getResource("../Chart/Barchart.fxml"));
+        Parent root =loader.load();
+        barChartControlleur send1 = loader.getController();
+
+        send1.sendData(candidaturesListe);
+        pnlOverview.set setCenter(root);*/
+
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("../Chart/Barchart.fxml"));
+        Pane root =loader.load();
+        barChartControlleur send1 = loader.getController();
+
+        send1.sendData(candidaturesListe);
+        pnlOverview.getChildren().setAll(root);
+
+
+
     }
 
 

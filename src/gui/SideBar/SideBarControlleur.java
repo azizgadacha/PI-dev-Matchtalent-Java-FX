@@ -49,6 +49,10 @@ public class SideBarControlleur {
     private void loadPage2() throws IOException {
         loadPageToContent("../RDV/RDV_Viewer.fxml");
     }
+    @FXML
+    private void loadPage3() throws IOException {
+        loadPageToContent("../Chart/Barchart.fxml");
+    }
 
     private void loadPageToContent(String pageName) throws IOException {
         // Remove any existing content from the content region

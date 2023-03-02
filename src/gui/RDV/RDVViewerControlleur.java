@@ -30,26 +30,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RDVViewerControlleur implements Initializable {
-    @FXML
-    private Button btnCustomers;
-
-    @FXML
-    private Button btnMenus;
-
-    @FXML
-    private Button btnOrders;
-
-    @FXML
-    private Button btnOverview;
-
-    @FXML
-    private Button btnPackages;
-
-    @FXML
-    private Button btnSettings;
-
-    @FXML
-    private Button btnSignout;
 
     @FXML
     private TextField searchBox;
@@ -57,29 +37,21 @@ public class RDVViewerControlleur implements Initializable {
     private VBox pnItems;
     @FXML
     private Label nombre;
-    @FXML
-    private Pane pnlCustomer;
-    @FXML
-    private GridPane grid;
-    @FXML
-    private Pane pnlMenus;
 
-    @FXML
-    private Pane pnlOrders;
 
-    @FXML
-    private Pane pnlOverview;
+
     Rendez_vous_service rs=new Rendez_vous_service();
 
-    @FXML
-    private ImageView img;
-    @FXML
-    void closePage(MouseEvent event) {
-        Stage stage = (Stage) img.getScene().getWindow();
-        stage.close();
-    }
 
     ObservableList<rendez_vous> rendez_vousListe;
+    public void refrechObservableListe() throws SQLException {
+        rendez_vousListe.clear();
+        for (rendez_vous v:  rs.recuperer()){
+            v.getHeure_rendez_vous();
+        }
+        rendez_vousListe= (ObservableList<rendez_vous>) rs.recuperer();
+        remplirliste(rendez_vousListe);
+    }
     public void remplirliste(ObservableList<rendez_vous> rendez_vousListe){
         nombre.setText(String.valueOf(rendez_vousListe.size()));
         nodes=new ArrayList<>();
@@ -94,11 +66,22 @@ public class RDVViewerControlleur implements Initializable {
                     RDVelement element=loader.getController();
                     element.setListener(new RDVelement.PopupListener() {
                         @Override
-                        public void onInfoSent( rendez_vous Rendez_vousInstance) {
-                            pnItems.getChildren().removeAll();
+                        public void onInfoSent( rendez_vous Rendez_vousInstance,String Action) {
                             pnItems.getChildren().clear();
-                            rendez_vousListe.remove(Rendez_vousInstance);
-                            remplirliste(rendez_vousListe);
+                            if (Action=="Modify"){
+                                try {
+                                    System.out.println("rani klena");
+                                    refrechObservableListe();
+
+                                } catch (SQLException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                            }else {
+                                rendez_vousListe.remove(Rendez_vousInstance);
+                                remplirliste(rendez_vousListe);
+                            }
+
                 }
                     });
                     element.setValues(rendez_vousListe.get(i));
@@ -173,16 +156,7 @@ public class RDVViewerControlleur implements Initializable {
         }    }
 
 
-    @FXML
-    void refrech(MouseEvent event) throws SQLException {
-        pnItems.getChildren().clear();
-        pnItems.getChildren().removeAll();
 
-
-        rendez_vousListe= (ObservableList<rendez_vous>) rs.recuperer();
-        remplirliste(rendez_vousListe);
-
-    }
 
 
 
