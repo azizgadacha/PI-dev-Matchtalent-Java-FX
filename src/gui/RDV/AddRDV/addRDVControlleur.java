@@ -3,6 +3,7 @@ package gui.RDV.AddRDV;
 import entities.candidature;
 import entities.rendez_vous;
 import entities.utilisateur;
+import gui.RDV.Modify_RDV.ModifyRDVControlleur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,7 +38,14 @@ private  Boolean succes=false ;
     private DatePicker date_Picker;
     private int[] a = IntStream.range(1, 30).toArray();
     candidature c;
+    public interface AddListener {
+        void onInfoSentAdd( Boolean var) throws SQLException;
+    }
+    private AddListener listener;
 
+    public void setAddListner(AddListener listener) {
+        this.listener = listener;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         for (int i=8;i<18;i++) {
@@ -61,10 +69,14 @@ private  Boolean succes=false ;
        Date res=Date.from(date_Picker.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
         String time=(CB1.getValue())+":"+(CB2.getValue()).toString();
 
-      if((!date_Picker.getValue().isEqual(null))&&(((date_Picker).getValue()).isAfter(localDate))&&(rs.getSpecified(new rendez_vous(res,time,c.getAnnonce())).size()==0)){
-rs.ajouter(new rendez_vous( new utilisateur(c.getId_candidature()),res,time,c.getAnnonce()));
+      if((((date_Picker).getValue()).isAfter(localDate))&&(rs.getSpecified(new rendez_vous(res,time,c.getAnnonce())).size()==0)){
+rs.ajouter(new rendez_vous( new utilisateur(c.getUtilisateur().getId()),res,time,c.getAnnonce()));
+          if (listener != null) {
+              listener.onInfoSentAdd(true);
+          }
           Stage stage = (Stage) buttonok.getScene().getWindow();
           stage.close();
+
 
         }else erroraria.setText("vous avez entrez une date deja existant");}
   }
@@ -77,6 +89,7 @@ rs.ajouter(new rendez_vous( new utilisateur(c.getId_candidature()),res,time,c.ge
     @FXML
     void changedDate() {
         LocalDate localDate = LocalDate.now();
+
         if(((date_Picker).getValue()).isAfter(localDate)){
             erroraria.setText("");
 
@@ -86,7 +99,10 @@ rs.ajouter(new rendez_vous( new utilisateur(c.getId_candidature()),res,time,c.ge
     }}
 
     public void setValues(candidature candidatureInstance){
-       c=candidatureInstance;
+
+        c=candidatureInstance;
+        System.out.println("test1"+c.getUtilisateur().getId());
+        System.out.println("test2"+c.getUtilisateur().getUsername());
         }
 
 

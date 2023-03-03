@@ -61,13 +61,30 @@ public class CondidatureService implements IService<candidature> {
 
     @Override
     public List recuperer() throws SQLException {
-        PreparedStatement s = cnx.prepareStatement("select * from candidature,utilisateur where candidature.id_demandeur=utilisateur.id  ");
+        PreparedStatement s = cnx.prepareStatement("select * from candidature,utilisateur where candidature.id_demandeur=utilisateur.id  where id candidature.id_demandeur");
         ObservableList<candidature> candidatureListe= FXCollections.observableArrayList();
         ResultSet resultat = s.executeQuery();
 
         while (resultat.next()) {
             //         public Postulaion(entities.annonce annonce, entities.utilisateur utilisateur, String etat, String cv, String lettre_motivation) {
             resultat.getInt("id_annonce");
+            System.out.println(resultat.getString("id_demandeur"));
+            candidatureListe.add(new candidature( resultat.getInt("id_candidature"), new utilisateur(resultat.getInt("id_demandeur"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address"),resultat.getString("biographie"),resultat.getString("nom_societé"),resultat.getString("role")),new annonce(resultat.getInt( "id_annonce")),resultat.getInt("note"),resultat.getString("reponse")));
+        }
+        return candidatureListe;
+    }
+
+    public List recupererSuivantannance(annonce an) throws SQLException {
+        System.out.println("salem"+an.getId_annonce());
+        PreparedStatement s = cnx.prepareStatement("select * from candidature,utilisateur,annonce where candidature.id_annonce=annonce.id_annonce and candidature.id_demandeur=utilisateur.id and candidature.id_annonce=? and candidature.id_demandeur not in(select id_user from rendez_vous where id_annonce=?)");
+        s.setInt(1,5);
+        s.setInt(2, 5);
+
+        ObservableList<candidature> candidatureListe= FXCollections.observableArrayList();
+
+        ResultSet resultat = s.executeQuery();
+
+        while (resultat.next()) {
             candidatureListe.add(new candidature( resultat.getInt("id_candidature"), new utilisateur(resultat.getInt("id_demandeur"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address"),resultat.getString("biographie"),resultat.getString("nom_societé"),resultat.getString("role")),new annonce(resultat.getInt( "id_annonce")),resultat.getInt("note"),resultat.getString("reponse")));
         }
         return candidatureListe;

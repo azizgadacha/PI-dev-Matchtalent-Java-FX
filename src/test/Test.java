@@ -19,7 +19,7 @@ public class Test extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        try {
+
             Parent root = FXMLLoader.load(getClass().getResource("../gui/SideBar/SideBar.fxml"));
             primaryStage.setScene(new Scene(root));
             //set stage borderless
@@ -37,9 +37,7 @@ public class Test extends Application {
 
             });
             primaryStage.show();
-        }catch (Exception e){
-            System.out.println(e);
-        }
+
         }
 
 

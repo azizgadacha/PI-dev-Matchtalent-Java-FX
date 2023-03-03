@@ -1,8 +1,10 @@
 package gui.Candidature;
 
+import entities.annonce;
 import entities.candidature;
 import gui.Candidature.TableElement.elementController;
 import gui.Chart.barChartControlleur;
+import gui.RDV.AddRDV.addRDVControlleur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -116,6 +118,18 @@ public class CandidatureControlleur implements Initializable {
 
                     nodes.add(  loader.load());
                     elementController f=loader.getController();
+                    f.setChangeListener(new elementController.PopupListener() {
+                        @Override
+                        public void onInfoSentChange( Boolean var) throws SQLException {
+                            if (var) {
+                                pnItems.getChildren().clear();
+
+                                getFromDb();
+
+                            }
+                        }
+
+                    });
                     f.setValues(candidaturesListe.get(i));
                     //give the items some effect
 
@@ -207,13 +221,19 @@ public class CandidatureControlleur implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-          candidaturesListe= (ObservableList<candidature>) cs.recuperer();
-            System.out.println(candidaturesListe.get(0));
-            remplirliste(candidaturesListe);
-
+            getFromDb();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
     }
+    public void getFromDb() throws SQLException {
+
+            candidaturesListe= (ObservableList<candidature>) cs.recupererSuivantannance(new annonce(1));
+            remplirliste(candidaturesListe);
+
+
+    }
+
+
 }

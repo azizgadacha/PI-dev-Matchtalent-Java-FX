@@ -131,7 +131,6 @@ public class RDVViewerControlleur implements Initializable {
                 }
                 return false;
             });
-            pnItems.getChildren().removeAll();
 
             SortedList<rendez_vous > sortedList = new SortedList<>(filterData);
             // sortedList.comparatorProperty().bind(pnItems.);
