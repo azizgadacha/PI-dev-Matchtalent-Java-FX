@@ -4,13 +4,15 @@
  */
 package entities;
 
-import java.sql.Date;
+import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  *
  * @author Hend
  */
 public class reponse_reclamation {
+    private reclamation reclamation;
     private int id_reponse, id_reclamation;
     private String reponse;
     private Date date;
@@ -21,6 +23,14 @@ public class reponse_reclamation {
         this.date = date;
     }
 
+    public reponse_reclamation(reclamation reclamation, String reponse, Date date) {
+        this.reclamation = reclamation;
+        this.reponse = reponse;
+        this.date = date;
+    }
+
+    
+    
     public reponse_reclamation() {
     }
 
@@ -54,6 +64,14 @@ public class reponse_reclamation {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public reclamation getReclamation() {
+        return reclamation;
+    }
+
+    public void setReclamation(reclamation reclamation) {
+        this.reclamation = reclamation;
     }
 
     @Override

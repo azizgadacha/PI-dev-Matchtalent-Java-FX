@@ -25,18 +25,21 @@ import javafx.stage.Stage;
 public class MainAjouterReclamation extends Application {
     
     @Override
-   public void start(Stage primaryStage) {
-        try {
+   public void start(Stage primaryStage) throws IOException {
+        
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReclamation.fxml"));
+             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FXML.fxml"));
+             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AdminHomePage.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReclamation.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReponse.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root,600,400);
+            Scene scene = new Scene(root,800,600);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("ajouter Reclamation");
+            primaryStage.setTitle("Reclamation");
             primaryStage.show();
 
-        } catch (IOException ex) {
-            System.out.println("error" + ex.getMessage());
-        }
+            
+       
     }
 
     /**

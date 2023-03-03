@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="735.0" prefWidth="975.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="gui.ListReponseController">
+   <children>
+      <ScrollPane layoutX="16.0" layoutY="15.0" prefHeight="683.0" prefWidth="912.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="679.0" prefWidth="907.0">
+               <children>
+                  <VBox layoutX="-2.0" prefHeight="709.0" prefWidth="923.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

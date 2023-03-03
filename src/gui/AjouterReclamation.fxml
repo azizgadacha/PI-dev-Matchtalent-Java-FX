@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
@@ -16,11 +14,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="675.0" prefWidth="1224.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReclamationController">
+<AnchorPane id="AnchorPane" prefHeight="675.0" prefWidth="1458.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReclamationController">
    <children>
-      <HBox alignment="CENTER" layoutX="2.0" layoutY="164.0" prefHeight="50.0" prefWidth="1224.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-2.0">
+      <HBox alignment="CENTER" layoutX="-83.0" layoutY="194.0" prefHeight="0.0" prefWidth="928.0" AnchorPane.leftAnchor="-83.0" AnchorPane.rightAnchor="379.0">
          <children>
-            <TextField fx:id="ch_title" alignment="TOP_LEFT" prefHeight="47.0" prefWidth="860.0" promptText="Title" stylesheets="@fullpackstyling.css">
+            <TextField fx:id="ch_title" alignment="TOP_LEFT" prefHeight="16.0" prefWidth="651.0" promptText="Title" stylesheets="@fullpackstyling.css">
                <effect>
                   <Blend />
                </effect>
@@ -34,37 +32,29 @@
             </TextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="14.0" layoutY="418.0" prefHeight="46.0" prefWidth="700.0" stylesheets="@fullpackstyling.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-14.0">
+      <HBox alignment="CENTER" layoutX="6.0" layoutY="399.0" prefHeight="74.0" prefWidth="782.0" stylesheets="@fullpackstyling.css" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="436.0">
          <children>
-            <DatePicker fx:id="ch_date" prefHeight="46.0" prefWidth="847.0" stylesheets="@fullpackstyling.css">
-               <styleClass>
-                  <String fx:value="search-box" />
-                  <String fx:value="shadow" />
-               </styleClass>
-            </DatePicker>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" cache="true" layoutX="-2.0" layoutY="224.0" prefHeight="62.0" prefWidth="608.0" stylesheets="@fullpackstyling.css" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-6.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="708.0">
+               <children>
+                  <TextField fx:id="ch_desc" alignment="TOP_LEFT" prefHeight="78.0" prefWidth="855.0" promptText="Descriptin" styleClass="shadow" stylesheets="@fullpackstyling.css">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children></HBox>
+      <HBox alignment="CENTER" cache="true" layoutX="14.0" layoutY="306.0" prefHeight="62.0" prefWidth="782.0" stylesheets="@fullpackstyling.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="428.0">
          <children>
             <HBox prefHeight="62.0" prefWidth="675.0">
                <children>
-                  <ComboBox fx:id="combo" onAction="#select" prefHeight="26.0" prefWidth="564.0" />
+                  <ComboBox fx:id="combo" onAction="#select" prefHeight="26.0" prefWidth="564.0" promptText="Contentrelatedissues" />
                </children>
             </HBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="-2.0" layoutY="309.0" prefHeight="100.0" prefWidth="708.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-6.0">
-         <children>
-            <TextField fx:id="ch_desc" alignment="TOP_LEFT" prefHeight="88.0" prefWidth="855.0" promptText="Descriptin" styleClass="shadow" stylesheets="@fullpackstyling.css">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </TextField>
-         </children>
-      </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="-6.0" prefHeight="62.0" prefWidth="608.0" style="-fx-background-color: #9F73AB;" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="-2.0">
          <children>
-            <FontAwesomeIconView fill="WHITE" glyphName="XING" size="30" wrappingWidth="28.514273643493652" />
             <Label prefHeight="22.0" prefWidth="135.0" text="MatchTalent" textFill="WHITE">
                <HBox.margin>
                   <Insets />
@@ -83,14 +73,10 @@
                   </TextField>
                </graphic>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" stylesheets="@fullpackstyling.css" text="Search" textFill="#8e4394">
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="79.0" styleClass="buttonn" stylesheets="@fullpackstyling.css" text="Search" textFill="#8e4394">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
-               <styleClass>
-                  <String fx:value="search-button" />
-                  <String fx:value="button" />
-               </styleClass>
             </Button>
             <Label prefHeight="18.0" prefWidth="50.0">
                <HBox.margin>
@@ -137,11 +123,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <FontAwesomeIconView fill="WHITE" glyphName="BELL">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </FontAwesomeIconView>
             <Label text="UserName" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -158,14 +139,9 @@
                   <Image url="@../../../../../Downloads/faces-avatar-in-circle-portrait-young-boy-vector-12511754-removebg-preview.png" />
                </image>
             </ImageView>
-            <FontAwesomeIconView fill="WHITE" glyphName="ARROW_RIGHT" size="15">
-               <HBox.margin>
-                  <Insets bottom="5.0" right="15.0" />
-               </HBox.margin>
-            </FontAwesomeIconView>
          </children>
       </HBox>
-      <Button layoutX="558.0" layoutY="494.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0" prefWidth="221.0" styleClass="buttonn" stylesheets="@fullpackstyling.css" text="Add Reclamation" textFill="WHITE" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="445.0" />
+      <Button layoutX="606.0" layoutY="494.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0" prefWidth="21.0" stylesheets="@fullpackstyling.css" text="Add Reclamation" textFill="WHITE" AnchorPane.leftAnchor="606.0" AnchorPane.rightAnchor="624.0" />
       <Pane layoutX="-4.0" layoutY="532.0" prefHeight="142.0" prefWidth="1224.0" style="-fx-background-color: #9F73AB;" AnchorPane.bottomAnchor="0.6000000000000227" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-4.0">
          <children>
             <Label layoutX="76.0" layoutY="14.0" />
@@ -237,26 +213,46 @@
                   <Image url="@../../../../../Downloads/4103007.png" />
                </image>
             </ImageView>
-            <Label layoutX="698.0" layoutY="119.0" text="MatchTalent     2023" textFill="WHITE">
+            <Label layoutX="699.0" layoutY="118.0" text="MatchTalent     2023" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <FontAwesomeIconView fill="WHITE" glyphName="COPYRIGHT" layoutX="679.0" layoutY="138.0" size="15" />
          </children>
       </Pane>
-      <Pane layoutX="47.0" layoutY="73.0" prefHeight="74.0" prefWidth="1165.0" style="-fx-background-color: #D0B3D8;" stylesheets="@fullpackstyling.css">
+      <Pane layoutX="95.0" layoutY="73.0" prefHeight="74.0" prefWidth="255.0" style="-fx-background-color: #D0B3D8;" stylesheets="@fullpackstyling.css">
          <styleClass>
             <String fx:value="free-card" />
             <String fx:value="shadow" />
          </styleClass>
          <children>
-            <Label layoutX="87.0" layoutY="19.0" text="Add Reclamation " textFill="WHITE">
+            <Label layoutX="28.0" layoutY="23.0" text="Add Reclamation " textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="25.0" />
                </font>
             </Label>
          </children>
       </Pane>
+      <Button fx:id="btn_btn" layoutX="340.0" layoutY="494.0" mnemonicParsing="false" onAction="#affiche" stylesheets="@fullpackstyling.css" text="Afficher" textFill="WHITE" />
+      <Label layoutX="242.0" layoutY="162.0" text="Titre :" textFill="#a284a4">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="242.0" layoutY="262.0" text="Type:" textFill="#a284a4">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="244.0" layoutY="359.0" text="Description:" textFill="#a284a4">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="285.0" fitWidth="526.0" layoutX="1057.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/appeler-le-service-client-sncf.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -5,23 +5,35 @@
 package gui;
 
 import entities.reclamation;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.VBox;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
 import services.ReclamationService;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
 
 /**
  * FXML Controller class
@@ -30,65 +42,64 @@ import javafx.scene.control.TableCell;
  */
 public class ListReclamationController implements Initializable {
 
-     
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private TableView<reclamation> table_rec;
+
+    @FXML
+    private TableColumn<reclamation, String> desct ;
+//= new TableColumn<>("description")
+    @FXML
+    private TableColumn<reclamation, Date> date ;
+    //= new TableColumn<>("date")
+
+    @FXML
+    private TableColumn<reclamation, String> title ;
+    //= new TableColumn<>("titre")
+
+   // @FXML
+    //private TableColumn<reclamation, Boolean> ac = new TableColumn<>("action");
+
     ReclamationService ps = new ReclamationService();
-     private TableColumn<reclamation, Button> delete;
-     
-    @Override
+
+     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       /*try {
+        /*try {
             // TODO
             List<reclamation> reclamations = ps.recuperer();
             ObservableList<reclamation> olp = FXCollections.observableArrayList(reclamations);
-            reclamation_view.setItems(olp);
-            col1.setCellValueFactory(new PropertyValueFactory("nom"));
-            col2.setCellValueFactory(new PropertyValueFactory("prenom"));
-            col3.setCellValueFactory(new PropertyValueFactory("age"));
-            this.delete();
+            table_rec.setItems(olp);
+            desct.setCellValueFactory(new PropertyValueFactory("description"));
+            title.setCellValueFactory(new PropertyValueFactory("titre"));
+            date.setCellValueFactory(new PropertyValueFactory("date"));
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }*/
+        ReclamationService p = new ReclamationService();
+        try {
+            ObservableList<reclamation> reclamation = p.afficherReclamationList();
+        } catch (SQLException ex) {
+            Logger.getLogger(ListReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       // p.BazTawTeslek();
+         System.out.println("amaaaaaaaan");
+        try {
+            afficherReclamationList();
+            
+            // loeadDate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ListReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
     
-     /*public void delete() {
-        delete.setCellFactory((param) -> {
-            return new TableCell() {
-                @Override
-                protected void updateItem(Object item, boolean empty) {
-                    setGraphic(null);
-                    if (!empty) {
-                        Button b = new Button("delete");
-                        b.setOnAction((event) -> {
-                            try {
-                                if (ps.supprimer(reclamation_view.getItems().get(getIndex()))) {
-                                    reclamation_view.getItems().remove(getIndex());
-                                    reclamation_view.refresh();
-
-                                }
-                            } catch (SQLException ex) {
-                                System.out.println("erreor:" + ex.getMessage());
-
-                            }
-
-                        });
-                        setGraphic(b);
-
-                    }
-                }
-            };
-
-        });
-
+    private void afficherReclamationList() throws SQLException {
+           ReclamationService p = new ReclamationService();
+           ObservableList<reclamation> reclamation = p.afficherReclamationList();     
+        title.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        desct.setCellValueFactory(new PropertyValueFactory<>("description"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        table_rec.setItems(reclamation);
     }
-
-    public void setData(String Message) {
-        welcomeLb.setText("Welcomme " + Message);
-
-    }*/
-
 }
-    
+
+

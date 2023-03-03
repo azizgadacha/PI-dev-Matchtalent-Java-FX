@@ -4,7 +4,7 @@
  */
 package entities;
 
-import java.sql.Date;
+import java.util.Date;
 /**
  *
  * @author Hend

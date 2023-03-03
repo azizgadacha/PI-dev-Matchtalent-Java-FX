@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
@@ -82,23 +83,37 @@ public class AdminHomePageController implements Initializable {
         } else
                         if (event.getSource() == btn_parametre)
         {
-            lab_one.setText("/Home/Parametre");
+            lab_one.setText("/Home/Setting");
             lab_two.setText("Setting");
             pane_status.setBackground (new Background(new BackgroundFill(Color.rgb(63,43, 99), CornerRadii.EMPTY, Insets.EMPTY)));
         } 
         
     }
     
-    @FXML
+    /*@FXML
     private void afficher(ActionEvent event) {
          try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListReclamation.fxml"));
             Parent root = loader.load();
             ListReclamationController controller = loader.getController();
+            
+            
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
         
+    }*/
+    @FXML
+private void afficher(ActionEvent event) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListReclamation.fxml"));
+        Parent root = loader.load();
+        ListReclamationController controller = loader.getController();
+        Scene currentScene = btn_home.getScene();
+        currentScene.setRoot(root);
+    } catch (IOException ex) {
+        System.out.println("error" + ex.getMessage());
     }
+}
     
 }

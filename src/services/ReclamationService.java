@@ -12,19 +12,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import utils.Enum.Statut;
+import utils.Enum.TypeReclamation;
 import utils.MyDB;
 
 /**
  *
  * @author Hend
  */
-public class ReclamationService implements IService<reclamation>{
+public class ReclamationService implements IReclamationService<reclamation>{
     
      Connection cnx;
 
@@ -37,40 +41,32 @@ public class ReclamationService implements IService<reclamation>{
 
     @Override
     public void ajouter(reclamation t) throws SQLException {
-        String req = "INSERT INTO reclamation(id_utilisateur,description,titre,type,date,statut) VALUES(?,?,?,?,?,?)";
+        String req = "INSERT INTO reclamation(id_utilisateur,description,titre,date) VALUES(?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1, t.getId_utilisateur());
+        ps.setInt(1, t.getUtilisateur().getId_utilisateur());
+        //ps.setInt(1, t.getId_utilisateur());
         ps.setString(2, t.getDescription());
+        //ps.setString(3, t.getType().toString());
         ps.setString(3, t.getTitre());
-        ps.setString(4, t.getType());
+       // ps.setString(4, t.getType().toString());
        // ps.setDate(5, t.getDate());
-        ps.setDate(5, java.sql.Date.valueOf(t.getDate()));
-        ps.setString(6, t.getStatut());
+        //ps.setDate(4, java.sql.Date.valueOf(t.getDate()));
+         ps.setObject(4, LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
         ps.executeUpdate();
     }
     
-    public ObservableList<String> getObjetList() throws SQLException {
-        String req = "SELECT DISTINCT type FROM reclamation";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ResultSet rs = ps.executeQuery();
-        List<String> objetList = new ArrayList<>();
-        while (rs.next()) {
-            objetList.add(rs.getString("type"));
-        }
-        return FXCollections.observableArrayList(objetList);
-    }
-
     @Override
     public void modifier(reclamation t) throws SQLException {
-       String req = "UPDATE reclamation  SET id_reclamation = ?,description= ?,titre = ?,type=?, date=?, statut=? where Id_utilisateur = ?";
+       String req = "UPDATE reclamation  SET id_reclamation = ?,description= ?,titre = ?, date=? where Id_utilisateur = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getId_reclamation());
         ps.setString(2, t.getDescription());
         ps.setString(3, t.getTitre());
-        ps.setString(4, t.getType());
-        ps.setDate(5, java.sql.Date.valueOf(t.getDate()));
-        ps.setString(6, t.getStatut());
-        ps.setInt(7, t.getId_utilisateur());
+        /*ps.setString(4, t.getType().toString());*/
+        ps.setObject(4, LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+
+        //ps.setInt(5, t.getUtilisateur().getId_utilisateur());
+        ps.setInt(5, t.getId_utilisateur());
         ps.executeUpdate();
     }
 
@@ -83,7 +79,7 @@ public class ReclamationService implements IService<reclamation>{
     }
 
     @Override
-    public List<reclamation> recuperer(reclamation t) throws SQLException {
+    public List<reclamation> recuperer() throws SQLException {
        List<reclamation> reclamations = new ArrayList<>();
         String s = "select * from reclamation";
         Statement st = cnx.createStatement();
@@ -92,9 +88,10 @@ public class ReclamationService implements IService<reclamation>{
             reclamation p = new reclamation();
             p.setDescription(rs.getString("description"));
             p.setTitre(rs.getString("titre"));
-            p.setType(rs.getString("type"));
-            p.setStatut(rs.getString("statut"));
-            p.setId_reclamation(rs.getInt("id_reclamation"));
+            //p.setType(TypeReclamation.TechnicalIssues);
+            p.setDate(rs.getDate("date"));
+            //p.setStatut(Statut.Solved);
+            //p.setId_reclamation(rs.getInt("id_reclamation"));
             
             
             reclamations.add(p);
@@ -102,6 +99,40 @@ public class ReclamationService implements IService<reclamation>{
         }
         return reclamations;
     }
-
+    
    
+    /*public void BazTawTeslek(){
+        
+    }*/
+    
+    public ObservableList<reclamation> afficherReclamationList() throws SQLException
+ { System.out.println("aziz");
+       ObservableList<reclamation> reclamation = FXCollections.observableArrayList();
+
+
+       //System.out.println("aziz");
+    
+    
+            String query = "SELECT `titre`, `description`, `date` FROM `reclamation`";
+             PreparedStatement ps = cnx.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+                reclamation r = new reclamation();
+                System.out.println("heeeeend " + rs.getString(1) );
+                r.setTitre(rs.getString(1));
+                System.out.println("heeeeend " + rs.getString(2) );
+                r.setDescription(rs.getString(2));
+                System.out.println("heeeeend " + rs.getDate(3) );
+                r.setDate(rs.getDate("date"));
+               
+
+           reclamation.add(r);
+            }
+
+       
+        return reclamation;
+    }
+ 
 }
+
+

@@ -11,8 +11,8 @@ import java.util.List;
  *
  * @author Hend
  */
-public interface IService<T> {
-    public void ajouter(T t) throws SQLException;
+public interface IReponseService <T> {
+     public void ajouter(T t) throws SQLException;
     public void modifier(T t) throws SQLException;
     public void supprimer(T t) throws SQLException;
     public List<T> recuperer(T t) throws SQLException;

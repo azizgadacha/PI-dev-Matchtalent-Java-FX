@@ -4,53 +4,61 @@
  */
 package test;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.dateTime;
 import entities.notification;
 import entities.reclamation;
 import entities.reponse_reclamation;
-import java.sql.Date;
+import entities.utilisateur;
+import java.util.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
-import services.NotificationService;
+import services.NotificationnService;
 import services.ReclamationService;
 import services.Reponse_ReclamationService;
+import services.UserService;
+import utils.Enum.TypeReclamation;
 import utils.MyDB;
 
 /**
  *
  * @author Hend
  */
-public class Test {
+public class MainReclamation {
     
     
     
     public static void main(String[] args){
+         TypeReclamation type1 = TypeReclamation.TechnicalIssues;
+        TypeReclamation type2 = TypeReclamation.SecurityIssues;
+        TypeReclamation type3 = TypeReclamation.Contentrelatedissues;
+        utilisateur utilisateur ;
+        //UserService us = new UserService();
+        //utilisateur = us.getUserById(1);
               try {
              /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
-             LocalDate date = LocalDate.of(2023, Month.FEBRUARY, 20);
-            reclamation p = new reclamation(1,"desc", "titre", "Technical issues", date, "Solved");
+         reclamation p = new reclamation(new utilisateur(1), "desc", "titre",  new Date());
         ReclamationService ps = new ReclamationService();
         System.out.println("h01");
             ps.ajouter(p);
-            System.out.println("h02");
-            ps.modifier(p);
+           System.out.println("h02");
+           ps.modifier(p);
             System.out.println("h03");
             ps.supprimer(p);
             System.out.println("h04");
-            System.out.println(ps.recuperer(p));
+            System.out.println(ps.recuperer());
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        /*MyDB db = MyDB.getInstance();
-        MyDB db2 = MyDB.getInstance();
-        System.out.println(db);
-        System.out.println(db2);*/
-         try {
+       
+              try {
              /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
              
-            notification n = new notification(1,"description", new Date(17-02-2023));
-        NotificationService nt = new NotificationService();
+            notification n = new notification(1,"description", new Date());
+        NotificationnService nt = new NotificationnService();
         System.out.println("h001");
           nt.ajouter(n);
            System.out.println("h002");
@@ -65,8 +73,8 @@ public class Test {
          
           try {
              /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
-             
-            reponse_reclamation r = new reponse_reclamation(1,"reponse", new Date(20-01-2023));
+             //LocalDateTime dateTime = LocalDateTime.of(2023, Month.FEBRUARY, 20, 12, 30);
+            reponse_reclamation r = new reponse_reclamation(new reclamation(1),"reponse", new Date());
         Reponse_ReclamationService rp = new Reponse_ReclamationService();
         System.out.println("h0001");
             rp.ajouter(r);
@@ -79,7 +87,10 @@ public class Test {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+             
        
     }
 }
+             
+      
 

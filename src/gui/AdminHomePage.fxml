@@ -1,32 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="908.0" style="-fx-background-color: 9F73AB;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminHomePageController.java">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdminHomePageController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="236.0" style="-fx-background-color: #9F73AB;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="400.0" prefWidth="236.0" style="-fx-background-color: #9F73AB;" styleClass="buttonn" stylesheets="@fullpackstyling.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="89.0" prefWidth="190.0">
                <children>
-                  <FontAwesomeIconView fill="WHITE" glyphName="XING" layoutX="37.0" layoutY="60.0" size="30" text="" />
                   <Label layoutX="68.0" layoutY="36.0" text="MatchTalent" textFill="WHITE">
                      <font>
                         <Font name="Symbol" size="20.0" />
@@ -34,10 +27,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="btn_home" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="238.0" styleClass="buttonn" stylesheets="@fullpackstyling.css" text="Home" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="20" text="" />
-               </graphic>
+            <Button fx:id="btn_home" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="238.0" stylesheets="@fullpackstyling.css" text="Home" textFill="WHITE">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -46,10 +36,7 @@
                </font>
             </Button>
             <Separator prefHeight="0.0" prefWidth="177.0" />
-            <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="239.0" styleClass="buttonn" stylesheets="@fullpackstyling.css" text="User" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="GROUP" size="20" />
-               </graphic>
+            <Button fx:id="btn_user" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="239.0" stylesheets="@fullpackstyling.css" text="User" textFill="WHITE">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -57,10 +44,7 @@
                   <Font name="Segoe UI Semilight" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_offre" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="232.0" styleClass="buttonn" stylesheets="@fullpackstyling.css" text="Offer" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" size="20" />
-               </graphic>
+            <Button fx:id="btn_offre" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="232.0" stylesheets="@fullpackstyling.css" text="Offer" textFill="WHITE">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -68,10 +52,7 @@
                   <Font name="Segoe UI Semilight" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#afficher" prefHeight="46.0" prefWidth="237.0" styleClass="buttonn" stylesheets="@fullpackstyling.css" text="Reclamation" textAlignment="CENTER" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="FILE" size="20" />
-               </graphic>
+            <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#afficher" prefHeight="46.0" prefWidth="237.0" stylesheets="@fullpackstyling.css" text="Reclamation" textAlignment="CENTER" textFill="WHITE">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -79,10 +60,7 @@
                   <Font name="Segoe UI Semilight" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_parametre" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="44.0" prefWidth="236.0" styleClass="buttonn" stylesheets="@fullpackstyling.css" text="Setting" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="GEAR" size="20" />
-               </graphic>
+            <Button fx:id="btn_parametre" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="44.0" prefWidth="236.0" stylesheets="@fullpackstyling.css" text="Setting" textFill="WHITE">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -93,11 +71,6 @@
          </children></VBox>
       <HBox alignment="CENTER_RIGHT" layoutX="232.0" prefHeight="46.0" prefWidth="674.0" style="-fx-background-color: #9F73AB;" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="-2.0">
          <children>
-            <FontAwesomeIconView fill="WHITE" glyphName="BELL" size="15">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </FontAwesomeIconView>
             <Label text="AdminName" textFill="WHITE">
                <HBox.margin>
                   <Insets right="10.0" />
@@ -108,17 +81,12 @@
             </Label>
             <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
-                  <Insets right="40.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
                <image>
                   <Image url="@../../../../../Downloads/faces-avatar-in-circle-portrait-young-boy-vector-12511754-removebg-preview.png" />
                </image>
             </ImageView>
-            <FontAwesomeIconView fill="WHITE" glyphName="ARROW_RIGHT" size="15">
-               <HBox.margin>
-                  <Insets bottom="5.0" right="15.0" />
-               </HBox.margin>
-            </FontAwesomeIconView>
          </children></HBox>
       <Pane fx:id="pane_status" layoutX="253.0" layoutY="61.0" prefHeight="143.0" prefWidth="635.0" style="-fx-background-color: #D0B3D8;" stylesheets="@fullpackstyling.css" AnchorPane.leftAnchor="253.0" AnchorPane.rightAnchor="20.0">
          <styleClass>
@@ -151,36 +119,7 @@
                   <String fx:value="shadow" />
                </styleClass>
             </TextField>
-            <FontAwesomeIconView fill="#965a9e" glyphName="SEARCH" size="20" text="" />
          </children>
       </HBox>
-      <GridPane layoutX="263.0" layoutY="262.0" prefHeight="114.0" prefWidth="619.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="49.4" minHeight="6.399987792968751" prefHeight="7.199975585937501" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="92.80001220703124" minHeight="10.0" prefHeight="92.0000244140625" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TableView prefHeight="91.0" prefWidth="619.0" stylesheets="@fullpackstyling.css" GridPane.rowIndex="1">
-              <columns>
-                <TableColumn prefWidth="75.0" text="Title" />
-                  <TableColumn prefWidth="75.0" text="Type" />
-                  <TableColumn prefWidth="75.0" text="Description" />
-                  <TableColumn prefWidth="75.0" text="Date" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </children>
-      </GridPane>
-      <Label layoutX="880.0" layoutY="287.0" text="Action " textFill="#535252">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <FontAwesomeIconView fill="#e71818" glyphName="TRASH" layoutX="896.0" layoutY="323.0" size="16" text="" />
    </children>
 </AnchorPane>

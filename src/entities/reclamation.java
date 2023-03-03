@@ -4,8 +4,12 @@
  */
 package entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import utils.Enum.Statut;
+import utils.Enum.TypeReclamation;
+
 
 
 
@@ -17,21 +21,62 @@ import java.time.LocalDate;
  * @author Hend
  */
 public class reclamation {
-    private int id_reclamation, id_utilisateur;
-    private String description,titre,type,statut;
-    private LocalDate date;
+    private utilisateur utilisateur;
+    private int id_utilisateur,id_reclamation;
+    private String description,titre;
+    //private LocalDate date;
+    private TypeReclamation type;
+    private Date date;
+    private Statut statut;
 
     public reclamation() {
     }
+
+    public reclamation(int id_reclamation) {
+        this.id_reclamation = id_reclamation;
+    }
    
-    public reclamation(int id_utilisateur,String description, String titre, String type, LocalDate date, String statut) {
+    
+    
+    public reclamation(utilisateur utilisateur,String description, String titre, TypeReclamation type, Date date, Statut statut) {
         
-        this.id_utilisateur= id_utilisateur;
+        this.utilisateur= utilisateur;
+        this.description = description;
+        this.titre = titre;
+        this.type= type;
+        this.date = date;
+        this.statut = statut;
+    }
+    
+    
+     public reclamation(int id_utilisateur, String description, String titre, TypeReclamation type, Date date) {
+
+        this.id_utilisateur = id_utilisateur;
         this.description = description;
         this.titre = titre;
         this.type = type;
         this.date = date;
-        this.statut = statut;
+      
+    }
+     
+     public reclamation(utilisateur utilisateur,String description, String titre, Date date) {
+        
+   
+        this.utilisateur = utilisateur;
+        this.description = description;
+        this.titre = titre;
+        this.date = date;
+      
+    }
+     
+      public reclamation(int id_utilisateur,String description, String titre, Date date) {
+        
+   
+        this.id_utilisateur = id_utilisateur;
+        this.description = description;
+        this.titre = titre;
+        this.date = date;
+      
     }
 
     public int getId_reclamation() {
@@ -41,7 +86,6 @@ public class reclamation {
     public void setId_reclamation(int id_reclamation) {
         this.id_reclamation = id_reclamation;
     }
-
     public int getId_utilisateur() {
         return id_utilisateur;
     }
@@ -49,9 +93,17 @@ public class reclamation {
     public void setId_utilisateur(int id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
     }
+    
+    
 
-    
-    
+    public utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -68,33 +120,33 @@ public class reclamation {
         this.titre = titre;
     }
 
-    public String getType() {
+    public TypeReclamation getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TypeReclamation type) {
         this.type = type;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getStatut() {
+    public Statut getStatut() {
         return statut;
     }
 
-    public void setStatut(String statut) {
+    public void setStatut(Statut statut) {
         this.statut = statut;
     }
 
     
     @Override
     public String toString() {
-        return "reclamation{" + "id_reclamation=" + id_reclamation + ", id_utilisateur=" + id_utilisateur + ", description=" + description + ", titre=" + titre + ", type=" + type + ", date=" + date +  ", statut=" + statut +  '}';
+        return "reclamation{" + "id_reclamation=" + id_reclamation + ",utilisateur=" + utilisateur + ", description=" + description + ", titre=" + titre + ", type=" + type + ", date=" + date +  ", statut=" + statut +  '}';
     }
 }
