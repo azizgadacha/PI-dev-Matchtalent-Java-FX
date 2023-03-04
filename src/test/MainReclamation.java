@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
-import services.NotificationnService;
+import services.NotificationService;
 import services.ReclamationService;
 import services.Reponse_ReclamationService;
 import services.UserService;
@@ -40,7 +40,7 @@ public class MainReclamation {
         //utilisateur = us.getUserById(1);
               try {
              /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
-         reclamation p = new reclamation(new utilisateur(1), "desc", "titre",  new Date());
+         reclamation p = new reclamation(new utilisateur(1), "desc", "titre",type1, new Date());
         ReclamationService ps = new ReclamationService();
         System.out.println("h01");
             ps.ajouter(p);
@@ -58,7 +58,7 @@ public class MainReclamation {
              /*SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");*/
              
             notification n = new notification(1,"description", new Date());
-        NotificationnService nt = new NotificationnService();
+        NotificationService nt = new NotificationService();
         System.out.println("h001");
           nt.ajouter(n);
            System.out.println("h002");

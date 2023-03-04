@@ -48,7 +48,7 @@
          <children>
             <HBox prefHeight="62.0" prefWidth="675.0">
                <children>
-                  <ComboBox fx:id="combo" onAction="#select" prefHeight="26.0" prefWidth="564.0" promptText="Contentrelatedissues" />
+                  <ComboBox fx:id="combo" onAction="#select" prefHeight="26.0" prefWidth="564.0" promptText="TechnicalIssues" />
                </children>
             </HBox>
          </children>

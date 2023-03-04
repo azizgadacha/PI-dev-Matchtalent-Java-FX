@@ -41,17 +41,19 @@ public class ReclamationService implements IReclamationService<reclamation>{
 
     @Override
     public void ajouter(reclamation t) throws SQLException {
-        String req = "INSERT INTO reclamation(id_utilisateur,description,titre,date) VALUES(?,?,?,?)";
+        String req = "INSERT INTO reclamation(id_utilisateur,description,titre,type,date) VALUES(?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getUtilisateur().getId_utilisateur());
         //ps.setInt(1, t.getId_utilisateur());
         ps.setString(2, t.getDescription());
-        //ps.setString(3, t.getType().toString());
-        ps.setString(3, t.getTitre());
+        System.out.println(" ummm ");
+        ps.setString(3, t.getType().toString());
+        System.out.println(" nooo ");
+        ps.setString(4, t.getTitre());
        // ps.setString(4, t.getType().toString());
        // ps.setDate(5, t.getDate());
         //ps.setDate(4, java.sql.Date.valueOf(t.getDate()));
-         ps.setObject(4, LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+         ps.setObject(5, LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
         ps.executeUpdate();
     }
     
@@ -76,6 +78,7 @@ public class ReclamationService implements IReclamationService<reclamation>{
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getId_reclamation());
         ps.executeUpdate();
+        System.out.println("ena nemchi");
     }
 
     @Override
@@ -106,25 +109,35 @@ public class ReclamationService implements IReclamationService<reclamation>{
     }*/
     
     public ObservableList<reclamation> afficherReclamationList() throws SQLException
- { System.out.println("aziz");
+ { 
        ObservableList<reclamation> reclamation = FXCollections.observableArrayList();
 
 
-       //System.out.println("aziz");
+       
     
     
-            String query = "SELECT `titre`, `description`, `date` FROM `reclamation`";
+            String query = "SELECT `titre`, `type`, `description`, `date`, `statut` FROM `reclamation`";
              PreparedStatement ps = cnx.prepareStatement(query);
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
                 reclamation r = new reclamation();
                 System.out.println("heeeeend " + rs.getString(1) );
                 r.setTitre(rs.getString(1));
-                System.out.println("heeeeend " + rs.getString(2) );
-                r.setDescription(rs.getString(2));
-                System.out.println("heeeeend " + rs.getDate(3) );
+                 System.out.println("heeeeend " + rs.getString(2) );
+                r.setType(TypeReclamation.valueOf(rs.getString(2)));
+                System.out.println("heeeeend " + rs.getString(3) );
+                r.setDescription(rs.getString(3));
+                System.out.println("heeeeend " + rs.getDate(4) );
                 r.setDate(rs.getDate("date"));
-               
+                 //System.out.println("heeeeend " + rs.getString(5) );
+                //r.setStatut(Statut.valueOf(rs.getString(5)));
+                 try {
+            r.setStatut(Statut.valueOf(rs.getString(5)));
+        } catch (IllegalArgumentException e) {
+            // handle unrecognized Statut values here, e.g.
+            r.setStatut(Statut.NotYet);
+        }
+                
 
            reclamation.add(r);
             }

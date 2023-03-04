@@ -16,6 +16,7 @@ public class Enum {
     }
 
     public static enum Statut {
+        Statut,
         NotYet,
         Inprogress,
         Solved;

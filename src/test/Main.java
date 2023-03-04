@@ -5,6 +5,8 @@
 package test;
 
 import gui.NotificationController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,7 +32,17 @@ public class Main extends Application {
         primaryStage.show();
 
         // Start the server
-        NotificationServer.main(null);
+        //NotificationServer.main(null);
+        Thread serverThread = new Thread(() -> {
+            try {
+                NotificationServer.main(null);
+            } catch (Exception ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+serverThread.setDaemon(true);
+serverThread.start();
+
     }
 
     public static void main(String[] args) {

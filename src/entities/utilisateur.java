@@ -21,6 +21,12 @@ public class utilisateur {
         this.id_utilisateur = id_utilisateur;
     }
     
+    public utilisateur(String username) {
+        this.username = username;
+
+
+    }
+    
     public utilisateur(int id_utilisateur, String username, String email) {
         this.id_utilisateur = id_utilisateur;
         this.username = username;

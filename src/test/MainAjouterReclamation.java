@@ -27,7 +27,8 @@ public class MainAjouterReclamation extends Application {
     @Override
    public void start(Stage primaryStage) throws IOException {
         
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReclamation.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReclamation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffRec.fxml"));
              //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FXML.fxml"));
              //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AdminHomePage.fxml"));
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReclamation.fxml"));

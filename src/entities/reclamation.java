@@ -59,12 +59,13 @@ public class reclamation {
       
     }
      
-     public reclamation(utilisateur utilisateur,String description, String titre, Date date) {
+     public reclamation(utilisateur utilisateur,String description, String titre, TypeReclamation type, Date date) {
         
    
         this.utilisateur = utilisateur;
         this.description = description;
         this.titre = titre;
+        this.type = type;
         this.date = date;
       
     }

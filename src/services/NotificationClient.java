@@ -4,14 +4,16 @@
  */
 package services;
 
+import entities.notification;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 /**
  *
  * @author Hend
  */
-public class NotificationClient {
+/*public class NotificationClient {
     public static void main(String[] args) {
         try {
             DatagramSocket socket = new DatagramSocket();
@@ -25,4 +27,31 @@ public class NotificationClient {
             e.printStackTrace();
         }
     }
+}*/
+
+public class NotificationClient {
+    private static final int PORT = 9876;
+    //private NotificationService notificationService = new NotificationService();
+    
+    /*public static void main(String[] args) throws Exception {
+        DatagramSocket socket = new DatagramSocket();
+        InetAddress address = InetAddress.getLocalHost();
+
+        // Create notification object with data to be stored
+        notification notif = new notification(1, "Hello, world!", null);
+        byte[] buffer = notif.getDescription().getBytes();
+
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, PORT);
+        socket.send(packet);
+        socket.close();
+    }*/
+    public static void main(String[] args) throws Exception {
+    NotificationService notificationService = new NotificationService();
+    DatagramSocket socket = new DatagramSocket();
+    byte[] buffer = "Hello, world!".getBytes();
+    DatagramPacket packet = new DatagramPacket(buffer, buffer.length, InetAddress.getLocalHost(), PORT);
+    socket.send(packet);
+    notificationService.ajouter(new notification(1, "Hello, world!")); // Replace 1 with the actual user ID
+    socket.close();
+}
 }

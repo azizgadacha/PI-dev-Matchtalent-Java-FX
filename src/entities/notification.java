@@ -22,6 +22,11 @@ public class notification {
         this.description = description;
         this.date = date;
     }
+    
+    public notification(int id_utilisateur, String description) {
+        this.id_utilisateur = id_utilisateur;
+        this.description = description;
+    }
 
     public int getId_notification() {
         return id_notification;

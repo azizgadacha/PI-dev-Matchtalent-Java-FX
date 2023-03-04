@@ -4,7 +4,9 @@
  */
 package gui;
 
+import entities.notification;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import services.NotificationService;
+import services.NotificationnnService;
 
 /**
  * FXML Controller class
@@ -25,14 +28,14 @@ public class NotificationController implements Initializable {
     @FXML
     private Button notificationButton;
 
-    private NotificationService notificationService;
+    private NotificationnnService notificationService;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        notificationService = new NotificationService();
+        notificationService = new NotificationnnService();
         notificationService.setOnSucceeded(event -> {
             String message = (String) event.getSource().getValue();
             notificationLabel.setText(message);
@@ -40,9 +43,15 @@ public class NotificationController implements Initializable {
     }    
 
     @FXML
-    private void handleNotificationButton(ActionEvent event) {
-        notificationService.restart();
-        System.out.println("Notification work!");
+    private void handleNotificationButton(ActionEvent event) throws SQLException {
+        NotificationService notificationService = new NotificationService();
+        //notificationService.restart();
+        //System.out.println("Notification work!");
+        int userId = 1; // replace with the actual user ID
+    String message = "Hello, world!";
+    notification notif = new notification(userId, message, null);
+    notificationService.ajouter(notif);
+    System.out.println("Notification saved in the database!");
     }
     
 }
