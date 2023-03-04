@@ -15,10 +15,15 @@ import utils.MyConnection;
 
 
 public class Quiz {
+
+    public static List<Quiz> selectQuizzes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private int id_quiz;
     int nb_question;
     public String sujet_quiz;
     public String bareme;
+    public int state;
 
     
     public Quiz(int id_quiz, int nb_question, String sujet_quiz, String bareme) {
@@ -26,9 +31,19 @@ public class Quiz {
         this.nb_question = nb_question;
         this.sujet_quiz = sujet_quiz;
         this.bareme = bareme;
+        
+    }
+
+    public Quiz(int id_quiz, int nb_question, String sujet_quiz, String bareme, int state) {
+        this.id_quiz = id_quiz;
+        this.nb_question = nb_question;
+        this.sujet_quiz = sujet_quiz;
+        this.bareme = bareme;
+        this.state = state;
     }
     
-        public Quiz(String sujet_quiz) {
+        public Quiz(int id_quiz,String sujet_quiz) {
+            this.id_quiz = id_quiz;
         this.sujet_quiz = sujet_quiz;
 
     }
@@ -44,6 +59,15 @@ public class Quiz {
     public int getId_quiz() {
         return id_quiz;
     }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+    
 
     public int getNb_question() {
         return nb_question;

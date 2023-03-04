@@ -27,9 +27,7 @@ public class AjoutQuestionController implements Initializable {
     private TextField propB;
     @FXML
     private TextField propC;
-    private RadioButton radioA;
-    private RadioButton radioB;
-    private RadioButton radioC;
+
     @FXML
     private Button annuler;
     @FXML
