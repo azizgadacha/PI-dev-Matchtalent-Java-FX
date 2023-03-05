@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -29,26 +30,32 @@ public class AjoutQuestionController implements Initializable {
     private TextField propC;
 
     @FXML
-    private Button annuler;
+    private Button boutonannuler;
     @FXML
-    private Button ajouter;
+    private Button boutonajouter;
     @FXML
     private TextField idbonnereponse;
 
+    private int quizID;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-    }    
+        this.quizID = quizID;
+    } 
 
     @FXML
     private void annulerajout(ActionEvent event) {
-        annuler.getScene().getWindow().hide();
+        boutonannuler.getScene().getWindow().hide();
         
+    }
+        void initialize(int quizID) {
+        System.out.println(quizID);
+        this.quizID = quizID;
+        initialize(null, null);
     }
 
     @FXML
-private void ajouterunequestion(ActionEvent event) {
+    private void ajouterquestion(ActionEvent event) {
     if (question.getText().isEmpty() || propA.getText().isEmpty()
             || propB.getText().isEmpty() || propC.getText().isEmpty()) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -67,7 +74,7 @@ private void ajouterunequestion(ActionEvent event) {
         Questions q = new Questions(question.getText(), propA.getText(), propB.getText(), propC.getText(),idbonnereponse.getText());
         System.out.println(q);
         QuestionCRUD pc2= new QuestionCRUD();
-        pc2.addEntity2(q);
+        pc2.addEntity2(q,6);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succès");
         alert.setHeaderText(null);
@@ -82,6 +89,5 @@ private void ajouterunequestion(ActionEvent event) {
     }
 }
 
-
-    
+   
 }

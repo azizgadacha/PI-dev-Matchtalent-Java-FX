@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/entities/Quiz.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/services/QuestionCRUD.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/services/QuizCRUD.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/entities/Questions.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/AfficherlistedesquizController.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/tests/MainClass.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/mainclassfx.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/CreerQuizController.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/creerQuiz.fxml</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

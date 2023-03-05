@@ -22,21 +22,21 @@ public class MainClass {
        // creation et fonctionalités liés aux quiz
        
        
-        Quiz test = new Quiz(6," quiz","");
+        //Quiz test = new Quiz(6," quiz","");
         //Quiz test=new Quiz();
-        QuizCRUD pc= new QuizCRUD();
+        //QuizCRUD pc= new QuizCRUD();
         //test =pc.selectQuiz(0);
         //pc.updateQuiz(test);
         //System.out.println(test);
         
-        pc.addEntity1(test);
+        //pc.addEntity1(test);
         //pc.deleteQuiz(9);
         //pc.updateQuiz(test);
         
         
         // creation et fonctionalités liés aux question
         
-        //Questions test2 = new Questions(6,"wakteh ?","proposition lowla","proposition thenya","proposition theltha","C");
+        //Questions test2 = new Questions(3,"pidev ?","proposition lowla","proposition thenya","proposition theltha","A");
         //QuestionCRUD pc2= new QuestionCRUD();
         //Questions 
         //pc2.addEntity(test2);

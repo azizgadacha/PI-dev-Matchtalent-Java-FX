@@ -10,6 +10,8 @@
    <children>
       <ListView fx:id="idlistequiz" layoutX="116.0" layoutY="100.0" onMouseClicked="#list" prefHeight="200.0" prefWidth="200.0" />
       <Label layoutX="109.0" layoutY="34.0" prefHeight="17.0" prefWidth="252.0" text="liste des quiz" />
-      <Button fx:id="supp" layoutX="180.0" layoutY="320.0" mnemonicParsing="false" onAction="#suppression" text="Supprimer" />
+      <Button fx:id="supp" layoutX="144.0" layoutY="333.0" mnemonicParsing="false" onAction="#suppression" text="Supprimer" />
+      <Button fx:id="boutonajouterquiz" layoutX="440.0" layoutY="152.0" mnemonicParsing="false" onAction="#creerquiz" text="creer" />
+      <Button fx:id="boutonmodifierquiz" layoutX="226.0" layoutY="333.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="87.0" text="modifier" />
    </children>
 </AnchorPane>
