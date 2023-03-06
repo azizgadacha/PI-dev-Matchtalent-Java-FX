@@ -28,11 +28,13 @@ public class MainAjouterReclamation extends Application {
    public void start(Stage primaryStage) throws IOException {
         
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReclamation.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffRec.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffRec.fxml"));
              //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FXML.fxml"));
              //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AdminHomePage.fxml"));
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReclamation.fxml"));
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReponse.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReponse.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/DisplayListReponse.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root,800,600);
             primaryStage.setScene(scene);

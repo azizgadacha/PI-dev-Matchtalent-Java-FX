@@ -6,6 +6,8 @@ package services;
 
 import entities.reclamation;
 import entities.reponse_reclamation;
+import gui.ItemController;
+import gui.ListReponseController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.MyDB;
 
@@ -60,7 +63,48 @@ public class Reponse_ReclamationService implements IReponseService<reponse_recla
         rp.executeUpdate();
     }
 
-    @Override
+    
+
+
+private reclamation getReclamationById(int reclamationId) throws SQLException {
+    String req = "SELECT * FROM reclamation WHERE id_reclamation = ?";
+    PreparedStatement ps = cnx.prepareStatement(req);
+    ps.setInt(1, reclamationId);
+    ResultSet rs = ps.executeQuery();
+
+    if (rs.next()) {
+        reclamation rec = new reclamation();
+        rec.setId_reclamation(rs.getInt("id_reclamation"));
+        //rec.setDate(rs.getObject("date", LocalDateTime.class));
+        rec.setDate(rs.getDate(req));
+        rec.setDescription(rs.getString("description"));
+        return rec;
+    }
+
+    return null;
+}
+
+private ObservableList<reponse_reclamation> getReponsesByReclamationId(int reclamationId) throws SQLException {
+    ObservableList<reponse_reclamation> reponses = FXCollections.observableArrayList();
+
+    String req = "SELECT * FROM reponse_reclamation WHERE id_reclamation = ?";
+    PreparedStatement ps = cnx.prepareStatement(req);
+    ps.setInt(1, reclamationId);
+    ResultSet rs = ps.executeQuery();
+
+    while (rs.next()) {
+        reponse_reclamation rep = new reponse_reclamation();
+        rep.setId_reponse(rs.getInt("id_reponse"));
+        rep.setReponse(rs.getString("reponse"));
+        rep.setDate(rs.getDate(req));
+        rep.setReclamation(getReclamationById(reclamationId));
+        reponses.add(rep);
+    }
+
+    return reponses;
+}
+
+    /*@Override
     public List<reponse_reclamation> recuperer(reponse_reclamation t) throws SQLException {
         List<reponse_reclamation> reponse_reclamations = new ArrayList<>();
         String s = "select * from reponse_reclamation";
@@ -77,10 +121,24 @@ public class Reponse_ReclamationService implements IReponseService<reponse_recla
             
         }
         return reponse_reclamations;
-    }
+    }*/
 
-    public ObservableList<reponse_reclamation> recuperer() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<reponse_reclamation> recuperer() throws SQLException {
+         ObservableList<reponse_reclamation> reponse_reclamations = FXCollections.observableArrayList();
+        String s = "select * from reponse_reclamation";
+        Statement st = cnx.createStatement();
+        ResultSet rs =  st.executeQuery(s);
+        while(rs.next()){
+            reponse_reclamation r = new reponse_reclamation();
+            r.setReponse(rs.getString("reponse"));
+            r.setDate(rs.getDate("date"));
+            r.setId_reponse(rs.getInt("id_reponse"));
+            
+            
+            reponse_reclamations.add(r);
+            
+        }
+        return reponse_reclamations;
     }
 
     

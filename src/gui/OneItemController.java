@@ -5,6 +5,7 @@
 package gui;
 
 import entities.reclamation;
+import entities.reponse_reclamation;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -87,4 +88,5 @@ FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterReponse.fxml")
             Scene currentScene = RepBut.getScene();
             currentScene.setRoot(root);
     }
+
 }

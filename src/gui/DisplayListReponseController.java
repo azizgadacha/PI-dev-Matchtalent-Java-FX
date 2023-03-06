@@ -4,7 +4,8 @@
  */
 package gui;
 
-import entities.reclamation;
+
+import entities.reponse_reclamation;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -22,56 +23,58 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-import services.ReclamationService;
+import services.Reponse_ReclamationService;
 
 /**
  * FXML Controller class
  *
  * @author Hend
  */
-public class AffRecController implements Initializable {
+public class DisplayListReponseController implements Initializable {
 
     @FXML
-    private ScrollPane scrollPane_rc;
+    private ScrollPane scroll;
     @FXML
-    private GridPane gPrc;
+    private GridPane gride;
     
-    ReclamationService ps = new ReclamationService();
+    Reponse_ReclamationService ps = new Reponse_ReclamationService();
     
     String query = null;
     Connection cnx = null ;
     ResultSet rs = null ;
-    reclamation reclamation = null ;
+    reponse_reclamation reponse_reclamation = null ;
     
-    ObservableList<reclamation>  reclamations = FXCollections.observableArrayList();
+    ObservableList<reponse_reclamation>  reponse_reclamations = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         // TODO
-        try {
-            List<reclamation> reclamations = ps.recuperer();
+        
+         try {
+            List<reponse_reclamation> reponse_reclamations = ps.recuperer();
             int column = 5;
             int row = 10;
-            for (int i = 0; i < reclamations.size(); i++) {
-            reclamation r = reclamations.get(i);
+            for (int i = 0; i < reponse_reclamations.size(); i++) {
+            reponse_reclamation r = reponse_reclamations.get(i);
 
         // load the content from the other FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("OneItem.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReponseOneItem.fxml"));
         Parent content = null;
         content = loader.load();
-          OneItemController controller = loader.getController();
-                controller.SetItem(reclamations.get(i), gPrc);
+          ReponseOneItemController controller = loader.getController();
+                controller.SetReponseItem(reponse_reclamations.get(i), gride);
         
         // add the content to the grid at the specified position
-        gPrc.add(content, column, row);
+        gride.add(content, column, row);
         column++;
         } row++;    
     } catch (SQLException | IOException ex) {
             Logger.getLogger(AffRecController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }    
+    
 }
-

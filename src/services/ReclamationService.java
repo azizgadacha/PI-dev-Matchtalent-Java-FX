@@ -74,7 +74,7 @@ public class ReclamationService implements IReclamationService<reclamation>{
 
     @Override
     public void supprimer(reclamation t) throws SQLException {
-        String req = "DELETE FROM reclamation  WHERE id_reclamation = ?";
+        String req = "DELETE FROM reclamation  WHERE id_reclamation = 1";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getId_reclamation());
         ps.executeUpdate();

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,35 +35,38 @@ public class ListReponseController implements Initializable {
      */
     
     @FXML
-    private VBox pnItems;
+    private VBox MyVbox;
 
-    @FXML
+     private List<reponse_reclamation> reponses;
+     
+    /*@FXML
     private Label welcomeLb;
-       Reponse_ReclamationService ps = new Reponse_ReclamationService();
+       Reponse_ReclamationService ps = new Reponse_ReclamationService();*/
 
-    ArrayList<Node> nodes;
+    //ArrayList<Node> nodes;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        Reponse_ReclamationService ps = new Reponse_ReclamationService();
         try {
-            ObservableList<reponse_reclamation> reponse = ps.recuperer();
+            ArrayList<Node> nodes = new ArrayList<>();
+            Reponse_ReclamationService ps = new Reponse_ReclamationService();
+            //ObservableList<reponse_reclamation> reponse = ps.recuperer();
+            ObservableList<reponse_reclamation> reponseList = (ObservableList<reponse_reclamation>) ps.recuperer();
        
        // p.BazTawTeslek();
-         System.out.println("amaaaaaaaan");
+        /* System.out.println("amaaaaaaaan");
         recuperer();
          } catch (SQLException ex) {
             Logger.getLogger(ListReclamationController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ListReponseController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
           
            // loeadDate();
 
-    }
+    //}
     
-    private void recuperer() throws SQLException, IOException {
+    /*private void recuperer() throws SQLException, IOException {
            Reponse_ReclamationService ps = new Reponse_ReclamationService();
            ObservableList<reponse_reclamation> reponse = ps.recuperer(); 
         /*title.setCellValueFactory(new PropertyValueFactory<>("titre"));
@@ -70,37 +74,38 @@ public class ListReponseController implements Initializable {
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
         table_rec.setItems(reclamation);*/
 
-        nodes=new ArrayList<>();
-        if(reponse.size()>=1){
-            for (int i = 0; i < reponse.size(); i++) {
-                try {
-
-                    final int j = i;
+        //nodes=new ArrayList<>();
+        //if(reponse.size()>=1){*/
+            for (int i = 0; i < reponseList.size(); i++) {
+               
                     FXMLLoader loader=new FXMLLoader(getClass().getResource("Item.fxml"));
-
-                    ItemController itemController =loader.getController();
-                    System.out.println("bech tekhdem" + reponse.get(i).getReponse());
-                    System.out.println("hend faddet" + reponse.get(i).getClass());
-                    reponse_reclamation f = reponse.get(i);
-                    System.out.println("emchi " + f.getReponse());
                     nodes.add(loader.load());
-                    itemController.SetLabel(f);
-
-                   
-
-                    pnItems.getChildren().add(nodes.get(i));
-                } catch (IOException e) {
+                    ItemController f =loader.getController();
+                    f.setLabel(reponseList.get(i));
+                    //ItemController itemController =loader.getController();
+                    //System.out.println("bech tekhdem" + reponse.get(i).getReponse());
+                    //System.out.println("nchalla nekhdem" + reponse.get(i).getClass());
+                    //reponse_reclamation f = reponse.get(i);
+                    //System.out.println("emchi " + f.getReponse());
+                    //itemController f = getController();
+                MyVbox.getChildren().add(nodes.get(i));
+            } } catch (IOException e) {
                     e.printStackTrace();
-                }
-            }
-
-
-            pnItems.getChildren().removeAll();
-
-
+                } catch (SQLException ex) {
+            Logger.getLogger(ListReponseController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+            }
     
-  }
-    }    
+}
+
+
+            //pnItems.getChildren().removeAll();
+
+
+        //}
+        
+    
+  //}
+    //}    
     
