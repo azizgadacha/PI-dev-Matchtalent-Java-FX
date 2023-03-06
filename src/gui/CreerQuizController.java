@@ -26,20 +26,19 @@ public class CreerQuizController implements Initializable {
     @FXML
     private Button ajouterquizbouton;
 
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }  
-
+    
     @FXML
     private void ajoutduquiz(ActionEvent event) {
         QuizCRUD qr= new QuizCRUD();
         Quiz q = new Quiz();
         String s = sujetnouveauquiz.getText();
         qr.addEntity1(new Quiz(0,s));
+
         
     }
     

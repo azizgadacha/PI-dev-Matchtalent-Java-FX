@@ -74,7 +74,7 @@ public class AjoutQuestionController implements Initializable {
         Questions q = new Questions(question.getText(), propA.getText(), propB.getText(), propC.getText(),idbonnereponse.getText());
         System.out.println(q);
         QuestionCRUD pc2= new QuestionCRUD();
-        pc2.addEntity2(q,6);
+        pc2.addEntity2(q,q.getId_Quiz());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succès");
         alert.setHeaderText(null);
