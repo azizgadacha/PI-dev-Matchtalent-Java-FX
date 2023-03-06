@@ -16,7 +16,7 @@
             <Image url="@../../../images/8686227.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="690.0" layoutY="7.0" onMouseClicked="#supprimerAnnonce" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="690.0" layoutY="7.0" onMouseClicked="#supprimerRDV" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/delete-button.png" />
          </image>

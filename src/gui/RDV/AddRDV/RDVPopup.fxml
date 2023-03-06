@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<DialogPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RDV.AddRDV.addRDVControlleur">
+<DialogPane style="-fx-border-color: grey; -fx-border-radius: 5; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RDV.AddRDV.addRDVControlleur">
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="509.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="509.0" style="-fx-border-radius: 5;">
          <children>
             <DatePicker fx:id="date_Picker" layoutX="174.0" layoutY="90.0" onAction="#changedDate" prefHeight="28.0" prefWidth="187.0" />
             <Text layoutX="47.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisir une date">

@@ -10,14 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import services.CondidatureService;
 
 import java.sql.SQLException;
 import java.util.Optional;
@@ -41,6 +39,7 @@ public class elementController  {
     @FXML
     private Label note;
     candidature candidatureInstance;
+    CondidatureService cs=new CondidatureService();
     public interface PopupListener {
         void onInfoSentChange( Boolean var) throws SQLException;
     }
@@ -89,9 +88,28 @@ public  void  setValues(candidature c){
     }
 
 
+    @FXML
+    void supprimerCandidature() throws SQLException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Refus Candidature");
+
+       // alert.setContentText("etes vous sure vous voulez refuser l'annonce ");
+        alert.setHeaderText("etes vous sure vous voulez refuser l'annonce ");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            {
+                cs.supprimer(candidatureInstance);
+
+                if (listener != null) {
+                    listener.onInfoSentChange(true);
+                }
+
+            }}}
+
+
 
     @FXML
-    void onClick(MouseEvent event) {
+    void ViewDetail(MouseEvent event) {
         Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();
         double x=detail.getX();
         double y=detail.getY();

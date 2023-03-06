@@ -91,7 +91,7 @@ public class RDVelement {
     }
 
     @FXML
-    void supprimerAnnonce() throws SQLException {
+    void supprimerRDV() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Suppression rendez-vous");
 

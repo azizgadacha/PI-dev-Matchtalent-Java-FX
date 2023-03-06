@@ -1,5 +1,11 @@
 package gui.RDV.AddRDV;
-
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import entities.candidature;
 import entities.rendez_vous;
 import entities.utilisateur;
@@ -12,6 +18,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import services.Mailer;
 import services.Rendez_vous_service;
 
 import java.net.URL;
@@ -20,6 +27,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
@@ -74,6 +82,49 @@ rs.ajouter(new rendez_vous( new utilisateur(c.getUtilisateur().getId()),res,time
           if (listener != null) {
               listener.onInfoSentAdd(true);
           }
+          Mailer mailer=new Mailer();
+          Mailer.send("validation.message@gmail.com","fttpjdgxydfvfrui","aziz.gadacha@esprit.tn","hello javatpoint","How r u?");
+
+
+        /*  String to = "aziz.gadacha@esprit.tn";
+          String from = "validation.message@gmail.com";
+          String host = "smtp.example.com";
+          String port = "587"; // SMTP port for your mail provider
+          String username = "validation message";
+          String password = "fttpjdgxydfvfrui";
+          String subject = "Test Email";
+          String body = "This is a test email sent from Java.";
+
+          Properties props = new Properties();
+          props.put("mail.smtp.host", host);
+          props.put("mail.smtp.port", port);
+          props.put("mail.smtp.auth", "true");
+          props.put("mail.smtp.starttls.enable", "true");
+
+          Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+              protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                  return new javax.mail.PasswordAuthentication(username, password);
+              }
+          });
+
+
+          try {
+
+              Message message = new MimeMessage(session);
+              message.setFrom(new InternetAddress(from));
+              message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+              message.setSubject(subject);
+              message.setText(body);
+
+              Transport.send(message);
+
+              System.out.println("Email sent successfully!");
+
+          } catch (MessagingException e) {
+              throw new RuntimeException(e);
+          }
+*/
+
           Stage stage = (Stage) buttonok.getScene().getWindow();
           stage.close();
 
