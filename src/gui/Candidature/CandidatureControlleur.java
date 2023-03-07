@@ -1,11 +1,25 @@
 package gui.Candidature;
-import com.pdfjet.*;
+//import com.pdfjet.*;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 
+import java.awt.*;
 import java.io.BufferedInputStream;
 import java.io.*;
 
-import com.pdfjet.Cell;
+//import com.pdfjet.Cell;
 import entities.annonce;
 import entities.candidature;
 import gui.Candidature.TableElement.elementController;
@@ -23,6 +37,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -34,6 +51,7 @@ import services.CompareNom;
 import services.CompareNote;
 import services.CondidatureService;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -42,6 +60,7 @@ import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -113,7 +132,7 @@ public class CandidatureControlleur implements Initializable {
     }
 
     ObservableList<candidature> candidaturesListe;
-    public void remplirliste(ObservableList<candidature> candidaturesListe){
+    public void remplirliste(ObservableList<candidature> candidaturesListe) throws SQLException {
         nombre.setText(String.valueOf(candidaturesListe.size()));
         nodes=new ArrayList<>();
         System.out.println(candidaturesListe.size());
@@ -148,7 +167,7 @@ public class CandidatureControlleur implements Initializable {
                 }
             }
 
-
+            createpdf();
             pnItems.getChildren().removeAll();
 
 
@@ -174,8 +193,101 @@ public class CandidatureControlleur implements Initializable {
 
     }
 
+    private void createpdf() throws SQLException {
+        try {
+            Document doc = new Document();
+            PdfWriter.getInstance(doc,new FileOutputStream("../pdf.pdf"));
+            doc.open();
+
+//       Image img = Image.getInstance("C:\\Users\\msi\\Desktop\\projet yocef\\reclamation\\src\\com\\img\\Exchange.png12.png");
+//       img.scaleAbsoluteHeight(60);
+//       img.scaleAbsoluteWidth(100);
+//       img.setAlignment(Image.ALIGN_RIGHT);
+//       doc.add(img);
+
+            doc.add(new Paragraph(" "));
+            Font font = new Font(FontFamily.TIMES_ROMAN, 28, Font.UNDERLINE, BaseColor.BLACK);
+            Paragraph p = new Paragraph("Liste des reservations", font);
+            p.setAlignment(Element.ALIGN_CENTER);
+            doc.add(p);
+            doc.add(new Paragraph(" "));
+            doc.add(new Paragraph(" "));
+
+            PdfPTable tabpdf = new PdfPTable(2);
+            tabpdf.setWidthPercentage(100);
+
+            PdfPCell cell;
+            System.out.println("heelo");
+
+            cell = new PdfPCell(new Phrase("nom", FontFactory.getFont("Times New Roman", 11)));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(BaseColor.WHITE);
+            tabpdf.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("prenom", FontFactory.getFont("Times New Roman", 11)));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(BaseColor.WHITE);
+            tabpdf.addCell(cell);
+
+            for (candidature Candidature : candidaturesListe) {
+                tabpdf.addCell(Candidature.getUtilisateur().getUsername());
+                tabpdf.addCell(Candidature.getUtilisateur().getEmail());
+
+            }
+
+/*
+for(int i =0;i<candidaturesListe.size();i++){
+    cell = new PdfPCell(new Phrase(.getString("date_res"), FontFactory.getFont("Times New Roman", 11)));
+    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+    cell.setBackgroundColor(BaseColor.WHITE);
+    tabpdf.addCell(cell);
+
+    cell = new PdfPCell(new Phrase(rs1.getString("prix_res"), FontFactory.getFont("Times New Roman", 11)));
+    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+    cell.setBackgroundColor(BaseColor.WHITE);
+    tabpdf.addCell(cell);
+}
+            for (candidature rowData : candidaturesListe) {
+              //  for (String cellData : rowData) {
+                    Cell nameCell = new Cell().add(new Text(rowData.getUtilisateur().getUsername()).setFont(font));
+                    Cell ageCell = new Cell().add(new Text(Integer.toString(student.getAge())).setFont(font));
+                    Cell cityCell = new Cell().add(new Text(student.getCity()).setFont(font));
+
+                    table.addCell(nameCell);
+                    table.addCell(ageCell);
+                    table.addCell(cityCell);
+                    //Cell cell = new Cell().add(new Text(cellData).setFont(font));
+                    //table.addCell(cell);
+                //}
+            }
+            while(rs1.next()){
+                System.out.println(rs1.getString("date_res"));
+                cell = new PdfPCell(new Phrase(rs1.getString("date_res"), FontFactory.getFont("Times New Roman", 11)));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setBackgroundColor(BaseColor.WHITE);
+                tabpdf.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(rs1.getString("prix_res"), FontFactory.getFont("Times New Roman", 11)));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setBackgroundColor(BaseColor.WHITE);
+                tabpdf.addCell(cell);
+
+
+            }
+*/
+            doc.add(tabpdf);
+            doc.close();
+            Desktop.getDesktop().open(new File("../pdf.pdf"));
+
+
+        } catch (DocumentException | HeadlessException | IOException e) {
+            System.out.println("ERROR PDF");
+            System.out.println(Arrays.toString(e.getStackTrace()));
+            System.out.println(e.getMessage());
+        }
+    }
     public void pdfGenerator () throws Exception {
-        File out=new File("../rapport_financier1.pdf");
+       /* File out=new File("../rapport_financier1.pdf");
         FileOutputStream fos;
         try {
             fos = new FileOutputStream(out);
@@ -237,19 +349,19 @@ table.drawOn(page)         ;
         alert.setTitle("Avertissement");
         alert.setHeaderText(null);
         alert.setContentText("rapport generer en bureau  ");
-        alert.showAndWait();
+        alert.showAndWait();*/
     }
 
 
     @FXML
-    void triNote(MouseEvent event) {
+    void triNote(MouseEvent event) throws SQLException {
         FXCollections.sort(candidaturesListe, new CompareNote());
             pnItems.getChildren().removeAll();
             pnItems.getChildren().clear();
             remplirliste(candidaturesListe);
     }
     @FXML
-    void triUsername(MouseEvent event) {
+    void triUsername(MouseEvent event) throws SQLException {
         FXCollections.sort(candidaturesListe, new CompareNom());
             pnItems.getChildren().removeAll();
             pnItems.getChildren().clear();
@@ -283,9 +395,13 @@ table.drawOn(page)         ;
           // sortedList.comparatorProperty().bind(pnItems.);
             pnItems.getChildren().clear();
 
-            remplirliste(sortedList);
+            try {
+                remplirliste(sortedList);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
-           // table.setItems(sortedList);
+            // table.setItems(sortedList);
 
 
         });

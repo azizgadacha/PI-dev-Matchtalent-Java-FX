@@ -37,5 +37,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" name="javax.mail" level="project" />
   </component>
 </module>
