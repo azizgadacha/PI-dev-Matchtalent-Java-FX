@@ -5,9 +5,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.xml.datatype.Duration;
 import static services.QuestionCRUD.selectQuestionsByQuiz;
 
 public class PassagequizController implements Initializable {
@@ -30,14 +37,19 @@ public class PassagequizController implements Initializable {
     private Button proposition3;
     @FXML
     private Label nbrquestionrestante;
-    @FXML
-    private TextField tempsrestant;
     
     private List<Questions> questions;
     private int currentQuestionIndex;
     private int nbReponsesCorrectes;
     private int nbReponsesIncorrectes;
     private String reponse;
+    @FXML
+    private Label timer;
+    
+    private int tempsRestant = 15;
+    
+    private TimerTask timerTask;
+    private Timer timer1;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,6 +83,11 @@ public class PassagequizController implements Initializable {
             proposition3.setText(currentQuestion.getPropositionC());
             nbrquestionrestante.setText("Questions restantes : " + (questions.size() - currentQuestionIndex));
             currentQuestionIndex++;
+            
+            tempsRestant = 30;
+            demarrerCompteARebours();
+            
+            
         } else {
             int nbQuestions = questions.size();
             double pourcentageScore = ((double) nbReponsesCorrectes / nbQuestions) * 100;
@@ -124,5 +141,35 @@ public class PassagequizController implements Initializable {
 public int getNbReponsesIncorrectes() {
     return nbReponsesIncorrectes;
 }
+
+
+private void demarrerCompteARebours() {
+    timerTask = new TimerTask() {
+        @Override
+        public void run() {
+            Platform.runLater(() -> {
+                tempsRestant--;
+                timer.setText("Temps restant: " + tempsRestant + "s");
+                if (tempsRestant == 0) {
+                    try {
+                        Questions currentQuestion = questions.get(currentQuestionIndex - 1);
+                        if (currentQuestion.getId_BonneReponse().equals(reponse)) {
+                            nbReponsesCorrectes++;
+                        } else {
+                            nbReponsesIncorrectes++;
+                        }
+                        afficherQuestionSuivante();
+                    } catch (IOException ex) {
+                        Logger.getLogger(PassagequizController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+        }
+    };
+    timer1 = new Timer();
+    timer1.scheduleAtFixedRate(timerTask, 1000, 1000);
+}
+
+
     
 }
