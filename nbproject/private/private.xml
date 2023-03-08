@@ -3,8 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/ListViewPostulation.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/entities/EtatPostulation.java</file>
             <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/ApplyNowController.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/ModifierPostulationController.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/ShowMesPostulationController.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/entities/Etat.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/SideBar/SideBarControlleur.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/Candidature/TableElement/elementController.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/services/PostulationService.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/entities/ListeAnnonces.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/MesPostulationItemController.java</file>
             <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/entities/mail.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/entities/File.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/entities/Postulation.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/FileController.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/services/FileService.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/ListViewMesPostulation.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/gui/PostulationItemController.java</file>
+            <file>file:/C:/Users/Istabrak/Desktop/projet_pidev/PI-dev-Matchtalent-Java-FX/src/test/NewFXMain.java</file>
         </group>
     </open-files>
 </project-private>

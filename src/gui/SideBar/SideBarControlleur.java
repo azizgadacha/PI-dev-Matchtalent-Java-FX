@@ -32,6 +32,8 @@ public class SideBarControlleur {
     private Button btnPostulation;
     @FXML
     private Button btnListePostulations;
+    @FXML
+    private Button files_ajout;
 
     private void initialize() throws IOException {
         // Set the first page as the content
@@ -45,12 +47,12 @@ public class SideBarControlleur {
 //
     @FXML
     private void loadPage1() throws IOException {
-        loadPageToContent("../File.fxml");
+        loadPageToContent("../File/File.fxml");
        
     }
     @FXML
     private void loadPage2() throws IOException {
-        loadPageToContent("../ShowMesPostulation.fxml");
+        loadPageToContent("../ViewPost/ShowMesPostulation.fxml");        //../ShowMesPostulation.fxml
     }
 
 //    @FXML
@@ -80,6 +82,12 @@ public class SideBarControlleur {
     void closePage(MouseEvent event) {
         Stage stage = (Stage) img.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void loadPage3(ActionEvent event) throws IOException {
+                loadPageToContent("../AjoutPost/ApplyNow.fxml");
+
     }
 
    

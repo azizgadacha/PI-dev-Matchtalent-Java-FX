@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.ViewPost;
 
 
 import entities.Annonce;
@@ -25,23 +25,18 @@ import services.PostulationService;
  *
  * @author Istabrak
  */
-public class PostulationItemController implements Initializable {
+public class MesPostulationItemController implements Initializable {
 
     @FXML
     private HBox Hbox;
     @FXML
     private Text nomuser;
-    
-    @FXML
-    private Text etat;
     @FXML
     private Text type;
     @FXML
     private HBox hbox;
-    @FXML
-    private ImageView imv;
-    
-    
+//    @FXML
+//    private ImageView imv;
     
     
     PostulationService ps = new PostulationService();
@@ -57,9 +52,9 @@ public class PostulationItemController implements Initializable {
    
     }  
     
-    public PostulationItemController(){
+    public MesPostulationItemController(){
     
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/PostulationItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ViewPost/MesPostulationItem.fxml"));
         fxmlLoader.setController(this);
         try
         {
@@ -88,11 +83,13 @@ public class PostulationItemController implements Initializable {
     
     
         public void setInfo(Postulation p)  {   
+        System.out.println("controller.ListViewEvent.updateItem"+p);
 
         Annonce a = ps.get_AnnonceById(p.getIdAnnonce());
         type.setText(a.getNom_societe());
-        nomuser.setText("Sarra");
-        etat.setText(p.getEtat());
+        nomuser.setText(a.getNom_societe());
+        
+        
      
      
 }

@@ -18,7 +18,7 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-            Parent root = FXMLLoader.load(getClass().getResource("../gui/ApplyNow.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/SideBar/SideBar.fxml"));
             primaryStage.setScene(new Scene(root));
             //set stage borderless 
            primaryStage.initStyle(StageStyle.UNDECORATED);

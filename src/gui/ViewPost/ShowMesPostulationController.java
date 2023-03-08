@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.ViewPost;
 
 
 import entities.Postulation;
@@ -72,31 +72,31 @@ public class ShowMesPostulationController implements Initializable {
     private void handleClose(ActionEvent event) {
     }
 
-    @FXML
-    private void modifier(ActionEvent event) {
-              
-        
-        
-        ObservableList<Postulation> e = listView.getSelectionModel().getSelectedItems();
-             for (Postulation m : e) {
-              p = m ;
-         }
-        
-        
-             Parent root;
-             try {
-               root = FXMLLoader.load(getClass().getResource("/gui/ModifierPostulation.fxml"));
-               Stage myWindow = (Stage) listView.getScene().getWindow();
-               Scene sc = new Scene(root);
-               myWindow.setScene(sc);
-               myWindow.setTitle("page name");
-                            //myWindow.setFullScreen(true);
-               myWindow.show();
-               } catch (IOException ex) {
-               Logger.getLogger(ShowMesPostulationController.class.getName()).log(Level.SEVERE, null, ex);
-               }
-        
-    }
+//    @FXML
+//    private void modifier(ActionEvent event) {
+//              
+//        
+//        
+//        ObservableList<Postulation> e = listView.getSelectionModel().getSelectedItems();
+//             for (Postulation m : e) {
+//              p = m ;
+//         }
+//        
+//        
+//             Parent root;
+//             try {
+//               root = FXMLLoader.load(getClass().getResource("/gui/ModifierPostulation.fxml"));
+//               Stage myWindow = (Stage) listView.getScene().getWindow();
+//               Scene sc = new Scene(root);
+//               myWindow.setScene(sc);
+//               myWindow.setTitle("page name");
+//                            //myWindow.setFullScreen(true);
+//               myWindow.show();
+//               } catch (IOException ex) {
+//               Logger.getLogger(ShowMesPostulationController.class.getName()).log(Level.SEVERE, null, ex);
+//               }
+//        
+//    }
 
     @FXML
     private void Supprimer(ActionEvent event) throws SQLException {
@@ -108,11 +108,11 @@ public class ShowMesPostulationController implements Initializable {
              
         Parent root;
              try {
-               root = FXMLLoader.load(getClass().getResource("/gui/ShowMesPostulation.fxml"));
+               root = FXMLLoader.load(getClass().getResource("../ViewPost/ShowMesPostulation.fxml"));
                Stage myWindow = (Stage) listView.getScene().getWindow();
                Scene sc = new Scene(root);
                myWindow.setScene(sc);
-               myWindow.setTitle("page name");
+               myWindow.setTitle("ShowMesPostulation.fxml");
                             //myWindow.setFullScreen(true);
                myWindow.show();
                } catch (IOException ex) {
@@ -120,25 +120,25 @@ public class ShowMesPostulationController implements Initializable {
                }
          
     }
-
-    @FXML
-    private void Ajouter(ActionEvent event) {
-        
-              Parent root;
-             try {
-               root = FXMLLoader.load(getClass().getResource("/gui/Postulation.fxml"));
-               Stage myWindow = (Stage) listView.getScene().getWindow();
-               Scene sc = new Scene(root);
-               myWindow.setScene(sc);
-               myWindow.setTitle("page name");
-                            //myWindow.setFullScreen(true);
-               myWindow.show();
-               } catch (IOException ex) {
-               Logger.getLogger(ShowMesPostulationController.class.getName()).log(Level.SEVERE, null, ex);
-               }
-        
-        
-    }
+//
+//    @FXML
+//    private void Ajouter(ActionEvent event) {
+//        
+//              Parent root;
+//             try {
+//               root = FXMLLoader.load(getClass().getResource("/gui/Postulation.fxml"));
+//               Stage myWindow = (Stage) listView.getScene().getWindow();
+//               Scene sc = new Scene(root);
+//               myWindow.setScene(sc);
+//               myWindow.setTitle("page name");
+//                            //myWindow.setFullScreen(true);
+//               myWindow.show();
+//               } catch (IOException ex) {
+//               Logger.getLogger(ShowMesPostulationController.class.getName()).log(Level.SEVERE, null, ex);
+//               }
+//        
+//        
+//    }
 
 
 

@@ -5,6 +5,7 @@
  */
 package gui;
 
+import gui.ViewPost.ShowMesPostulationController;
 import entities.Postulation;
 import java.io.ByteArrayOutputStream;
 import java.io.File;

@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -49,20 +47,15 @@
             </Label>
          </children>
       </HBox>
-      <ScrollPane layoutX="14.0" layoutY="232.0" prefHeight="273.0" prefWidth="746.0" stylesheets="@../style.css">
+      <ScrollPane fx:id="scroll" layoutX="14.0" layoutY="232.0" prefHeight="273.0" prefWidth="746.0" stylesheets="@../style.css">
          <content>
-            <VBox fx:id="pnItems" prefHeight="271.0" prefWidth="744.0" spacing="5.0" style="-fx-background-color: #e7e5e5;">
+            <VBox fx:id="vbox_id" prefHeight="271.0" prefWidth="744.0" spacing="5.0" style="-fx-background-color: #e7e5e5;">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
          </content>
       </ScrollPane>
-      <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/icons8_Search_52px.png" />
-         </image>
-      </ImageView>
       <Label fx:id="nombre" layoutX="140.0" layoutY="88.0" text="0" textFill="#2631bd">
          <font>
             <Font name="System Bold" size="26.0" />

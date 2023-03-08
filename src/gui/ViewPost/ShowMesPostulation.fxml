@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ViewPost.ShowMesPostulationController">
+   <children>
+      <ListView fx:id="listView" layoutX="25.0" layoutY="149.0" prefHeight="278.0" prefWidth="742.0" />
+      <Button layoutX="531.0" layoutY="455.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="29.0" prefWidth="235.0" text="Supprimer une postulation">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Button>
+      <Text fill="#1014a1" layoutX="205.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Postulations" wrappingWidth="402.8974609375">
+         <font>
+            <Font name="System Bold Italic" size="38.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

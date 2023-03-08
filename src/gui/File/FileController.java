@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.File;
 
 import entities.Postulation;
 import java.io.ByteArrayOutputStream;
@@ -186,14 +186,14 @@ public class FileController implements Initializable {
  
           if (nameCv.getText().equals("")|| nameDeplome.getText().equals("")|| nameMotivation.getText().equals("")){
           
-                     Alert alert = new Alert(Alert.AlertType.ERROR, "Complete vos cordnner", ButtonType.OK); /// 
+                     Alert alert = new Alert(Alert.AlertType.ERROR, "Completez vos coordonnees", ButtonType.OK); /// 
            alert.showAndWait();
           }else{
               f.setIdUtilisateur(1);
         System.out.println("gui.PostulationController.Confermer()"+f);
         
         if (data.size()==0){
-            System.out.println("he nindibhom");
+            System.out.println("dothis");
               
                   fs.ajouter(f);
               }else{

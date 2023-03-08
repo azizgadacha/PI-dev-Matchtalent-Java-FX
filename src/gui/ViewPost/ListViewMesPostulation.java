@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui ;
+package gui.ViewPost ;
 
 
 
+import gui.ViewPost.MesPostulationItemController;
 import entities.Postulation;
 import javafx.scene.control.ListCell;
 

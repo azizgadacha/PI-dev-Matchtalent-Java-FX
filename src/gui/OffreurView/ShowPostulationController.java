@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.OffreurView;
 
+import gui.ViewPost.ShowMesPostulationController;
 import entities.File;
 import entities.Postulation;
-import static gui.ShowMesPostulationController.p;
+import gui.ListViewPostulation;
+import static gui.ViewPost.ShowMesPostulationController.p;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;

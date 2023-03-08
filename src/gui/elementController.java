@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package gui.Candidature.TableElement;
+package gui;
 
+import entities.Annonce;
+import entities.Postulation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import services.PostulationService;
 
 /**
@@ -26,6 +30,8 @@ public class elementController implements Initializable {
     private Label date_id;
     
         PostulationService ps = new PostulationService();
+    @FXML
+    private Pane pane_id;
 
 
     /**
@@ -52,5 +58,8 @@ public class elementController implements Initializable {
      
      
     
-    
 }
+     
+     
+    
+    

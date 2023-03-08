@@ -7,6 +7,7 @@ package gui ;
 
 
 
+import gui.OffreurView.PostulationItemController;
 import entities.Postulation;
 import javafx.scene.control.ListCell;
 
