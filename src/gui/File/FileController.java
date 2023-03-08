@@ -190,7 +190,7 @@ public class FileController implements Initializable {
            alert.showAndWait();
           }else{
               f.setIdUtilisateur(1);
-        System.out.println("gui.PostulationController.Confermer()"+f);
+        System.out.println("ajouterAvecSucces"+f);
         
         if (data.size()==0){
             System.out.println("dothis");

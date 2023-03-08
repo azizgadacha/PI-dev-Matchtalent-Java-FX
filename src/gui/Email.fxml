@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EmailController">
+    <children>
+        <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Label text="Send Email">
+                <font>
+                    <Font name="System Bold" size="21.0" />
+                </font>
+            </Label>
+            <TextField fx:id="fromField" promptText="From" />
+            <HBox spacing="10.0">
+                <TextField fx:id="toField" promptText="To" />
+                <TextField fx:id="ccField" promptText="Cc" />
+                <TextField fx:id="bccField" promptText="Bcc" />
+            </HBox>
+            <TextField fx:id="subjectField" promptText="Subject" />
+            <PasswordField fx:id="passwordField" promptText="Password" />
+            <TextArea fx:id="messageArea" prefHeight="200.0" prefWidth="200.0" promptText="Message" />
+            <Button fx:id="sendButton" mnemonicParsing="false" onAction="#handleSendButton" prefHeight="26.0" prefWidth="65.0" text="Send" />
+        </VBox>
+    </children>
+</AnchorPane>

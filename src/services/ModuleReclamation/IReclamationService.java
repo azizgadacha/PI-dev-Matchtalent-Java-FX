@@ -4,17 +4,18 @@
  */
 package services;
 
+import entities.reclamation;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
- * @author Istabrak
- * @param <T>
+ * @author Hend
  */
-public interface IService<T> {
+public interface IReclamationService<T> {
     public void ajouter(T t) throws SQLException;
-    public boolean modifier(T t) throws SQLException;
-    public boolean supprimer(int id) throws SQLException;
-    public List<T> recuperer(T t) throws SQLException;
+    public void modifier(T t) throws SQLException;
+    public void supprimer(T t) throws SQLException;
+    public List<T> recuperer() throws SQLException;
+   
 }

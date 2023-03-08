@@ -93,6 +93,15 @@ public class PostulationItemController implements Initializable {
         type.setText(a.getNom_societe());
         nomuser.setText("Sarra");
         etat.setText(p.getEtat());
+        
+//        Annonce c = ps.get_AnnonceById(2);
+//        nomuser.setText("Aziz");
+//        etat.setText(p.getEtat());
+//        
+//            Annonce b = ps.get_AnnonceById(2);
+//        nomuser.setText("Istabrak");
+//        etat.setText(p.getEtat());
+        
      
      
 }

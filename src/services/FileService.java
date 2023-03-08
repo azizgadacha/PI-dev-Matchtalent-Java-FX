@@ -25,14 +25,14 @@ import utils.MyDB;
  *
  * @author Istabrak
  */
-public class FileService implements IService<entities.File>{
+public class FileService {
     private final Connection cnx;
 
     public FileService() {
         cnx = MyDB.getInstance().getCnx();
     }
 
-    @Override
+   
     public void ajouter(entities.File f) throws SQLException  {
       
                  
@@ -55,7 +55,6 @@ public class FileService implements IService<entities.File>{
  
           
     }
-    @Override
     public boolean modifier(entities.File f) throws SQLException {
         
                        
@@ -80,7 +79,7 @@ public class FileService implements IService<entities.File>{
 
     }
 
-    @Override
+   
     public boolean supprimer(int id) throws SQLException {
         
                 try {
@@ -96,7 +95,7 @@ public class FileService implements IService<entities.File>{
         
     }
 
-    @Override
+   
     public List<File> recuperer(entities.File f) throws SQLException {
         List<File> files = new ArrayList<>();
 

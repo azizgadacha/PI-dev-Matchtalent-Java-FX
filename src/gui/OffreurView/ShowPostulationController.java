@@ -128,7 +128,6 @@ public class ShowPostulationController implements Initializable {
     
     
     
-    //metier 
     
         public void downloadFile(int id) throws IOException {
             

@@ -24,5 +24,4 @@
       <String fx:value="thumb" />
       <String fx:value="track" />
    </styleClass>
-
 </Pane>
