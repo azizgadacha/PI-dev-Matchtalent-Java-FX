@@ -15,8 +15,12 @@ import javafx.scene.control.TextField;
 import services.Reponse_ReclamationService;
 import entities.reponse_reclamation;
 import entities.utilisateur;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 /**
@@ -30,6 +34,9 @@ public class AjouterReponseController implements Initializable {
     private Button but;
     @FXML
     private TextField rep;
+    
+      @FXML
+    private Button bt_back;
 
     /**
      * Initializes the controller class.
@@ -59,4 +66,12 @@ public class AjouterReponseController implements Initializable {
        
     }
     
+    @FXML
+    void back(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListReclamation1.fxml"));
+            Parent root = loader.load();
+            Scene currentScene = bt_back.getScene();
+            currentScene.setRoot(root);
+    }
 }

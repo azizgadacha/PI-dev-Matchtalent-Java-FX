@@ -4,14 +4,18 @@
  */
 package gui;
 
+import entities.reclamation;
 import entities.reponse_reclamation;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -26,6 +30,7 @@ import services.Reponse_ReclamationService;
 public class ItemController implements Initializable {
     @FXML
     private Label titre;
+
 
     private reponse_reclamation reponse;
     private ListReponseController parentController; // add a reference to the parent controller
@@ -54,15 +59,41 @@ public class ItemController implements Initializable {
         titre.setText(r.getReponse());
     }
     
-     @FXML
+     /*@FXML
     private void handleDeleteButton(ActionEvent event) throws SQLException {
         Reponse_ReclamationService ps = new Reponse_ReclamationService();
         ps.supprimer(reponse);
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation Dialog");
+    alert.setHeaderText("Are you sure you want to delete this response?");
+    alert.setContentText("Click OK to confirm, or Cancel to go back.");
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
-    }
+    }*/
+    
+    @FXML
+private void handleDeleteButton(ActionEvent event) throws SQLException {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation Dialog");
+    alert.setHeaderText("Are you sure you want to delete this reponse ?");
+    alert.setContentText("This action cannot be undone.");
 
-   
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK) {
+        // user clicked OK, delete the reponse
+        Reponse_ReclamationService ps = new Reponse_ReclamationService();
+        ps.supprimer(reponse);
+
+        // close the window
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+    } else {
+        // user clicked cancel or closed the dialog
+        // do nothing
+    }
+}
+
 
 }

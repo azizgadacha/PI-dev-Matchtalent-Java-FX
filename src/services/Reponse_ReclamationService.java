@@ -141,5 +141,28 @@ private ObservableList<reponse_reclamation> getReponsesByReclamationId(int recla
         return reponse_reclamations;
     }
 
+    public List<reponse_reclamation> rechercheReponse(String keyword) {
+    List<reponse_reclamation> reponses = new ArrayList<>();
+    String query = "SELECT * FROM reponse_reclamation WHERE titre LIKE ? ";
+    try {
+        PreparedStatement stmt = cnx.prepareStatement(query);
+        stmt.setString(1, keyword + "%");
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String titre = rs.getString("titre");
+            String reponse = rs.getString("reponse");
+            int id_reclamation = rs.getInt("id_reclamation");
+            reclamation rec = getReclamationById(id_reclamation);
+            //rec.setId_reclamation(id_reclamation);
+            reponse_reclamation r = new reponse_reclamation(id_reclamation, reponse, rec);
+            reponses.add(r);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return reponses;
+}
+
     
 }

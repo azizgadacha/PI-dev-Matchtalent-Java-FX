@@ -32,9 +32,9 @@ public class MainReclamation {
     
     
     public static void main(String[] args){
-         TypeReclamation type1 = TypeReclamation.TechnicalIssues;
-        TypeReclamation type2 = TypeReclamation.SecurityIssues;
-        TypeReclamation type3 = TypeReclamation.Contentrelatedissues;
+         TypeReclamation type1 = TypeReclamation.T;
+        TypeReclamation type2 = TypeReclamation.S;
+        TypeReclamation type3 = TypeReclamation.C;
         utilisateur utilisateur ;
         //UserService us = new UserService();
         //utilisateur = us.getUserById(1);
@@ -83,7 +83,7 @@ public class MainReclamation {
             System.out.println("h0003");
             rp.supprimer(r);
             System.out.println("h0004");
-            System.out.println(rp.recuperer(r));
+            System.out.println(rp.recuperer());
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

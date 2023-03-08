@@ -41,19 +41,20 @@ public class ReclamationService implements IReclamationService<reclamation>{
 
     @Override
     public void ajouter(reclamation t) throws SQLException {
-        String req = "INSERT INTO reclamation(id_utilisateur,description,titre,type,date) VALUES(?,?,?,?,?)";
+        String req = "INSERT INTO reclamation(id_utilisateur,description,titre,date) VALUES(?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getUtilisateur().getId_utilisateur());
         //ps.setInt(1, t.getId_utilisateur());
         ps.setString(2, t.getDescription());
         System.out.println(" ummm ");
-        ps.setString(3, t.getType().toString());
-        System.out.println(" nooo ");
-        ps.setString(4, t.getTitre());
+        //ps.setString(3, t.getType().toString());
+       // ps.setString(3, t.getType().name());
+        //System.out.println(" nooo ");
+        ps.setString(3, t.getTitre());
        // ps.setString(4, t.getType().toString());
        // ps.setDate(5, t.getDate());
         //ps.setDate(4, java.sql.Date.valueOf(t.getDate()));
-         ps.setObject(5, LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+         ps.setObject(4, LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
         ps.executeUpdate();
     }
     
@@ -72,18 +73,48 @@ public class ReclamationService implements IReclamationService<reclamation>{
         ps.executeUpdate();
     }
 
-    @Override
+   @Override
+public void supprimer(reclamation t) throws SQLException {
+    String req = "DELETE FROM reclamation WHERE id_reclamation = ?";
+    PreparedStatement ps = null;
+    try {
+        ps = cnx.prepareStatement(req);
+        ps.setInt(1, t.getId_reclamation());
+        System.out.println("Deleting reclamation with ID: " + t.getId_reclamation());
+        int result = ps.executeUpdate();
+        if (result > 0) {
+            System.out.println("Reclamation deleted from database.");
+        } else {
+            System.out.println("No reclamation found to delete.");
+        }
+    } catch (SQLException e) {
+        System.out.println("Error deleting reclamation from database: " + e.getMessage());
+    } finally {
+        if (ps != null) {
+            ps.close();
+        }
+    }
+}
+    
+     /*@Override
     public void supprimer(reclamation t) throws SQLException {
-        String req = "DELETE FROM reclamation  WHERE id_reclamation = 1";
+         String req = "DELETE FROM reclamation WHERE id_reclamation = ?";
+        PreparedStatement rp = cnx.prepareStatement(req);
+        rp.setInt(1, t.getId_reclamation());
+        rp.executeUpdate();
+    }*/
+
+   /* public void supprimer(reclamation t) throws SQLException {
+        String req = "DELETE FROM reclamation  WHERE id_reclamation = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getId_reclamation());
-        ps.executeUpdate();
+        ps.execute();
         System.out.println("ena nemchi");
-    }
+    }*/
 
     @Override
     public List<reclamation> recuperer() throws SQLException {
-       List<reclamation> reclamations = new ArrayList<>();
+       ObservableList<reclamation> reclamations = FXCollections.observableArrayList();
         String s = "select * from reclamation";
         Statement st = cnx.createStatement();
         ResultSet rs =  st.executeQuery(s);
@@ -104,6 +135,25 @@ public class ReclamationService implements IReclamationService<reclamation>{
     }
     
    
+    
+    private reclamation getReclamationById(int reclamationId) throws SQLException {
+    String req = "SELECT * FROM reclamation WHERE id_reclamation = ?";
+    PreparedStatement ps = cnx.prepareStatement(req);
+    ps.setInt(1, reclamationId);
+    ResultSet rs = ps.executeQuery();
+
+    if (rs.next()) {
+        reclamation rec = new reclamation();
+        rec.setId_reclamation(rs.getInt("id_reclamation"));
+        //rec.setDate(rs.getObject("date", LocalDateTime.class));
+        rec.setDate(rs.getDate(req));
+        rec.setDescription(rs.getString("description"));
+        return rec;
+    }
+
+    return null;
+}
+    
     /*public void BazTawTeslek(){
         
     }*/

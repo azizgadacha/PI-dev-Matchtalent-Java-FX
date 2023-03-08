@@ -17,11 +17,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import services.ReclamationService;
 
 /**
@@ -56,25 +58,23 @@ public class OneItemController implements Initializable {
     
     public void SetItem(reclamation r, GridPane parent) {
         reclamation = r;
+        gPrc = parent; // set the parentPane
         this.gPrc = gPrc;
         label_titre.setText(String.valueOf(r.getTitre()));
         label_desc.setText(String.valueOf(r.getDescription()));
     }
     
     @FXML
-    void Supprimer(ActionEvent event) {
+    void Supprimer(ActionEvent event) throws SQLException {
+       ReclamationService ps = service;
 
-        try {
-        // delete the reclamation from the database
-        ReclamationService service = new ReclamationService();
-        service.supprimer(reclamation);
-            System.out.println("ena zeda nemchi");
-        
-        // remove the item from the grid
-        gPrc.getChildren().remove(gPrc.getChildren().indexOf(label_titre.getParent()));
-    } catch (SQLException ex) {
-        Logger.getLogger(OneItemController.class.getName()).log(Level.SEVERE, null, ex);
-    }
+        //ReclamationService ps = new ReclamationService();
+         ps.supprimer(reclamation);
+         System.out.println("Delete button clicked!");
+    //gPrc.getChildren().remove(SuppBut.getParent()); // remove the parent node of the button from the parentPane
+     Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
         
     }
     

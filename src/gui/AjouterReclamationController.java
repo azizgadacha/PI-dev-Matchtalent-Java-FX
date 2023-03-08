@@ -46,7 +46,7 @@ public class AjouterReclamationController implements Initializable {
     @FXML
     private DatePicker ch_date;
     @FXML
-    private ComboBox<TypeReclamation>  combo;
+    private ComboBox<String>  combo;
     @FXML
     private TextField ch_desc;
     //@FXML
@@ -62,20 +62,24 @@ public class AjouterReclamationController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    /*@Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
        
         ObservableList<String> objetList = FXCollections.observableArrayList();
-        objetList.addAll("Contentrelatedissues", "TechnicalIssues", "SecurityIssues");
+        objetList.addAll("C", "T", "S");
         combo.setItems(objetList);
+        //ObservableList<TypeReclamation> typesList = FXCollections.observableArrayList();
+//typesList.addAll(TypeReclamation.Contentrelatedissues, TypeReclamation.TechnicalIssues, TypeReclamation.SecurityIssues);
+//combo.setItems(typesList);
+
 
     }    
 
     @FXML
     private void select(ActionEvent event) {
         String selectedObject = combo.getSelectionModel().getSelectedItem().toString();
-    }*/
-    @Override
+    }
+  /*  @Override
 public void initialize(URL url, ResourceBundle rb) {
     ObservableList<TypeReclamation> typesList = FXCollections.observableArrayList();
     try {
@@ -101,7 +105,7 @@ public void initialize(URL url, ResourceBundle rb) {
 @FXML
 private void select(ActionEvent event) {
     TypeReclamation selectedType = (TypeReclamation) combo.getSelectionModel().getSelectedItem();
-}
+}*/
     
       @FXML
     private void affiche(ActionEvent event) throws IOException {
@@ -128,7 +132,7 @@ private void select(ActionEvent event) {
             p.setUtilisateur(new utilisateur(1));
             //p.setType(TypeReclamation.valueOf(ch_type.getText()));
             //p.setType(TypeReclamation.valueOf(combo.getSelectionModel().getSelectedItem().toString()));
-            p.setType(TypeReclamation.SecurityIssues);
+            //p.setType(TypeReclamation.SecurityIssues);
             p.setDate(new Date());
             ps.ajouter(p);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -10,9 +10,9 @@ package utils;
  */
 public class Enum {
      public static enum TypeReclamation {
-        Contentrelatedissues,
-        TechnicalIssues,
-        SecurityIssues;
+        C,
+        T,
+        S;
     }
 
     public static enum Statut {

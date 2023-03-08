@@ -5,34 +5,42 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="682.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReponseController">
+<AnchorPane id="AnchorPane" prefHeight="343.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReponseController">
    <children>
-      <Pane layoutX="305.0" layoutY="55.0" prefHeight="602.0" prefWidth="291.0" style="-fx-background-color: #D0B3D8;" stylesheets="@fullpackstyling.css" AnchorPane.leftAnchor="305.0" AnchorPane.rightAnchor="336.0">
+      <ImageView fitHeight="435.0" fitWidth="653.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/téléchargement.jfif" />
+         </image>
+      </ImageView>
+      <Pane layoutX="14.0" layoutY="48.0" prefHeight="272.0" prefWidth="502.0" style="-fx-background-color: #D0B3D8;" stylesheets="@fullpackstyling.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="137.0">
          <styleClass>
             <String fx:value="search-box" />
             <String fx:value="shadow" />
          </styleClass>
          <children>
-            <Label layoutX="157.0" layoutY="101.0" text="Reponse :" textFill="#732273">
+            <Label layoutX="79.0" layoutY="14.0" text="Reponse :" textFill="#763c76">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Button fx:id="but" layoutX="156.0" layoutY="337.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="38.0" prefWidth="107.0" text="Add" textFill="WHITE">
+            <Button fx:id="but" layoutX="148.0" layoutY="218.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="40.0" prefWidth="160.0" text="Ajouter Reponse" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
+            <TextField fx:id="rep" alignment="TOP_LEFT" layoutX="82.0" layoutY="52.0" prefHeight="142.0" prefWidth="338.0" promptText="Reponse" styleClass="shadow" stylesheets="@fullpackstyling.css">
+               <padding>
+                  <Insets right="100.0" />
+               </padding>
+            </TextField>
          </children>
       </Pane>
-      <TextField fx:id="rep" layoutX="459.0" layoutY="211.0" prefHeight="142.0" prefWidth="551.0" promptText="Reponse" styleClass="shadow" stylesheets="@fullpackstyling.css">
-         <padding>
-            <Insets right="100.0" />
-         </padding>
-      </TextField>
+      <Button fx:id="bt_back" layoutX="573.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="66.0" stylesheets="@fullpackstyling.css" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>

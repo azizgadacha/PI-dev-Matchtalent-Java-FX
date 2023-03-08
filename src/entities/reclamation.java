@@ -79,6 +79,11 @@ public class reclamation {
         this.date = date;
       
     }
+      
+      public int getId() {
+    return id_reclamation;
+}
+
 
     public int getId_reclamation() {
         return id_reclamation;

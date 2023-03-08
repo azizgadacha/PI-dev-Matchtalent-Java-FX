@@ -27,14 +27,18 @@ public class MainAjouterReclamation extends Application {
     @Override
    public void start(Stage primaryStage) throws IOException {
         
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReclamation.fxml"));
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffRec.fxml"));
-             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FXML.fxml"));
-             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AdminHomePage.fxml"));
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReclamation.fxml"));
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReponse.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReponse.fxml"));
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/DisplayListReponse.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReclamation.fxml")); lee
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FormulaireAjoutRec.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReclamation1.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Email.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffRec.fxml"));lee
+             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FXML.fxml"));lee
+             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AdminHomePage.fxml"));lee
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReclamation.fxml"));lee
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReponse.fxml"));lee
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReponse.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Stats.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/DisplayListReponse.fxml"));lee
             Parent root = loader.load();
             Scene scene = new Scene(root,800,600);
             primaryStage.setScene(scene);

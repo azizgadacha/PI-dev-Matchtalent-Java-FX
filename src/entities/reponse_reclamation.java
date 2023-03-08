@@ -16,6 +16,7 @@ public class reponse_reclamation {
     private int id_reponse, id_reclamation;
     private String reponse;
     private Date date;
+    private reclamation reclamtion;
 
     public reponse_reclamation(int id_reclamation, String reponse, Date date) {
         this.id_reclamation = id_reclamation;
@@ -23,6 +24,12 @@ public class reponse_reclamation {
         this.date = date;
     }
 
+    public reponse_reclamation(int id_reclamation, String reponse, reclamation reclamation) {
+        this.id_reclamation = id_reclamation;
+        this.reponse = reponse;
+        this.reclamation = reclamation;
+    }
+    
     public reponse_reclamation(reclamation reclamation, String reponse, Date date) {
         this.reclamation = reclamation;
         this.reponse = reponse;

@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import services.ReclamationService;
@@ -67,6 +68,22 @@ public class AffRecController implements Initializable {
         
         // add the content to the grid at the specified position
         gPrc.add(content, column, row);
+        
+        /*Button SuppBut = new Button("Supprimer");
+                SuppBut.setOnAction(e -> {
+                    try {
+                        
+                        ps.supprimer(r);
+                        //ps.supprimer(r.getId_reclamation());
+                        gPrc.getChildren().clear();
+                        initialize(url, rb);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AffRecController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+                gPrc.add(SuppBut, column + 1, row);*/
+
+        
         column++;
         } row++;    
     } catch (SQLException | IOException ex) {

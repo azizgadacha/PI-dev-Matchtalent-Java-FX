@@ -15,11 +15,13 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import services.Reponse_ReclamationService;
 
@@ -36,6 +38,9 @@ public class ListReponseController implements Initializable {
     
     @FXML
     private VBox MyVbox;
+    
+    @FXML
+    private TextField text_recherche;
 
      private List<reponse_reclamation> reponses;
      
@@ -96,6 +101,37 @@ public class ListReponseController implements Initializable {
         }
         
             }
+    
+    @FXML
+void handleSearchButton(ActionEvent event) {
+    String searchText = text_recherche.getText().trim();
+    if(searchText.isEmpty()){
+        // Clear the VBox
+        MyVbox.getChildren().clear();
+        // Reload all responses from the database
+        //loadDate();
+    }
+    else {
+        // Clear the VBox
+        MyVbox.getChildren().clear();
+        // Filter the responses based on the search text
+        ArrayList<Node> nodes = new ArrayList<>();
+        for (reponse_reclamation reponse : reponses) {
+            if (reponse.getReponse().toLowerCase().contains(searchText.toLowerCase())) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
+                try {
+                    nodes.add(loader.load());
+                    ItemController f = loader.getController();
+                    f.setLabel(reponse);
+                    MyVbox.getChildren().add(nodes.get(nodes.size() - 1));
+                } catch (IOException ex) {
+                    Logger.getLogger(ListReponseController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+}
+
     
 }
 
