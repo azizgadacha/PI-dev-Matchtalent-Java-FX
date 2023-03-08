@@ -4,11 +4,17 @@
  */
 package gui;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import entities.Questions;
 import entities.Quiz;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +30,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import services.QuestionCRUD;
 import services.QuizCRUD;
 
 
@@ -40,6 +47,8 @@ public class AfficherlistedesquizController implements Initializable {
     @FXML
     private Button boutonmodifierquiz;
     private Questions question;
+    @FXML
+    private Button pdfbotton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -102,4 +111,80 @@ public class AfficherlistedesquizController implements Initializable {
         public void setQuestion(Questions question) {
         this.question = question;
     }
+
+/*@FXML
+private void telechargerpdf(ActionEvent event) {
+    Quiz selectedQuiz = idlistequiz.getSelectionModel().getSelectedItem();
+    if (selectedQuiz != null) {
+        int selectedQuizId = selectedQuiz.getId_quiz();
+        List<Questions> questions = QuestionCRUD.selectQuestionsByQuiz(selectedQuizId);
+
+        // code pour générer le PDF en utilisant la bibliothèque de votre choix
+        // par exemple, vous pouvez utiliser iText ou PDFBox pour générer le PDF
+        // ci-dessous se trouve un exemple utilisant iText
+
+        try {
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream("questionduquiz.pdf"));
+            document.open();
+
+            for (Questions question : questions) {
+                document.add(new Paragraph(question.getQuestion()));
+                document.add(new Paragraph("A) " + question.getPropositionA()));
+                document.add(new Paragraph("B) " + question.getPropositionB()));
+                document.add(new Paragraph("C) " + question.getPropositionC()));
+                document.add(new Paragraph("Réponse : " + question.getId_BonneReponse()));
+                document.add(new Paragraph("\n"));
+            }
+
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } else {
+        System.out.println("No quiz selected.");
+    }
+} */
+        @FXML
+private void telechargerpdf(ActionEvent event) {
+    Quiz selectedQuiz = idlistequiz.getSelectionModel().getSelectedItem();
+    if (selectedQuiz != null) {
+        int selectedQuizId = selectedQuiz.getId_quiz();
+        List<Questions> questions = QuestionCRUD.selectQuestionsByQuiz(selectedQuizId);
+
+        // code pour générer le PDF en utilisant la bibliothèque de votre choix
+        // par exemple, vous pouvez utiliser iText ou PDFBox pour générer le PDF
+        // ci-dessous se trouve un exemple utilisant iText
+
+        try {
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream("questionsavectitre.pdf"));
+            document.open();
+
+            // Ajouter le titre du quiz
+            Paragraph title = new Paragraph("Quiz: " + selectedQuiz.getSujet_quiz());
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+            document.add(new Paragraph("\n"));
+
+            // Ajouter chaque question
+            for (Questions question : questions) {
+                document.add(new Paragraph(question.getQuestion()));
+                document.add(new Paragraph("A) " + question.getPropositionA()));
+                document.add(new Paragraph("B) " + question.getPropositionB()));
+                document.add(new Paragraph("C) " + question.getPropositionC()));
+                document.add(new Paragraph("Réponse : " + question.getId_BonneReponse()));
+                document.add(new Paragraph("\n"));
+            }
+
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } else {
+        System.out.println("No quiz selected.");
+    }
+}
+
+
 }

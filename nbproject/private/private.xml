@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/passagequiz.fxml</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/PassagequizController.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/afficherlistedesquiz.fxml</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/entities/Quiz.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/entities/Questions.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/AfficherlistedesquizController.java</file>
             <file>file:/C:/Users/HP/Documents/NetBeansProjects/module_quiz/src/gui/mainclassfx.java</file>
         </group>
     </open-files>

@@ -26,5 +26,6 @@
          <font>
             <Font name="Constantia Bold Italic" size="17.0" />
          </font></Button>
+      <Button fx:id="pdfbotton" layoutX="483.0" layoutY="341.0" mnemonicParsing="false" onAction="#telechargerpdf" text="telécharger quiz" />
    </children>
 </AnchorPane>
