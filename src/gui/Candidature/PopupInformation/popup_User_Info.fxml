@@ -77,17 +77,17 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="328.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="328.0" layoutY="383.0" onMouseClicked="#UploadDiplome" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/award.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="80.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="80.0" layoutY="377.0" onMouseClicked="#uploadCV" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/cv.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="208.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="208.0" layoutY="377.0" onMouseClicked="#UploadLettre" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/letter%20(1).png" />
                </image>

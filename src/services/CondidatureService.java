@@ -84,6 +84,20 @@ public class CondidatureService implements IService<candidature> {
         return candidatureListe;
     }
 
+    @FXML
+    void UploadDiplome(MouseEvent event) {
+
+    }
+
+    @FXML
+    void UploadLettre(MouseEvent event) {
+
+    }
+
+    @FXML
+    void uploadCV(MouseEvent event) {
+
+    }
     public List recupererSuivantannance(annonce an) throws SQLException {
         System.out.println("salem"+an.getId_annonce());
         PreparedStatement s = cnx.prepareStatement("select * from candidature,utilisateur,annonce where candidature.id_annonce=annonce.id_annonce and candidature.id_demandeur=utilisateur.id and candidature.id_annonce=? and candidature.id_demandeur not in(select id_user from rendez_vous where id_annonce=?)");
