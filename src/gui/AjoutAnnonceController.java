@@ -105,7 +105,9 @@ public class AjoutAnnonceController implements Initializable {
        CategorieService cat=new CategorieService();
         
         try {
+            
             liste=(ObservableList<categorie>) cat.recuperer();
+            System.out.println(liste.get(0));
         } catch (SQLException ex) {
             Logger.getLogger(AjoutAnnonceController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -143,18 +145,19 @@ public class AjoutAnnonceController implements Initializable {
         a.setDateFin( Date.from(txt6.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
         a.setDateDebut( time);
         int i = 0;
-    while( (i < liste.size())&&(liste.get(i).getNom_categorie().equals(txt7.getValue()))) {
-       
+    while( (i < liste.size())&&((liste.get(i).getNom_categorie().equals(txt7.getValue())==false)) ){
+        System.out.println("aslema"+ i);  
+        System.out.println("aslema"+ liste.get(i).getNom_categorie()); 
         i++;
     }
+          System.out.println("ahla"+ liste.get(i).getClass());
+           System.out.println("ahla"+ liste.get(i).getNom_categorie());
        a.setCategorie(liste.get(i));
        //a.setCategorie(new categorie((String) txt7.valueProperty().getValue()));
-        try {
+          System.out.println("vha");
             ps.ajouter(a);
-            reset();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+            //reset();
+       
       
         }
       @FXML

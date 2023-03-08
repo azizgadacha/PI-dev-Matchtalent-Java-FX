@@ -48,7 +48,9 @@ public class AnnonceService implements IService<Annonce>{
         ps.setString(6, t.getType_contrat());
         ps.setDate(7,sqlDate );
         ps.setDate(8, sqlDate1);
-        ps.executeUpdate();}
+        
+        ps.executeUpdate();
+        System.out.println("chrs"); }
     @Override
     public void modifier(Annonce t) throws SQLException {
          java.sql.Date sqlDate = new java.sql.Date(t.getDateDebut().getTime());

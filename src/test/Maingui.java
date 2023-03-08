@@ -81,26 +81,26 @@ public class Maingui extends Application {
 //    }
 //        
 //           
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterCategorie.fxml"));
-            Parent root = loader.load();
-            Scene sc = new Scene(root);
-            primaryStage.setTitle("categorie");
-            primaryStage.setScene(sc);
-            primaryStage.show();}
-
-        
-       
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficherAnnonce.fxml"));
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjoutAnnonce.fxml"));
 //            Parent root = loader.load();
 //            Scene sc = new Scene(root);
 //            primaryStage.setTitle("Annonce");
 //            primaryStage.setScene(sc);
-//            primaryStage.show();
+//            primaryStage.show();}
+
         
+       
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AfficherAnnonce.fxml"));
+            Parent root = loader.load();
+            Scene sc = new Scene(root);
+            primaryStage.setTitle("Annonce");
+            primaryStage.setScene(sc);
+            primaryStage.show();
+    }
 
         
 
-//   }
+
 
     
 
