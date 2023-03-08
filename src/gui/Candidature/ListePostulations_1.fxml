@@ -78,10 +78,5 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fx:id="imageView" fitHeight="32" fitWidth="32" layoutX="445.0" layoutY="90.0" onMouseClicked="#onImageViewClicked">
-         <image>
-            <Image url="@../../images/icons8_Search_52px.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>

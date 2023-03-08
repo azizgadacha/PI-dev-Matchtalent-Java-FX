@@ -7,7 +7,6 @@ package gui;
 
 import entities.Postulation;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,12 +14,17 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import static java.util.Arrays.equals;
 import java.util.Date;
+import static java.util.Objects.equals;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,7 +48,7 @@ import services.PostulationService;
  *
  * @author Istabrak
  */
-public class PostulationController implements Initializable {
+public class FileController implements Initializable {
 
     @FXML
     private Label mySelectLabel;
@@ -66,29 +70,42 @@ public class PostulationController implements Initializable {
     private Label nameMotivation;
     
     
-    File pfilecV;
+    java.io.File pfilecV;
     
     byte[] fileCV ;
     
-    File pfileDeplome;
+    java.io.File pfileDeplome;
     
     byte[] fileDeplome ;
     
-    File pfilemotivation;
+    java.io.File pfilemotivation;
     
     byte[] filemotion ;
 
 
     FileService fs = new FileService();
     PostulationService ps = new PostulationService();
+    ObservableList<entities.File> data =FXCollections.observableArrayList();
+    
+
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            data = (ObservableList<entities.File>) fs.getAllFileByUser(1);
+       if (data.size()!=0) {
+           nameCv.setText(data.get(0).getNameCV());
+           nameDeplome.setText(data.get(0).getNamedeplome());
+           nameMotivation.setText(data.get(0).getNamelettreMotivation());
+        }
+        } catch (SQLDataException ex) {
+            Logger.getLogger(FileController.class.getName()).log(Level.SEVERE, null, ex);
+       
 
-    }    
+    }  }  
 
     @FXML
     private void UploadCv(ActionEvent event) throws MalformedURLException, IOException {
@@ -172,33 +189,44 @@ public class PostulationController implements Initializable {
                      Alert alert = new Alert(Alert.AlertType.ERROR, "Complete vos cordnner", ButtonType.OK); /// 
            alert.showAndWait();
           }else{
-          f.setIdUtilisateur(1);
+              f.setIdUtilisateur(1);
         System.out.println("gui.PostulationController.Confermer()"+f);
-        fs.ajouter(f);
         
-        Postulation p = new Postulation();
-        p.setIdUtilisateur(1);
-        p.setIdAnnonce(1);
-        System.err.println("hhh"+ps.MaxIdFile());
-        p.setIdFile(ps.MaxIdFile());
-        LocalDate dd = LocalDate.now();
-        Date date = java.sql.Date.valueOf(dd);
-        p.setDate((java.sql.Date) date);
-        ps.ajouter(p);
+        if (data.size()==0){
+            System.out.println("he nindibhom");
+              
+                  fs.ajouter(f);
+              }else{
+        fs.modifier(f);
+        }
         
         
-        Parent root;
-             try {
-               root = FXMLLoader.load(getClass().getResource("/gui/ShowMesPostulation.fxml"));
-               Stage myWindow = (Stage) nameCv.getScene().getWindow();
-               Scene sc = new Scene(root);
-               myWindow.setScene(sc);
-               myWindow.setTitle("page name");
-                            //myWindow.setFullScreen(true);
-               myWindow.show();
-               } catch (IOException ex) {
-               Logger.getLogger(ShowMesPostulationController.class.getName()).log(Level.SEVERE, null, ex);
-               }
+        
+//        Postulation p = new Postulation();
+//        p.setIdUtilisateur(1);
+//        p.setIdAnnonce(1);
+//        System.err.println("hhh"+ps.MaxIdFile());
+//        p.setIdFile(ps.MaxIdFile());
+//        LocalDate dd = LocalDate.now();
+//        Date date = java.sql.Date.valueOf(dd);
+//        p.setDate((java.sql.Date) date);
+//        ps.ajouter(p);
+              
+          
+        
+        
+//        Parent root;
+//             try {
+//               root = FXMLLoader.load(getClass().getResource("/gui/ShowMesPostulation.fxml"));
+//               Stage myWindow = (Stage) nameCv.getScene().getWindow();
+//               Scene sc = new Scene(root);
+//               myWindow.setScene(sc);
+//               myWindow.setTitle("page name");
+//                            //myWindow.setFullScreen(true);
+//               myWindow.show();
+//               } catch (IOException ex) {
+//               Logger.getLogger(ShowMesPostulationController.class.getName()).log(Level.SEVERE, null, ex);
+//               }
           }
     }
 
@@ -208,7 +236,7 @@ public class PostulationController implements Initializable {
     
     
     
-      private byte[] readBytes(File file) throws IOException {
+      private byte[] readBytes(java.io.File file) throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] buf = new byte[1024];
         try (InputStream is = new FileInputStream(file)) {

@@ -35,7 +35,7 @@ public class SideBarControlleur {
 
     private void initialize() throws IOException {
         // Set the first page as the content
-        content.getChildren().add(loadPage("../gui/Postulation.fxml"));
+        content.getChildren().add(loadPage("../File.fxml"));
     }
 //    @FXML
 //    void closePage(MouseEvent event) {
@@ -45,7 +45,7 @@ public class SideBarControlleur {
 //
     @FXML
     private void loadPage1() throws IOException {
-        loadPageToContent("../Postulation.fxml");
+        loadPageToContent("../File.fxml");
        
     }
     @FXML

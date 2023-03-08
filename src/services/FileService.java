@@ -25,7 +25,7 @@ import utils.MyDB;
  *
  * @author Istabrak
  */
-public class FileService implements IService<File>{
+public class FileService implements IService<entities.File>{
     private final Connection cnx;
 
     public FileService() {
@@ -33,14 +33,14 @@ public class FileService implements IService<File>{
     }
 
     @Override
-    public void ajouter(File f) throws SQLException {
+    public void ajouter(entities.File f) throws SQLException  {
       
                  
          String query ="INSERT INTO file(`cv`,`deplome`,`lettermotivation`,`nameCv`,`nameDeplome`,`nameMotivation`, `id_utilisateur`) VALUES (?,?,?,?,?,?,?)";
  
          PreparedStatement st;
         
-        try {
+        
             st = cnx.prepareStatement(query);
                 st.setBytes(1,f.getCv());
                 st.setBytes(2,f.getDeplome());
@@ -49,19 +49,17 @@ public class FileService implements IService<File>{
                 st.setString(5, f.getNamedeplome());
                 st.setString(6, f.getNamelettreMotivation());
                 st.setInt(7, f.getIdUtilisateur());
-                st.executeUpdate();
+               System.out.println("hetha wath3  "+ st.executeUpdate());
 
-        } catch (SQLException ex) {
-            Logger.getLogger(FileService.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
  
           
     }
     @Override
-    public boolean modifier(File f) throws SQLException {
+    public boolean modifier(entities.File f) throws SQLException {
         
                        
-                String query = "UPDATE `file` SET `cv`=?,`deplome`=?,`lettermotivation`=?,`nameCv`=?,`nameDeplome`=?,`nameMotivation`=? WHERE `id_file` = ?";
+                String query = "UPDATE `file` SET `cv`=?,`deplome`=?,`lettermotivation`=?,`nameCv`=?,`nameDeplome`=?,`nameMotivation`=? WHERE `id_utilisateur` = 1";
 		PreparedStatement st;
         try {
                 st = cnx.prepareStatement(query);
@@ -71,7 +69,6 @@ public class FileService implements IService<File>{
                 st.setString(4, f.getNameCV());
                 st.setString(5, f.getNamedeplome());
                 st.setString(6, f.getNamelettreMotivation());
-                st.setInt(7, f.getIdFile());
                 st.executeUpdate();
                 return true;
                 
@@ -100,7 +97,7 @@ public class FileService implements IService<File>{
     }
 
     @Override
-    public List<File> recuperer(File f) throws SQLException {
+    public List<File> recuperer(entities.File f) throws SQLException {
         List<File> files = new ArrayList<>();
 
         return files;
@@ -110,10 +107,10 @@ public class FileService implements IService<File>{
     public ObservableList<File> getAllFileByUser( int idu) throws SQLDataException {
 
         
-        List<File> list =new ArrayList<File>();
+                ObservableList<File>  list=FXCollections.observableArrayList();
         int count =0;
         
-        String requete="select * from file where id_utilisateur="+idu;
+        String requete="select * from file where id_utilisateur=1"; //"+idu;s
          try{
              Statement st = cnx.createStatement();
              ResultSet rs = st.executeQuery(requete);
@@ -135,13 +132,13 @@ public class FileService implements IService<File>{
                 count++;
             }
             if(count == 0){
-                return null;
+                return list;
            }else{
              ObservableList lc_final = FXCollections.observableArrayList(list);
 
                return lc_final;
             
-           
+         
         }
          }
         catch (SQLException ex) {
@@ -226,6 +223,27 @@ public class FileService implements IService<File>{
             System.out.println(ex);
         }
         return e;
+
+    }
+       public int get_File_of_user(int i) {
+        File e = new File();
+        int id_file= 0;
+        String requete = "select id_file  from file where id_utilisateur ="+i;
+        try {
+            PreparedStatement ps = cnx.prepareStatement(requete);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+               id_file= (rs.getInt("id_file"));
+                
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return id_file ;
 
     }
     

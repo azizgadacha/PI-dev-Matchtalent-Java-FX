@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import services.FileService;
 import services.PostulationService;
 
 /**
@@ -30,13 +31,13 @@ public class ApplyNowController implements Initializable {
     private Button Pos_id;
 
         PostulationService ps = new PostulationService();
+        FileService fs = new FileService();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
 
     @FXML
@@ -46,7 +47,7 @@ public class ApplyNowController implements Initializable {
         p.setIdUtilisateur(1);
         p.setIdAnnonce(1);
         System.err.println("done"+ps.MaxIdFile());
-        p.setIdFile(ps.MaxIdFile());
+        p.setIdFile(fs. get_File_of_user(1));
         LocalDate dd = LocalDate.now();
         Date date = java.sql.Date.valueOf(dd);
         p.setDate((java.sql.Date) date);
