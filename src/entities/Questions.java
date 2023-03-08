@@ -32,6 +32,26 @@ public class Questions {
 
     public Questions() {
     }
+
+    public Questions(String question, String propositionA, String propositionB, String propositionC, String id_BonneReponse) {
+        this.question = question;
+        this.propositionA = propositionA;
+        this.propositionB = propositionB;
+        this.propositionC = propositionC;
+        this.id_BonneReponse = id_BonneReponse;
+    }
+    
+    
+
+    public Questions(int id_Quiz, String question, String propositionA, String propositionB, String propositionC, String id_BonneReponse) {
+        this.id_Quiz = id_Quiz;
+        this.question = question;
+        this.propositionA = propositionA;
+        this.propositionB = propositionB;
+        this.propositionC = propositionC;
+        this.id_BonneReponse = id_BonneReponse;
+    }
+    
     
     
 
