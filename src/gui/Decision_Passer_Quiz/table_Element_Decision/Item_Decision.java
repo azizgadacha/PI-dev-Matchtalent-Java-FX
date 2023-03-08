@@ -1,6 +1,7 @@
 package gui.Decision_Passer_Quiz.table_Element_Decision;
 
 import entities.Postulation;
+import gui.Candidature.PopupInformation.detailControlleur;
 import gui.RDV.AddRDV.addRDVControlleur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.stage.StageStyle;
 import services.CondidatureService;
 import services.PoService;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -50,38 +52,25 @@ public  void  setValues(Postulation c){
     name.setText(c.getUtilisateur().getUsername());
     addesress.setText(c.getUtilisateur().getAddress());
 }
-   /* @FXML
-    void AddRdv(MouseEvent event) {
-        Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();
+    @FXML
+    void AddCandidature(MouseEvent event) throws SQLException {
 
-        try {
-            FXMLLoader loader=new FXMLLoader();
-            loader.setLocation(getClass().getResource("../../RDV/AddRDV/RDVPopup.fxml"));
-            DialogPane  detailPage=loader.load();
-            addRDVControlleur AddRdvControlleur =loader.getController();
-            AddRdvControlleur.setAddListner(new addRDVControlleur.AddListener() {
-                @Override
-                public void onInfoSentAdd( Boolean var) throws SQLException {
-                    if (var) {
-                        if (listener != null) {
-                            listener.onInfoSentChange(true);
-                        }                    }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Refus Postulation");
+
+        alert.setHeaderText("etes vous sure que cette utilisateur peut passer le quiz ");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            {
+                CondidatureService cs=new CondidatureService();
+                cs.ajouter_from_postulation(PostulationInstance);
+                if (listener != null) {
+                    listener.onInfoSentChange(true);
                 }
 
-            });
-            AddRdvControlleur.setValues(PostulationInstance);
-
-            Dialog<ButtonType> dialog =new Dialog<>();
-            dialog.initStyle(StageStyle.UNDECORATED);
-
-            dialog.setDialogPane(detailPage);
-            Optional<ButtonType> clickButtonp=dialog.showAndWait();
-            dialog.setTitle("detail");
-
-
-        }catch (Exception e){
-        }
-    }*/
+            }}
+    }
 
 
     @FXML
@@ -105,13 +94,13 @@ public  void  setValues(Postulation c){
 
 
     @FXML
-    void ViewDetail(MouseEvent event) {
+    void ViewDetail(MouseEvent event) throws IOException {
         Stage detail =(Stage) ((Node)event.getSource()).getScene().getWindow();
         double x=detail.getX();
         double y=detail.getY();
-        try {
+
             FXMLLoader loader=new FXMLLoader();
-            loader.setLocation(getClass().getResource("../PopupInformation/popup_User_Info.fxml"));
+            loader.setLocation(getClass().getResource("../../Candidature/PopupInformation/popup_User_Info.fxml"));
             DialogPane  detailPage=loader.load();
 
             detailControlleur detailControlleur =loader.getController();
@@ -123,8 +112,7 @@ public  void  setValues(Postulation c){
             Optional<ButtonType> clickButtonp=dialog.showAndWait();
             dialog.setTitle("detail");
 
-        }catch (Exception e){
-        }
+
     }
 
 

@@ -1,5 +1,6 @@
 package services;
 
+import entities.Postulation;
 import entities.annonce;
 import entities.candidature;
 import entities.utilisateur;
@@ -30,6 +31,17 @@ public class CondidatureService implements IService<candidature> {
             s.setInt(2, o.getUtilisateur().getId());
             s.setFloat(3, o.getNote());
             s.setString(4, o.getReponse());
+             s.executeUpdate();
+            System.out.println("succesful ");
+
+        }
+        public void ajouter_from_postulation(Postulation o) throws SQLException {
+
+            PreparedStatement s = cnx.prepareStatement("INSERT INTO candidature(id_annonce,id_demandeur,note,reponse) VALUES(?,?,?,?)");
+            s.setInt(1, o.getAnnonce().getId_annonce());
+            s.setInt(2, o.getUtilisateur().getId());
+            s.setFloat(3, 0);
+            s.setString(4, "");
              s.executeUpdate();
             System.out.println("succesful ");
 

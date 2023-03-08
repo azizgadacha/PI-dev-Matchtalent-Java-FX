@@ -1,5 +1,6 @@
 package gui.Candidature.PopupInformation;
 
+import entities.Postulation;
 import entities.candidature;
 import entities.utilisateur;
 import javafx.fxml.FXML;
@@ -29,25 +30,29 @@ public class detailControlleur implements Initializable {
     @FXML
     private GridPane grid;
 
-candidature c;
-    public void setDialogPane(candidature u){
-        this.c=u;
-    name.setText(u.getUtilisateur().getUsername());
-    email.setText(u.getUtilisateur().getEmail());
-    note.setText(String.valueOf(u.getNote()));
-    contact.setText(u.getUtilisateur().getContact());
+candidature c=null;
+Postulation p=null;
+    public void setDialogPane(Object u){
+        if (u instanceof Postulation)
+        this.p= (Postulation) u;
+        else
+            this.c= (candidature) u;
+
+        name.setText(p==null? c.getUtilisateur().getUsername():p.getUtilisateur().getUsername());
+    email.setText(p==null? c.getUtilisateur().getEmail():p.getUtilisateur().getEmail());
+    note.setText(p==null?String.valueOf( c.getNote()):p.getUtilisateur().getUsername());
+    contact.setText(p==null? c.getUtilisateur().getContact():p.getUtilisateur().getContact());
         int longeur =0;
 
-        try {
-            for(int i=0;i<c.getReponse().length();i++){
+      if (c!=null)
+      {            for(int i=0;i<c.getReponse().length();i++) {
 
-                grid.add(new Label(String.valueOf(c.getReponse().charAt(i))), longeur, 0);
-            longeur++;
+          grid.add(new Label(String.valueOf(c.getReponse().charAt(i))), longeur, 0);
+          longeur++;
 
-            grid.add(new Label("      "), longeur,0);
-            }
-    }catch (Exception e){
-        }
+          grid.add(new Label("      "), longeur, 0);
+      }     }
+
 }
 
     @Override

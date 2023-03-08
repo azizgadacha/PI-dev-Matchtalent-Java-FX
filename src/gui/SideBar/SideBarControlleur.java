@@ -51,7 +51,7 @@ public class SideBarControlleur {
     }
     @FXML
     private void loadPage3() throws IOException {
-        loadPageToContent("../Chart/Barchart.fxml");
+        loadPageToContent("../Decision_Passer_Quiz/Decider_Passer_Quiz.fxml");
     }
 
     private void loadPageToContent(String pageName) throws IOException {

@@ -14,12 +14,12 @@
             <Image url="@../../../images/business-card.png" />
          </image>
       </ImageView>
-      <ImageView accessibleHelp="refuser" fitHeight="61.0" fitWidth="42.0" layoutX="609.0" layoutY="8.0" onMouseClicked="#supprimerCandidature" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleHelp="refuser" fitHeight="61.0" fitWidth="42.0" layoutX="609.0" layoutY="8.0" onMouseClicked="#supprimerPostulation" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/close-removebg-preview.png" />
          </image>
       </ImageView>
-      <ImageView accessibleHelp="accepter" fitHeight="48.0" fitWidth="41.0" layoutX="658.0" layoutY="8.0" onMouseClicked="#AddRdv" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleHelp="accepter" fitHeight="48.0" fitWidth="41.0" layoutX="658.0" layoutY="8.0" onMouseClicked="#AddCandidature" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/done.png" />
          </image>
