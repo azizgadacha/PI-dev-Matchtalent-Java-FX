@@ -51,8 +51,6 @@ public class AjoutAnnonceController implements Initializable {
     @FXML
     private Button b1;
     @FXML
-    private Button b2;
-    @FXML
     private TextField txt1;
     @FXML
     private TextField txt2;
@@ -75,17 +73,27 @@ public class AjoutAnnonceController implements Initializable {
     @FXML
     private Label lab8;
     @FXML
+    private Label quiz;
+    @FXML
     private ComboBox txt7;
     @FXML
     private DatePicker txt5;
     @FXML
     private DatePicker txt6;
+    @FXML
+    private ComboBox<?> idquiz;
 
     
     
     AnnonceService ps = new AnnonceService();
     
    ObservableList<categorie> liste=FXCollections.observableArrayList();
+    @FXML
+    private Button btnaffiche;
+    @FXML
+    private Label quiz;
+    @FXML
+    private ComboBox<?> idquiz;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

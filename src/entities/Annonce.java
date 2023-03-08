@@ -13,9 +13,10 @@ import java.time.LocalDateTime;
  * @author acer
  */
 public class Annonce {
-   private int id_annonce,id_utilisateur,id_categorie;
+   private int id_annonce,id_utilisateur,id_categorie,id_quiz;
    private categorie categorie;
    private Utilisateur utilisateur;
+    private Quiz quiz;
    private String titre ,nom_societe,description,type_contrat; 
       private Date dateDebut;
     private Date dateFin;
@@ -23,7 +24,10 @@ public class Annonce {
     public Annonce() {
     }
 
-    public Annonce(categorie categorie, Utilisateur utilisateur, String titre, String nom_societe, String description, String type_contrat, Date dateDebut, Date dateFin) {
+    public Annonce(int id_utilisateur, int id_categorie, int id_quiz, categorie categorie, Utilisateur utilisateur, String titre, String nom_societe, String description, String type_contrat, Date dateDebut, Date dateFin) {
+        this.id_utilisateur = id_utilisateur;
+        this.id_categorie = id_categorie;
+        this.id_quiz = id_quiz;
         this.categorie = categorie;
         this.utilisateur = utilisateur;
         this.titre = titre;
@@ -34,11 +38,20 @@ public class Annonce {
         this.dateFin = dateFin;
     }
 
-    
-    
-   
-
-
+    public Annonce(int id_utilisateur, int id_categorie, int id_quiz, categorie categorie, Utilisateur utilisateur, Quiz quiz, String titre, String nom_societe, String description, String type_contrat, Date dateDebut, Date dateFin) {
+        this.id_utilisateur = id_utilisateur;
+        this.id_categorie = id_categorie;
+        this.id_quiz = id_quiz;
+        this.categorie = categorie;
+        this.utilisateur = utilisateur;
+        this.quiz = quiz;
+        this.titre = titre;
+        this.nom_societe = nom_societe;
+        this.description = description;
+        this.type_contrat = type_contrat;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+    }
 
  
     
@@ -135,15 +148,34 @@ public class Annonce {
         this.dateFin = dateFin;
     }
 
+    public int getId_quiz() {
+        return id_quiz;
+    }
 
-    
-    
+    public void setId_quiz(int id_quiz) {
+        this.id_quiz = id_quiz;
+    }
+
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
 
     @Override
     public String toString() {
-        return "Annonce{" + "id_annonce=" + id_annonce + ", id_utilisateur=" + id_utilisateur + ", id_categorie=" + id_categorie + ", titre=" + titre + ", nom_societe=" + nom_societe + ", description=" + description + ", type_contrat=" + type_contrat + ", categorie=" + categorie + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + '}';
+        return "Annonce{" + "id_annonce=" + id_annonce + ", id_utilisateur=" + id_utilisateur + ", id_categorie=" + id_categorie + ", id_quiz=" + id_quiz + ", categorie=" + categorie + ", utilisateur=" + utilisateur + ", quiz=" + quiz + ", titre=" + titre + ", nom_societe=" + nom_societe + ", description=" + description + ", type_contrat=" + type_contrat + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + '}';
     }
 
+  
+
+
+    
+    
+
+  
 
 
  
