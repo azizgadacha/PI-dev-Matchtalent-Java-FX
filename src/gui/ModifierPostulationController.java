@@ -11,8 +11,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -27,11 +25,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -44,7 +39,7 @@ import services.PostulationService;
  *
  * @author Istabrak
  */
-public class PostulationController implements Initializable {
+public class ModifierPostulationController implements Initializable {
 
     @FXML
     private Label mySelectLabel;
@@ -66,7 +61,7 @@ public class PostulationController implements Initializable {
     private Label nameMotivation;
     
     
-    File pfilecV;
+   File pfilecV;
     
     byte[] fileCV ;
     
@@ -82,12 +77,14 @@ public class PostulationController implements Initializable {
     FileService fs = new FileService();
     PostulationService ps = new PostulationService();
     
+    Postulation postulation =ShowMesPostulationController.p;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+       
     }    
 
     @FXML
@@ -166,25 +163,21 @@ public class PostulationController implements Initializable {
           f.setNameCV(nameCv.getText());
           f.setNamedeplome(nameDeplome.getText());
           f.setNamelettreMotivation(nameMotivation.getText());
- 
-          if (nameCv.getText().equals("")|| nameDeplome.getText().equals("")|| nameMotivation.getText().equals("")){
-          
-                     Alert alert = new Alert(Alert.AlertType.ERROR, "Complete vos cordnner", ButtonType.OK); /// 
-           alert.showAndWait();
-          }else{
+
           f.setIdUtilisateur(1);
-        System.out.println("gui.PostulationController.Confermer()"+f);
-        fs.ajouter(f);
+          f.setIdFile(postulation.getIdFile());
+          System.out.println("gui.PostulationController.Confermer()"+f);
+          fs.modifier(f);
         
         Postulation p = new Postulation();
-        p.setIdUtilisateur(1);
-        p.setIdAnnonce(1);
+        p.setIdUtilisateur(p.getIdUtilisateur());
+        p.setIdAnnonce(p.getIdAnnonce());
         System.err.println("hhh"+ps.MaxIdFile());
         p.setIdFile(ps.MaxIdFile());
         LocalDate dd = LocalDate.now();
         Date date = java.sql.Date.valueOf(dd);
         p.setDate((java.sql.Date) date);
-        ps.ajouter(p);
+        ps.modifier(p);
         
         
         Parent root;
@@ -199,16 +192,14 @@ public class PostulationController implements Initializable {
                } catch (IOException ex) {
                Logger.getLogger(ShowMesPostulationController.class.getName()).log(Level.SEVERE, null, ex);
                }
-          }
+        
     }
-
     @FXML
     private void AfficherListe(ActionEvent event) {
     }
     
     
-    
-      private byte[] readBytes(File file) throws IOException {
+          private byte[] readBytes(File file) throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] buf = new byte[1024];
         try (InputStream is = new FileInputStream(file)) {

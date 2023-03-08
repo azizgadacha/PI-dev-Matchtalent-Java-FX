@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PostulationController">
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierPostulationController">
    <children>
       <Label layoutX="109.0" layoutY="14.0" prefHeight="56.0" prefWidth="622.0" text="Postuler pour une offre d'emploi">
          <font>

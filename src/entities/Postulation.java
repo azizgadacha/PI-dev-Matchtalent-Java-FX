@@ -17,8 +17,7 @@ public class Postulation {
    // private enum etat {accepter, refuser, enCours};  
     private int id_file;
     private Date date;
-    
-
+    private int id ;
     public Postulation() {
     }
 
@@ -72,8 +71,19 @@ public class Postulation {
 
     @Override
     public String toString() {
-        return "Postulation{" + "idAnnonce=" + id_annonce + ", idUtilisateur=" + id_utilisateur + ", etat=" + etat + ", idFile=" + id_file + ", date=" + date + '}';
+        return "Postulation{" + "id_annonce=" + id_annonce + ", id_utilisateur=" + id_utilisateur + ", etat=" + etat + ", id_file=" + id_file + ", date=" + date + '}';
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+  
+   
 
     
 }
