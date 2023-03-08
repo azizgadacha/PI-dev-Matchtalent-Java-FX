@@ -20,7 +20,7 @@ public class PoService {
     }
     public List<Postulation> getSpecified(annonce Annonce) throws SQLException {
         PreparedStatement s = cnx.prepareStatement("select * from postulation,utilisateur,annonce where postulation.id_annonce=annonce.id_annonce and postulation.id_demandeur=utilisateur.id and annonce.id_annonce =?   ");
-       s.setInt(1,Annonce.getId_annonce());
+       s.setInt(1,1);
         ResultSet resultat = s.executeQuery();
         ObservableList<Postulation> ListePostulation= FXCollections.observableArrayList();
 
@@ -29,4 +29,16 @@ public class PoService {
         }
         return ListePostulation;
     }
+    public List<Postulation> supprimer(Postulation postulation) throws SQLException {
+        PreparedStatement s = cnx.prepareStatement("select * from postulation where postulation.id_anonce=? and postulation.id_demandeur=? ");
+       s.setInt(1,postulation.getUtilisateur().getId());
+        ResultSet resultat = s.executeQuery();
+        ObservableList<Postulation> ListePostulation= FXCollections.observableArrayList();
+
+        while (resultat.next()) {
+            ListePostulation.add(new Postulation(new annonce(resultat.getInt("id_annonce")),new utilisateur(resultat.getInt("id"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address")),resultat.getString("etat"),resultat.getString("id_file")));
+        }
+        return ListePostulation;
+    }
+
 }
