@@ -22,14 +22,15 @@ import javafx.stage.Stage;
  *
  * @author Hend
  */
-public class MainAjouterReclamation extends Application {
+public class MainAModuleReclamation extends Application {
     
     @Override
    public void start(Stage primaryStage) throws IOException {
         
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AjouterReclamation.fxml")); lee
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FormulaireAjoutRec.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReclamation1.fxml"));
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListReclamation1.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Messagerie.fxml"));
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Email.fxml"));
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AffRec.fxml"));lee
              //FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/FXML.fxml"));lee
@@ -42,7 +43,7 @@ public class MainAjouterReclamation extends Application {
             Parent root = loader.load();
             Scene scene = new Scene(root,800,600);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Reclamation");
+            primaryStage.setTitle("ModuleReclamation");
             primaryStage.show();
 
             

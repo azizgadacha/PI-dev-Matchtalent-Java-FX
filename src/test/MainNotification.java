@@ -21,7 +21,7 @@ import services.NotificationServer;
  *
  * @author Hend
  */
-public class Main extends Application {
+public class MainNotification extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/notification.fxml"));
@@ -37,7 +37,7 @@ public class Main extends Application {
             try {
                 NotificationServer.main(null);
             } catch (Exception ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MainNotification.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
 serverThread.setDaemon(true);
