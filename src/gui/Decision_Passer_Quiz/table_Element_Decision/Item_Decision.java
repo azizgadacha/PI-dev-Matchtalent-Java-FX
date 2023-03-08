@@ -65,6 +65,7 @@ public  void  setValues(Postulation c){
             {
                 CondidatureService cs=new CondidatureService();
                 cs.ajouter_from_postulation(PostulationInstance);
+                ps.modifier(PostulationInstance,"passer quiz");
                 if (listener != null) {
                     listener.onInfoSentChange(true);
                 }
@@ -74,7 +75,7 @@ public  void  setValues(Postulation c){
 
 
     @FXML
-    void supprimerPostulation() throws SQLException {
+    void RefuserPostulation() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Refus Postulation");
 
@@ -83,7 +84,7 @@ public  void  setValues(Postulation c){
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             {
-                ps. supprimer(PostulationInstance);
+                ps.modifier(PostulationInstance,"refuser");
 
                 if (listener != null) {
                     listener.onInfoSentChange(true);

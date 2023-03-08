@@ -19,7 +19,7 @@ public class PoService {
         cnx = MyDB.getInstance().getCnx();
     }
     public List<Postulation> getSpecified(annonce Annonce) throws SQLException {
-        PreparedStatement s = cnx.prepareStatement("select * from postulation,utilisateur,annonce where postulation.id_annonce=annonce.id_annonce and postulation.id_demandeur=utilisateur.id and annonce.id_annonce =? and postulation.etat= 'en attend'  ");
+        PreparedStatement s = cnx.prepareStatement("select * from postulation,utilisateur,annonce where postulation.id_annonce=annonce.id_annonce and postulation.id_demandeur=utilisateur.id and annonce.id_annonce =? and postulation.etat= 'en cours'  ");
        s.setInt(1,5);
         ResultSet resultat = s.executeQuery();
         ObservableList<Postulation> ListePostulation= FXCollections.observableArrayList();
@@ -37,5 +37,15 @@ public class PoService {
 
         return s.executeUpdate();
     }
+    public int modifier(Postulation postulation,String etat) throws SQLException {
+        PreparedStatement s = cnx.prepareStatement("update postulation  set postulation.etat=? where id_annonce=? and id_demandeur=? ");
+       s.setString(1,etat);
+       s.setInt(2,postulation.getAnnonce().getId_annonce());
+       s.setInt(3,postulation.getUtilisateur().getId());
+         s.executeUpdate();
+
+        return s.executeUpdate();
+    }
 
 }
+

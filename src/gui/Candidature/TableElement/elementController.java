@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -34,7 +35,8 @@ public class elementController  {
     private Label address;
     @FXML
     private Label name;
-
+    @FXML
+    private ImageView imgView;
 
     @FXML
     private Label note;
@@ -92,7 +94,6 @@ public  void  setValues(candidature c){
     void supprimerCandidature() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Refus Candidature");
-
        // alert.setContentText("etes vous sure vous voulez refuser l'annonce ");
         alert.setHeaderText("etes vous sure vous voulez refuser l'annonce ");
         Optional<ButtonType> result = alert.showAndWait();

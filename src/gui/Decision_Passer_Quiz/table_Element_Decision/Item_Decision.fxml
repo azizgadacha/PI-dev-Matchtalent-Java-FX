@@ -9,12 +9,12 @@
    <children>
         <Label fx:id="name" layoutX="22.0" layoutY="18.0" prefHeight="21.0" prefWidth="145.0" text="salah" />
         <Label fx:id="addesress" layoutX="210.0" layoutY="15.0" prefHeight="28.0" prefWidth="115.0" text="Note" />
-      <ImageView accessibleHelp="details" fitHeight="42.0" fitWidth="41.0" layoutX="555.0" layoutY="8.0" onMouseClicked="#ViewDetail" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleHelp="details" accessibleRoleDescription="details" accessibleText="details" fitHeight="42.0" fitWidth="41.0" layoutX="555.0" layoutY="8.0" onMouseClicked="#ViewDetail" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/business-card.png" />
          </image>
       </ImageView>
-      <ImageView accessibleHelp="refuser" fitHeight="61.0" fitWidth="42.0" layoutX="609.0" layoutY="8.0" onMouseClicked="#supprimerPostulation" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleHelp="refuser" fitHeight="61.0" fitWidth="42.0" layoutX="609.0" layoutY="8.0" onMouseClicked="#RefuserPostulation" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/close-removebg-preview.png" />
          </image>
