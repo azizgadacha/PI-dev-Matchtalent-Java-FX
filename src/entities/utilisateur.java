@@ -31,6 +31,15 @@ public class utilisateur {
         this.role = role;
     }
 
+    public utilisateur(int id, String username,String email, String contact, String address) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.contact = contact;
+        this.address = address;
+
+    }
+
     public utilisateur(int id, String username,  String email, String contact, String address, String biographie, String nom_societe, String role) {
         this.id = id;
         this.username = username;

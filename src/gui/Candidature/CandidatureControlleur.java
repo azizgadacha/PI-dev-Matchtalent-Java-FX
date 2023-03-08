@@ -167,7 +167,6 @@ public class CandidatureControlleur implements Initializable {
                 }
             }
 
-            createpdf();
             pnItems.getChildren().removeAll();
 
 
@@ -193,6 +192,7 @@ public class CandidatureControlleur implements Initializable {
 
     }
 
+@FXML
     private void createpdf() throws SQLException {
         try {
             Document doc = new Document();
@@ -207,24 +207,32 @@ public class CandidatureControlleur implements Initializable {
 
             doc.add(new Paragraph(" "));
             Font font = new Font(FontFamily.TIMES_ROMAN, 28, Font.UNDERLINE, BaseColor.BLACK);
-            Paragraph p = new Paragraph("Liste des reservations", font);
+            Paragraph p = new Paragraph("Liste des Candidature", font);
             p.setAlignment(Element.ALIGN_CENTER);
             doc.add(p);
             doc.add(new Paragraph(" "));
             doc.add(new Paragraph(" "));
 
-            PdfPTable tabpdf = new PdfPTable(2);
+            PdfPTable tabpdf = new PdfPTable(4);
             tabpdf.setWidthPercentage(100);
 
             PdfPCell cell;
             System.out.println("heelo");
 
-            cell = new PdfPCell(new Phrase("nom", FontFactory.getFont("Times New Roman", 11)));
+            cell = new PdfPCell(new Phrase("username", FontFactory.getFont("Times New Roman", 11)));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setBackgroundColor(BaseColor.WHITE);
             tabpdf.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("prenom", FontFactory.getFont("Times New Roman", 11)));
+            cell = new PdfPCell(new Phrase("email", FontFactory.getFont("Times New Roman", 11)));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(BaseColor.WHITE);
+            tabpdf.addCell(cell);
+            cell = new PdfPCell(new Phrase("address", FontFactory.getFont("Times New Roman", 11)));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(BaseColor.WHITE);
+            tabpdf.addCell(cell);
+            cell = new PdfPCell(new Phrase("note", FontFactory.getFont("Times New Roman", 11)));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setBackgroundColor(BaseColor.WHITE);
             tabpdf.addCell(cell);
@@ -232,6 +240,9 @@ public class CandidatureControlleur implements Initializable {
             for (candidature Candidature : candidaturesListe) {
                 tabpdf.addCell(Candidature.getUtilisateur().getUsername());
                 tabpdf.addCell(Candidature.getUtilisateur().getEmail());
+                tabpdf.addCell(Candidature.getUtilisateur().getAddress());
+                tabpdf.addCell(String.valueOf( Candidature.getNote()));
+
 
             }
 

@@ -1,21 +1,17 @@
 package entities;
 
-import java.util.Objects;
-
-public class Postulaion {
+public class Postulation {
 
 private annonce annonce;
 private utilisateur utilisateur;
 private String etat ;
-    private String cv ;
-    private String lettre_motivation  ;
+private String file ;
 
-    public Postulaion(entities.annonce annonce, entities.utilisateur utilisateur, String etat, String cv, String lettre_motivation) {
+    public Postulation(entities.annonce annonce, entities.utilisateur utilisateur, String etat, String file) {
         this.annonce = annonce;
         this.utilisateur = utilisateur;
         this.etat = etat;
-        this.cv = cv;
-        this.lettre_motivation = lettre_motivation;
+        this.file=file;
     }
 
     public entities.annonce getAnnonce() {
@@ -42,21 +38,15 @@ private String etat ;
         this.etat = etat;
     }
 
-    public String getCv() {
-        return cv;
+    public String getFile() {
+        return file;
     }
 
-    public void setCv(String cv) {
-        this.cv = cv;
+    public void setFile(String file) {
+        this.file = file;
     }
 
-    public String getLettre_motivation() {
-        return lettre_motivation;
-    }
 
-    public void setLettre_motivation(String lettre_motivation) {
-        this.lettre_motivation = lettre_motivation;
-    }
 
 
 
