@@ -6,6 +6,7 @@ package services;
 
 import entities.Questions;
 import entities.Quiz;
+import entities.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import static jdk.nashorn.internal.objects.NativeRegExp.test;
 
 import utils.MyDB;
@@ -126,6 +130,29 @@ public class QuizCRUD implements EntityCRUD<Quiz> {
 
             while (rs.next()) {
             list.add(new Quiz(rs.getInt("id_Quiz"),rs.getInt("nombre_questions"),rs.getString("sujet_Quiz"),rs.getString("bareme")));            
+            }   
+        
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    
+    }
+    public List<Quiz> Afficher_Suivant_utilisateur(Utilisateur u){
+        ObservableList<Quiz> list =FXCollections.observableArrayList();
+        String requete = "SELECT * FROM Quiz WHERE state='1' and id_utilisateur=?";
+        try {
+           
+            PreparedStatement ps = c.prepareStatement(requete);
+            System.out.println("hhhh "+u.getId_utlisateur());
+            ps.setInt(1, u.getId_utlisateur());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                System.out.println("rani d5alt");
+            list.add(new Quiz(rs.getInt("id_Quiz"),rs.getInt("nombre_questions"),rs.getString("sujet_Quiz"),rs.getString("barem")));    
+                System.out.println("kkkk "+list.get(0));
             }   
         
             

@@ -13,7 +13,8 @@ import static services.QuestionCRUD.selectQuestionsByQuiz;
  * @author acer
  */
 public class Quiz {
-  public static List<Quiz> selectQuizzes() {
+
+    public static List<Quiz> selectQuizzes() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     private int id_quiz;
@@ -52,12 +53,6 @@ public class Quiz {
         this.sujet_quiz = sujet_quiz;
         this.bareme = bareme;
     }
-
-    public Quiz(int id_quiz) {
-        this.id_quiz = id_quiz;
-    }
-
-   
         
     public int getId_quiz() {
         return id_quiz;

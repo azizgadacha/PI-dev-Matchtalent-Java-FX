@@ -38,17 +38,16 @@ public class AnnonceService implements IService<Annonce>{
     public void ajouter(Annonce t) throws SQLException {
         java.sql.Date sqlDate = new java.sql.Date(t.getDateDebut().getTime());
         java.sql.Date sqlDate1 = new java.sql.Date(t.getDateFin().getTime());
-       String req = "INSERT INTO annonce(id_utilisateur,id_categorie,id_quiz,titre,nom_societe,description,type_contrat,dateDebut,dateFin) VALUES(?, ?,?,?,?,?,?,?,?)";
+       String req = "INSERT INTO annonce(id_utilisateur,id_categorie,id_quiz,titre,description,type_contrat,dateDebut,dateFin) VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, 1);
-        ps.setInt(2 ,t.getQuiz().getId_quiz());
-        ps.setInt(3 ,t.getCategorie().getId_categorie());
+    ps.setInt(2, t.getCategorie().getId_categorie());
+    ps.setInt(3, t.getQuiz().getId_quiz());
         ps.setString(4, t.getTitre());
-        ps.setString(5, t.getNom_societe());
-        ps.setString(6, t.getDescription());
-        ps.setString(7, t.getType_contrat());
-        ps.setDate(8,sqlDate );
-        ps.setDate(9, sqlDate1);
+        ps.setString(5, t.getDescription());
+        ps.setString(6, t.getType_contrat());
+        ps.setDate(7,sqlDate );
+        ps.setDate(8, sqlDate1);
         
         ps.executeUpdate();
         System.out.println("chrs"); }
@@ -112,7 +111,6 @@ public class AnnonceService implements IService<Annonce>{
 
             Annonce a = new Annonce();
             a.setDescription(rs.getString("description"));
-            a.setNom_societe(rs.getString("nom_societe"));
             a.setTitre(rs.getString("titre"));
             a.setType_contrat(rs.getString("type_contrat"));
             a.setCategorie(new categorie(rs.getInt("id_categorie"),rs.getString("nom_categorie")));

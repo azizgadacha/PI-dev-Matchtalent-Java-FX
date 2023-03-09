@@ -6,6 +6,8 @@
 package gui;
 
 import entities.Annonce;
+import entities.Quiz;
+import entities.Utilisateur;
 import entities.categorie;
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +39,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import services.AnnonceService;
 import services.CategorieService;
+import services.QuizCRUD;
 
 
 /**
@@ -81,20 +84,17 @@ public class AjoutAnnonceController implements Initializable {
     @FXML
     private DatePicker txt6;
     @FXML
-    private ComboBox<?> idquiz;
+    private ComboBox idquiz;
 
     
     
     AnnonceService ps = new AnnonceService();
     
    ObservableList<categorie> liste=FXCollections.observableArrayList();
+   ObservableList<Quiz> liste2=FXCollections.observableArrayList();
     @FXML
     private Button btnaffiche;
-    @FXML
-    private Label quiz;
-    @FXML
-    private ComboBox<?> idquiz;
-
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         /* ObservableList<categorie> categories = (ObservableList<categorie>) categorie.getcategorie("categories");
@@ -111,20 +111,29 @@ public class AjoutAnnonceController implements Initializable {
         openMenuItem.setOnAction(e -> openRam(finalRam));
         openRamMenu.getItems().add(openMenuItem);*/
        CategorieService cat=new CategorieService();
+       QuizCRUD quizServ=new QuizCRUD();
         
         try {
             
             liste=(ObservableList<categorie>) cat.recuperer();
+            System.out.println(liste.get(0)); 
+            liste2=(ObservableList<Quiz>) quizServ.Afficher_Suivant_utilisateur(new Utilisateur(1));
             System.out.println(liste.get(0));
+            System.out.println(liste2.get(0));
         } catch (SQLException ex) {
             Logger.getLogger(AjoutAnnonceController.class.getName()).log(Level.SEVERE, null, ex);
         }
                     ObservableList<String> objetList = FXCollections.observableArrayList();
+                    ObservableList<String> objetList1 = FXCollections.observableArrayList();
 
        for (categorie c : liste){
         objetList.add(c.getNom_categorie());
        }
         txt7.setItems(objetList);
+for (Quiz c : liste2){
+        objetList1.add(c.getSujet_quiz());
+       }
+        idquiz.setItems(objetList1);
 
     }   
     
@@ -157,10 +166,17 @@ public class AjoutAnnonceController implements Initializable {
         System.out.println("aslema"+ i);  
         System.out.println("aslema"+ liste.get(i).getNom_categorie()); 
         i++;
+    } 
+    int j=0;
+    while( (j < liste.size())&&((liste2.get(j).getSujet_quiz() .equals(idquiz.getValue())==false)) ){
+        System.out.println("aslema"+ j);  
+        System.out.println("aslema"+ liste.get(j).getNom_categorie()); 
+        j++;
     }
           System.out.println("ahla"+ liste.get(i).getClass());
            System.out.println("ahla"+ liste.get(i).getNom_categorie());
        a.setCategorie(liste.get(i));
+       a.setQuiz(liste2.get(j));
        //a.setCategorie(new categorie((String) txt7.valueProperty().getValue()));
           System.out.println("vha");
             ps.ajouter(a);

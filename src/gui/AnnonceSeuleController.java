@@ -51,7 +51,6 @@ public class AnnonceSeuleController implements Initializable {
     
     public void infoAnnonce(Annonce a) {
         annonce = a;
-     getNomSociete.setText(String.valueOf(a.getNom_societe()));   
      getTitre.setText(String.valueOf(a.getTitre()));   
 }
 

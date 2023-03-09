@@ -33,6 +33,9 @@ public class Utilisateur {
         this.adresse = adresse;
         this.tel = tel;
     }
+    public Utilisateur(int id_utlisateur) {
+        this.id_utlisateur=id_utlisateur;
+    }
 
     public int getId_utlisateur() {
         return id_utlisateur;
