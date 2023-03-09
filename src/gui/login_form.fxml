@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Login_formController">
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="376.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="138.0" layoutX="312.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="75.0" layoutY="32.0" prefHeight="41.0" prefWidth="268.0" text="Welcome Back ! ">
+               <font>
+                  <Font name="Helvetica Neue" size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="18.0" fitWidth="19.0" layoutX="34.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@1.jpeg" />
+               </image>
+            </ImageView>
+            <Label layoutX="59.0" layoutY="108.0" text="email" />
+            <TextField fx:id="email" layoutX="34.0" layoutY="134.0" prefHeight="26.0" prefWidth="308.0" promptText="Email" />
+            <ImageView fitHeight="150.0" fitWidth="24.0" layoutX="-24.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="33.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@3.jpeg" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="mot_de_passe" layoutX="33.0" layoutY="210.0" prefHeight="26.0" prefWidth="307.0" promptText="Mot de passe" />
+            <Label layoutX="62.0" layoutY="180.0" text="Mot de passe" />
+            <Button fx:id="btn_login" layoutX="237.0" layoutY="262.0" mnemonicParsing="false" onAction="#Login" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #3f3b6c;" text="Se connecter" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label layoutX="117.0" layoutY="311.0" text="Vous n'avez pas de compte?" textFill="#3f42c9" />
+            <Button fx:id="btn_signup" layoutX="138.0" layoutY="334.0" mnemonicParsing="false" onAction="#GoSignup" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #3f3b6c;" text="S'inscrire" textFill="WHITE" />
+            <Button fx:id="MotpassOublieeBtn" layoutX="24.0" layoutY="260.0" mnemonicParsing="false" onAction="#MotpassOubliee" text="Mot de passe oublié?" />
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="249.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="463.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
