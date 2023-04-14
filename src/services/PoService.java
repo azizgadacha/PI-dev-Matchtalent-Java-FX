@@ -1,8 +1,9 @@
 package services;
 
+import entities.File;
 import entities.Postulation;
 import entities.annonce;
-import entities.utilisateur;
+import entities.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.MyDB;
@@ -19,13 +20,24 @@ public class PoService {
         cnx = MyDB.getInstance().getCnx();
     }
     public List<Postulation> getSpecified(annonce Annonce) throws SQLException {
-        PreparedStatement s = cnx.prepareStatement("select * from postulation,utilisateur,annonce where postulation.id_annonce=annonce.id_annonce and postulation.id_demandeur=utilisateur.id and annonce.id_annonce =? and postulation.etat= 'en cours'  ");
+        PreparedStatement s = cnx.prepareStatement("select * from postulation,utilisateur,annonce,file  where postulation.id_annonce=annonce.id_annonce and postulation.id_demandeur=utilisateur.id and annonce.id_annonce =? and postulation.etat= 'en cours' and file.id_utilisateur =utilisateur.id");
        s.setInt(1,5);
+
         ResultSet resultat = s.executeQuery();
         ObservableList<Postulation> ListePostulation= FXCollections.observableArrayList();
 
         while (resultat.next()) {
-            ListePostulation.add(new Postulation(new annonce(resultat.getInt("id_annonce")),new utilisateur(resultat.getInt("id"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address")),resultat.getString("etat"),resultat.getString("id_file")));
+
+            File e = new File();
+            e.setIdFile(resultat.getInt("id_file"));
+            e.setIdUtilisateur(resultat.getInt("id_utilisateur"));
+            e.setCv(resultat.getBytes("cv"));
+            e.setDeplome(resultat.getBytes("deplome"));
+            e.setLettremotivation(resultat.getBytes("lettermotivation"));
+            e.setNameCV(resultat.getString("nameCv"));
+            e.setNamedeplome(resultat.getString("nameDeplome"));
+            e.setNamelettreMotivation(resultat.getString("nameMotivation"));
+            ListePostulation.add(new Postulation(new annonce(resultat.getInt("id_annonce")),new Utilisateur(resultat.getInt("id"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address")),resultat.getString("etat"),e));
         }
         return ListePostulation;
     }

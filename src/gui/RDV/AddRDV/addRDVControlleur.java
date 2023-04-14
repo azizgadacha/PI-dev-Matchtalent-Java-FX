@@ -1,15 +1,9 @@
 package gui.RDV.AddRDV;
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import java.text.SimpleDateFormat;
+
 import entities.candidature;
 import entities.rendez_vous;
-import entities.utilisateur;
-import gui.RDV.Modify_RDV.ModifyRDVControlleur;
+import entities.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,16 +12,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import services.Mailer;
+import utils.Mailer;
 import services.Rendez_vous_service;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
@@ -75,15 +67,17 @@ private  Boolean succes=false ;
             erroraria.setText("entrez une date s'il vous plait");
         }else{
        Date res=Date.from(date_Picker.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String dateString = formatter.format(res);
         String time=(CB1.getValue())+":"+(CB2.getValue()).toString();
 
       if((((date_Picker).getValue()).isAfter(localDate))&&(rs.getSpecified(new rendez_vous(res,time,c.getAnnonce())).size()==0)){
-rs.ajouter(new rendez_vous( new utilisateur(c.getUtilisateur().getId()),res,time,c.getAnnonce()));
+rs.ajouter(new rendez_vous( new Utilisateur(c.getUtilisateur().getId()),res,time,c.getAnnonce()));
           if (listener != null) {
               listener.onInfoSentAdd(true);
           }
           Mailer mailer=new Mailer();
-          Mailer.send("validation.message@gmail.com","fttpjdgxydfvfrui","aziz.gadacha@esprit.tn","hello javatpoint","How r u?");
+          Mailer.send("validation.message@gmail.com","fttpjdgxydfvfrui","aziz.gadacha@esprit.tn","nouveau rendez vous ","vous avez un nouveau rendez vous a "+time+" le "+ dateString );
 
 
         /*  String to = "aziz.gadacha@esprit.tn";

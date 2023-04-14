@@ -1,16 +1,13 @@
 package gui.RDV.Modify_RDV;
 
-import entities.candidature;
 import entities.rendez_vous;
-import entities.utilisateur;
-import gui.RDV.tableElement.RDVelement;
+import entities.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import services.Rendez_vous_service;
@@ -21,7 +18,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
@@ -97,7 +93,7 @@ private  Boolean succes=false ;
             if((((date_Picker).getValue()).isAfter(localDate))&&(rs.getSpecified(new rendez_vous(res,time,rdv.getAnnonce())).size()==0)){
                 System.out.println("hello "+rdv.getAnnonce().getId_annonce());
                 System.out.println("hello "+rdv.getUser().getId());
-                rs.modifier(new rendez_vous(rdv.getId_rendez_vous(), new utilisateur(rdv.getUser().getId()),res,time,rdv.getAnnonce()));
+                rs.modifier(new rendez_vous(rdv.getId_rendez_vous(), new Utilisateur(rdv.getUser().getId()),res,time,rdv.getAnnonce()));
                 if (listener != null) {
                     listener.onInfoSentModify(rdv);
                 }

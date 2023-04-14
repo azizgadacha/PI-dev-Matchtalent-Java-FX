@@ -1,24 +1,21 @@
 package entities;
 
-import entities.annonce;
-import entities.utilisateur;
-
 import java.util.Date;
 
 public class rendez_vous {
     private int id_rendez_vous;
-    private utilisateur user ;
+    private Utilisateur user ;
     private Date date_rendez_vous;
     private String Heure_rendez_vous;
     private entities.annonce annonce;
 
-    public rendez_vous(int id_rendez_vous,utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
+    public rendez_vous(int id_rendez_vous, Utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
         this.id_rendez_vous=id_rendez_vous;
         this.user = user;
         this.date_rendez_vous = date_rendez_vous;
         Heure_rendez_vous = heure_rendez_vous;
         this.annonce = annonce;
-    } public rendez_vous(utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
+    } public rendez_vous(Utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
         this.user = user;
         this.date_rendez_vous = date_rendez_vous;
         Heure_rendez_vous = heure_rendez_vous;
@@ -51,11 +48,11 @@ public class rendez_vous {
         this.id_rendez_vous = id_rendez_vous;
     }
 
-    public utilisateur getUser() {
+    public Utilisateur getUser() {
         return user;
     }
 
-    public void setUser(utilisateur user) {
+    public void setUser(Utilisateur user) {
         this.user = user;
     }
 

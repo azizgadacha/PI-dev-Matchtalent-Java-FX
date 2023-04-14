@@ -2,14 +2,14 @@ package entities;
 
 public class candidature {
     private  int id_candidature;
-    private utilisateur utilisateur;
+    private Utilisateur utilisateur;
     private annonce annonce;
     private float note;
     private String reponse;
     public candidature() {
 
     }
-    public candidature(int id_candidature, entities.utilisateur utilisateur, entities.annonce annonce, float note, String reponse) {
+    public candidature(int id_candidature, Utilisateur utilisateur, entities.annonce annonce, float note, String reponse) {
         this.id_candidature = id_candidature;
         this.utilisateur = utilisateur;
         this.annonce = annonce;
@@ -21,7 +21,7 @@ public class candidature {
 
     }
 
-    public candidature(entities.utilisateur utilisateur, entities.annonce annonce, float note, String reponse) {
+    public candidature(Utilisateur utilisateur, entities.annonce annonce, float note, String reponse) {
         this.utilisateur = utilisateur;
         this.annonce = annonce;
         this.note = note;
@@ -36,11 +36,11 @@ public class candidature {
         this.id_candidature = id_candidature;
     }
 
-    public entities.utilisateur getUtilisateur() {
+    public Utilisateur getUtilisateur() {
         return utilisateur;
     }
 
-    public void setUtilisateur(entities.utilisateur utilisateur) {
+    public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
 

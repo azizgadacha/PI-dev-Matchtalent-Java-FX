@@ -1,13 +1,16 @@
-package gui.Candidature.PopupInformation;
+package gui.Decision_Passer_Quiz.PopupInformation;
 
+import entities.File;
 import entities.Postulation;
 import entities.candidature;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +29,8 @@ public class detailControlleur implements Initializable {
     private Label contact;
     @FXML
     private Label name;
-
+    @FXML
+    private Label note;
     private candidature u;
 
 
@@ -53,12 +57,14 @@ Postulation p=null;
 }
     @FXML
     void UploadDiplome(MouseEvent event) {
+        File f = p.getFile();
 
-        String destination = "../" + p.getFile().getNamedeplome(); // localisation de mes documents
+        String destination = "../" + f.getNamedeplome(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {
-            outputStream.write(p.getFile().getDeplome());
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            outputStream.write(f.getDeplome());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "diplome uploaded ", ButtonType.OK); ///
+            alert.showAndWait();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -66,12 +72,13 @@ Postulation p=null;
 
     @FXML
     void UploadLettre(MouseEvent event) {
+        File f = p.getFile();
 
-        String destination = "../" + p.getFile().getNamelettreMotivation(); // localisation de mes documents
+        String destination = "../" + f.getNamelettreMotivation(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {
-            outputStream.write(p.getFile().getLettremotivation());
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            outputStream.write(f.getLettremotivation());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "lettre uploaded ", ButtonType.OK); ///
+            alert.showAndWait();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -79,12 +86,13 @@ Postulation p=null;
 
     @FXML
     void uploadCV(MouseEvent event) {
+        File f = p.getFile();
 
-        String destination = "../" + p.getFile().getCv(); // localisation de mes documents
+        String destination = "../" + f.getNameCV(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {
-            outputStream.write(p.getFile().getCv());
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            outputStream.write(f.getCv());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "cv uploaded ", ButtonType.OK); ///
+            alert.showAndWait();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

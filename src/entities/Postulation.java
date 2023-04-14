@@ -3,15 +3,24 @@ package entities;
 public class Postulation {
 
 private annonce annonce;
-private utilisateur utilisateur;
+private Utilisateur utilisateur;
 private String etat ;
-private String file ;
+private File file;
 
-    public Postulation(entities.annonce annonce, entities.utilisateur utilisateur, String etat, String file) {
+    public Postulation(entities.annonce annonce, Utilisateur utilisateur, String etat, String file) {
+        this.annonce = annonce;
+        this.utilisateur = utilisateur;
+        this.etat = etat;
+    }
+    public Postulation(entities.annonce annonce, Utilisateur utilisateur, String etat, File file) {
         this.annonce = annonce;
         this.utilisateur = utilisateur;
         this.etat = etat;
         this.file=file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 
     public entities.annonce getAnnonce() {
@@ -22,11 +31,11 @@ private String file ;
         this.annonce = annonce;
     }
 
-    public entities.utilisateur getUtilisateur() {
+    public Utilisateur getUtilisateur() {
         return utilisateur;
     }
 
-    public void setUtilisateur(entities.utilisateur utilisateur) {
+    public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
 
@@ -38,13 +47,10 @@ private String file ;
         this.etat = etat;
     }
 
-    public String getFile() {
+    public File getFile() {
         return file;
     }
 
-    public void setFile(String file) {
-        this.file = file;
-    }
 
 
 

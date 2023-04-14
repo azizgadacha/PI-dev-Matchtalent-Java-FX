@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Admin.ListUsersController">
+   <children>
+      <TableView fx:id="tableView" layoutX="206.0" layoutY="73.0" prefHeight="328.0" prefWidth="374.0">
+        <columns>
+          <TableColumn fx:id="username_col" prefWidth="75.0" text="username" />
+          <TableColumn fx:id="email_col" prefWidth="75.0" text="email" />
+            <TableColumn fx:id="contact_col" prefWidth="75.0" text="contact" />
+            <TableColumn fx:id="adresse_col" prefWidth="75.0" text="adresse" />
+        </columns>
+      </TableView>
+      <Text layoutX="300.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Utilisateurs">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <BorderPane prefHeight="401.0" prefWidth="168.0" style="-fx-background-color: #293A88;">
+         <top>
+            <ImageView fitHeight="142.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../images/3.png" />
+               </image>
+            </ImageView>
+         </top>
+         <center>
+            <Button mnemonicParsing="false" onAction="#GoStat" text="consulter Statistique" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

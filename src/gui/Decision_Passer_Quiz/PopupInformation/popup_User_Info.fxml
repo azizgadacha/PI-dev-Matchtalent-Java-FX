@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<DialogPane prefHeight="475.0" prefWidth="335.0" style="-fx-border-color: grey; -fx-border-radius: 5; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Candidature.PopupInformation.detailControlleur">
+<DialogPane prefHeight="475.0" prefWidth="335.0" style="-fx-border-color: grey; -fx-border-radius: 5; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Decision_Passer_Quiz.PopupInformation.detailControlleur">
    <content>
       <AnchorPane prefHeight="405.0" prefWidth="377.0">
          <children>
@@ -55,21 +55,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="259.0" layoutY="244.0" prefHeight="27.0" prefWidth="84.0" text="Note" textFill="#26bfbc">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="note" layoutX="258.0" layoutY="271.0" prefHeight="27.0" prefWidth="139.0" text="Note">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="54.0" layoutY="304.0" prefHeight="27.0" prefWidth="84.0" text="Reponse" textFill="#26bfbc">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
             <GridPane fx:id="grid" layoutX="56.0" layoutY="331.0" prefHeight="28.0" prefWidth="304.0">
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -77,6 +62,21 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
+            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="328.0" layoutY="383.0" onMouseClicked="#UploadDiplome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/award.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="80.0" layoutY="377.0" onMouseClicked="#uploadCV" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/cv.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="78.0" layoutX="208.0" layoutY="377.0" onMouseClicked="#UploadLettre" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/letter%20(1).png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </content>

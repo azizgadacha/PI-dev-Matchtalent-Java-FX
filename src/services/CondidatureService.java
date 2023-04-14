@@ -3,7 +3,7 @@ package services;
 import entities.Postulation;
 import entities.annonce;
 import entities.candidature;
-import entities.utilisateur;
+import entities.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.MyDB;
@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CondidatureService implements IService<candidature> {
+public class CondidatureService  {
     Connection cnx;
     public CondidatureService() {
         cnx = MyDB.getInstance().getCnx();
@@ -23,7 +23,6 @@ public class CondidatureService implements IService<candidature> {
 
 
 
-    @Override
     public void ajouter(candidature o) throws SQLException {
 
             PreparedStatement s = cnx.prepareStatement("INSERT INTO candidature(id_annonce,id_demandeur,note,reponse) VALUES(?,?,?,?)");
@@ -47,7 +46,7 @@ public class CondidatureService implements IService<candidature> {
 
         }
 
-    @Override
+
     public void modifier(candidature o) throws SQLException {
 
             PreparedStatement s = cnx.prepareStatement("update  candidature set note=?,reponse=? where  id_annonce=? and id_candidature=? ");
@@ -60,7 +59,7 @@ public class CondidatureService implements IService<candidature> {
 
     }
 
-    @Override
+
     public void supprimer( candidature p) throws SQLException {
 
             PreparedStatement s = cnx.prepareStatement("delete from candidature where  id_candidature=?");
@@ -69,35 +68,10 @@ public class CondidatureService implements IService<candidature> {
             System.out.println("succesful ");
     }
 
-    @Override
-    public List recuperer() throws SQLException {
-        PreparedStatement s = cnx.prepareStatement("select * from candidature,utilisateur where candidature.id_demandeur=utilisateur.id  where id candidature.id_demandeur");
-        ObservableList<candidature> candidatureListe= FXCollections.observableArrayList();
-        ResultSet resultat = s.executeQuery();
 
-        while (resultat.next()) {
-            //         public Postulaion(entities.annonce annonce, entities.utilisateur utilisateur, String etat, String cv, String lettre_motivation) {
-            resultat.getInt("id_annonce");
-            System.out.println(resultat.getString("id_demandeur"));
-            candidatureListe.add(new candidature( resultat.getInt("id_candidature"), new utilisateur(resultat.getInt("id_demandeur"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address"),resultat.getString("biographie"),resultat.getString("nom_societé"),resultat.getString("role")),new annonce(resultat.getInt( "id_annonce")),resultat.getInt("note"),resultat.getString("reponse")));
-        }
-        return candidatureListe;
-    }
 
-    @FXML
-    void UploadDiplome(MouseEvent event) {
 
-    }
 
-    @FXML
-    void UploadLettre(MouseEvent event) {
-
-    }
-
-    @FXML
-    void uploadCV(MouseEvent event) {
-
-    }
     public List recupererSuivantannance(annonce an) throws SQLException {
         System.out.println("salem"+an.getId_annonce());
         PreparedStatement s = cnx.prepareStatement("select * from candidature,utilisateur,annonce where candidature.id_annonce=annonce.id_annonce and candidature.id_demandeur=utilisateur.id and candidature.id_annonce=? and candidature.id_demandeur not in(select id_user from rendez_vous where id_annonce=?)");
@@ -109,7 +83,7 @@ public class CondidatureService implements IService<candidature> {
         ResultSet resultat = s.executeQuery();
 
         while (resultat.next()) {
-            candidatureListe.add(new candidature( resultat.getInt("id_candidature"), new utilisateur(resultat.getInt("id_demandeur"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address"),resultat.getString("biographie"),resultat.getString("nom_societé"),resultat.getString("role")),new annonce(resultat.getInt( "id_annonce")),resultat.getInt("note"),resultat.getString("reponse")));
+            candidatureListe.add(new candidature( resultat.getInt("id_candidature"), new Utilisateur(resultat.getInt("id_demandeur"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address"),resultat.getString("biographie"),resultat.getString("nom_societé")),new annonce(resultat.getInt( "id_annonce")),resultat.getInt("note"),resultat.getString("reponse")));
         }
         return candidatureListe;
     }

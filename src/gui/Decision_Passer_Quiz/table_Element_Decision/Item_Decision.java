@@ -1,7 +1,7 @@
 package gui.Decision_Passer_Quiz.table_Element_Decision;
 
 import entities.Postulation;
-import gui.Candidature.PopupInformation.detailControlleur;
+import gui.Decision_Passer_Quiz.PopupInformation.detailControlleur;
 import gui.RDV.AddRDV.addRDVControlleur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -101,7 +101,7 @@ public  void  setValues(Postulation c){
         double y=detail.getY();
 
             FXMLLoader loader=new FXMLLoader();
-            loader.setLocation(getClass().getResource("../../Candidature/PopupInformation/popup_User_Info.fxml"));
+            loader.setLocation(getClass().getResource("../PopupInformation/popup_User_Info.fxml"));
             DialogPane  detailPage=loader.load();
 
             detailControlleur detailControlleur =loader.getController();

@@ -1,9 +1,8 @@
 package services;
 
 import entities.annonce;
-import entities.candidature;
 import entities.rendez_vous;
-import entities.utilisateur;
+import entities.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utils.MyDB;
@@ -11,14 +10,14 @@ import utils.MyDB;
 import java.sql.*;
 import java.util.List;
 
-public class Rendez_vous_service implements IService<rendez_vous> {
+public class Rendez_vous_service  {
     Connection cnx;
     public Rendez_vous_service() {
         cnx = MyDB.getInstance().getCnx();
     }
 
 
-    @Override
+   
     public void ajouter(rendez_vous rendez_vous) throws SQLException {
        try {
 
@@ -36,7 +35,7 @@ public class Rendez_vous_service implements IService<rendez_vous> {
        }
     }
 
-    @Override
+   
     public void modifier(rendez_vous rendez_vous) throws SQLException {
         java.sql.Date sqlDate = new java.sql.Date(rendez_vous.getDate_rendez_vous().getTime());
 
@@ -49,7 +48,7 @@ public class Rendez_vous_service implements IService<rendez_vous> {
 
     }
 
-    @Override
+   
     public void supprimer(rendez_vous rendez_vous) throws SQLException {
         try {
         PreparedStatement s = cnx.prepareStatement("delete from rendez_vous where  id_rendez_vous=?");
@@ -61,7 +60,7 @@ public class Rendez_vous_service implements IService<rendez_vous> {
         }
     }
 
-    @Override
+
         public List<rendez_vous> recuperer() throws SQLException {
         PreparedStatement s = cnx.prepareStatement("select * from rendez_vous,utilisateur,annonce where rendez_vous.id_user=utilisateur.id and annonce.id_annonce=rendez_vous.id_annonce  ");
         ObservableList<rendez_vous> rendez_vousListe= FXCollections.observableArrayList();
@@ -69,7 +68,7 @@ public class Rendez_vous_service implements IService<rendez_vous> {
 
         while (resultat.next()) {
             System.out.println("d5alt mara");
-            rendez_vousListe.add(new rendez_vous(resultat.getInt("id_rendez_vous"), new utilisateur(resultat.getInt("id_user"),resultat.getString("username")),resultat.getDate("date_rendez_vous"),resultat.getString("Heure_rendez_vous"),new annonce(resultat.getInt("id_annonce"),resultat.getString("titre"),resultat.getString("categorie"),resultat.getString("nom_societé"))));
+            rendez_vousListe.add(new rendez_vous(resultat.getInt("id_rendez_vous"), new Utilisateur(resultat.getInt("id_user"),resultat.getString("username")),resultat.getDate("date_rendez_vous"),resultat.getString("Heure_rendez_vous"),new annonce(resultat.getInt("id_annonce"),resultat.getString("titre"),resultat.getString("categorie"),resultat.getString("nom_societé"))));
         }
         return rendez_vousListe;
     }
@@ -89,7 +88,7 @@ public class Rendez_vous_service implements IService<rendez_vous> {
         ObservableList<rendez_vous> rendez_vousListe= FXCollections.observableArrayList();
 
         while (resultat.next()) {
-            rendez_vousListe.add(new rendez_vous(resultat.getInt("id_rendez_vous"),new utilisateur(resultat.getInt("id_user")),resultat.getDate("date_rendez_vous"),resultat.getString("Heure_rendez_vous"),new annonce(resultat.getInt("id_annonce"))));
+            rendez_vousListe.add(new rendez_vous(resultat.getInt("id_rendez_vous"),new Utilisateur(resultat.getInt("id_user")),resultat.getDate("date_rendez_vous"),resultat.getString("Heure_rendez_vous"),new annonce(resultat.getInt("id_annonce"))));
         }
         return rendez_vousListe;
     }
