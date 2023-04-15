@@ -18,9 +18,11 @@ public class NewFXMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        System.out.println("j'ai passer par la");
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/SideBar/SideBar.fxml"));
+        System.out.println("win m   anidrucg");
 
-            Parent root = FXMLLoader.load(getClass().getResource("/gui/SideBar/SideBar.fxml"));
-            primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root));
             //set stage borderless 
 
             //drag it here

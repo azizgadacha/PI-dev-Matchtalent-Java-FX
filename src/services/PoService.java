@@ -20,7 +20,7 @@ public class PoService {
         cnx = MyDB.getInstance().getCnx();
     }
     public List<Postulation> getSpecified(annonce Annonce) throws SQLException {
-        PreparedStatement s = cnx.prepareStatement("select * from postulation,utilisateur,annonce,file  where postulation.id_annonce=annonce.id_annonce and postulation.id_demandeur=utilisateur.id and annonce.id_annonce =? and postulation.etat= 'en cours' and file.id_utilisateur =utilisateur.id");
+        PreparedStatement s = cnx.prepareStatement("select * from postulation,utilisateur,annonce,file  where postulation.id_annonce=annonce.id_annonce and postulation.id_utilisateur=utilisateur.id and annonce.id_annonce =? and postulation.etat= 'en cours' and file.id_utilisateur =utilisateur.id");
        s.setInt(1,5);
 
         ResultSet resultat = s.executeQuery();

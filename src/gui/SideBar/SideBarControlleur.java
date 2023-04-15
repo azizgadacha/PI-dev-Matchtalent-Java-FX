@@ -30,9 +30,16 @@ public class SideBarControlleur {
     private Map<String, Node> pages = new HashMap<>();
 
     @FXML
-    private void initialize() throws IOException {
+    private void initialize(String role) throws IOException {
         // Set the first page as the content
-        content.getChildren().add(loadPage("../Candidature/Candidature.fxml"));
+        if (role.equals("ADMIN")){
+            System.out.println("rani lena bb");
+            content.getChildren().add(loadPage("../Candidature/Candidature.fxml"));
+
+        }
+        else {
+            content.getChildren().add(loadPage("../Candidature/Candidature.fxml"));
+        }
     }
     @FXML
     void closePage(MouseEvent event) {
@@ -42,6 +49,8 @@ public class SideBarControlleur {
 
     @FXML
     private void loadPage1() throws IOException {
+        System.out.println("rani lena sb");
+
         loadPageToContent("../Candidature/Candidature.fxml");
     }
 

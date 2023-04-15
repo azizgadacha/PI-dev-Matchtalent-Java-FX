@@ -94,24 +94,28 @@ public class Login_formController implements Initializable {
                System.out.println(email.getText());
                utilisateur_list=us.recupererUser(new Utilisateur(emailUser,motpass));
                 if (utilisateur_list.size()==1) {
-                    try {
-                        alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("information Message");
                         alert.setHeaderText(null);
                         alert.setContentText("successfully Login");
                         alert.showAndWait();
                       //  System.out.println("ffff  "+utilisateur_list.get(0).getRole().getNom_role());
                         //  ADMIN login:
-                        
-                        if(utilisateur_list.get(0).getRole().getNom_role().equals("admin")) {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Admin/ListUsers.fxml"));
+                        System.out.println("est "+utilisateur_list.get(0).getRole().getNom_role());
+                        if(utilisateur_list.get(0).getRole().getNom_role().equals("ADMIN")) {
+                            NewFXMain M=new NewFXMain();
+                            Stage primaryStage=(Stage) btn_login.getScene().getWindow();
+
+                            M.start(primaryStage);
+                            /*     System.out.println("sssssss");
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Admin/ListUsers.fxml"));
                             Parent root = loader.load();
                             Scene sc = new Scene(root);
                             Stage primaryStage=(Stage) btn_login.getScene().getWindow();
                             primaryStage.setScene(sc);
                             primaryStage.setTitle("List Utilisateurs");
                             primaryStage.show();
-                                
+                                */
                     /*   NewFXMain M=new NewFXMain();
                                                      Stage primaryStage=(Stage) btn_login.getScene().getWindow();
 
@@ -138,10 +142,7 @@ public class Login_formController implements Initializable {
                         
                         
                    
-                    } catch (IOException ex) {
-                        
-                        System.out.println(ex.getMessage());
-                    }
+
                     
                 } else {
                     alert = new Alert(Alert.AlertType.ERROR);
