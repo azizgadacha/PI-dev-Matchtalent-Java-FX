@@ -1,7 +1,7 @@
 package services;
 
+import entities.Annonce;
 import entities.Postulation;
-import entities.annonce;
 import entities.candidature;
 import entities.Utilisateur;
 import javafx.collections.FXCollections;
@@ -72,7 +72,7 @@ public class CondidatureService  {
 
 
 
-    public List recupererSuivantannance(annonce an) throws SQLException {
+    public List recupererSuivantannance(Annonce an) throws SQLException {
         System.out.println("salem"+an.getId_annonce());
         PreparedStatement s = cnx.prepareStatement("select * from candidature,utilisateur,annonce where candidature.id_annonce=annonce.id_annonce and candidature.id_demandeur=utilisateur.id and candidature.id_annonce=? and candidature.id_demandeur not in(select id_user from rendez_vous where id_annonce=?)");
         s.setInt(1,5);
@@ -83,7 +83,7 @@ public class CondidatureService  {
         ResultSet resultat = s.executeQuery();
 
         while (resultat.next()) {
-            candidatureListe.add(new candidature( resultat.getInt("id_candidature"), new Utilisateur(resultat.getInt("id_demandeur"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address"),resultat.getString("biographie"),resultat.getString("nom_societé")),new annonce(resultat.getInt( "id_annonce")),resultat.getInt("note"),resultat.getString("reponse")));
+            candidatureListe.add(new candidature( resultat.getInt("id_candidature"), new Utilisateur(resultat.getInt("id_demandeur"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address"),resultat.getString("biographie"),resultat.getString("nom_societé")),new Annonce(resultat.getInt( "id_annonce")),resultat.getInt("note"),resultat.getString("reponse")));
         }
         return candidatureListe;
     }

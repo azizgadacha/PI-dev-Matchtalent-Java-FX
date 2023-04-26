@@ -1,8 +1,8 @@
 package gui.Decision_Passer_Quiz;
 //import com.pdfjet.*;
 
+import entities.Annonce;
 import entities.Postulation;
-import entities.annonce;
 import gui.Decision_Passer_Quiz.table_Element_Decision.Item_Decision;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -207,7 +207,7 @@ public class Decider_Passer_Quiz_Controlleur implements Initializable {
     }
     public void getFromDb() throws SQLException {
 
-            PostulationsListe= (ObservableList<Postulation>) ps.getSpecified(new annonce(1));
+            PostulationsListe= (ObservableList<Postulation>) ps.getSpecified(new Annonce(1));
             remplirliste(PostulationsListe);
 
 

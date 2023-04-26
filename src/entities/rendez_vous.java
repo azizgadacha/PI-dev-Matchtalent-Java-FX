@@ -7,15 +7,15 @@ public class rendez_vous {
     private Utilisateur user ;
     private Date date_rendez_vous;
     private String Heure_rendez_vous;
-    private entities.annonce annonce;
+    private entities.Annonce annonce;
 
-    public rendez_vous(int id_rendez_vous, Utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
+    public rendez_vous(int id_rendez_vous, Utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.Annonce annonce) {
         this.id_rendez_vous=id_rendez_vous;
         this.user = user;
         this.date_rendez_vous = date_rendez_vous;
         Heure_rendez_vous = heure_rendez_vous;
         this.annonce = annonce;
-    } public rendez_vous(Utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
+    } public rendez_vous(Utilisateur user, Date date_rendez_vous, String heure_rendez_vous, entities.Annonce annonce) {
         this.user = user;
         this.date_rendez_vous = date_rendez_vous;
         Heure_rendez_vous = heure_rendez_vous;
@@ -34,7 +34,7 @@ public class rendez_vous {
 
     }
 
-    public rendez_vous( Date date_rendez_vous, String heure_rendez_vous, entities.annonce annonce) {
+    public rendez_vous( Date date_rendez_vous, String heure_rendez_vous, entities.Annonce annonce) {
         this.date_rendez_vous = date_rendez_vous;
         Heure_rendez_vous = heure_rendez_vous;
         this.annonce = annonce;
@@ -72,11 +72,11 @@ public class rendez_vous {
         Heure_rendez_vous = heure_rendez_vous;
     }
 
-    public entities.annonce getAnnonce() {
+    public entities.Annonce getAnnonce() {
         return annonce;
     }
 
-    public void setAnnonce(entities.annonce annonce) {
+    public void setAnnonce(entities.Annonce annonce) {
         this.annonce = annonce;
     }
 }

@@ -12,7 +12,7 @@
 
 <BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SideBar.SideBarControlleur">
     <left>
-        <VBox alignment="TOP_CENTER" prefHeight="575.0" prefWidth="256.0" style="-fx-background-color: #293A88;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox fx:id="left" alignment="TOP_CENTER" prefHeight="575.0" prefWidth="256.0" style="-fx-background-color: #293A88;">
             <children>
                 <ImageView fitHeight="69.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -20,8 +20,9 @@
                     </image>
                     <VBox.margin>
                         <Insets bottom="10.0" top="20.0" />
-                    </VBox.margin></ImageView>
-                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="User Liste">
+                    </VBox.margin>
+            </ImageView>
+                <Button fx:id="UserListeButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#loadPageListeUser" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="User Liste">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -33,7 +34,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#loadPage3" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="User Liste">
+                <Button fx:id="AcceptPostulation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#loadPage3" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="Postulation Accept">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -45,7 +46,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#loadPage2" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="Rendez vous">
+                <Button fx:id="RendezVousButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#loadPage2" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="Rendez vous">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -57,7 +58,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#loadPage1" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="Candidature" textFill="#e7e5e5">
+                <Button fx:id="CandidatureButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#loadPage1" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="Candidature" textFill="#e7e5e5">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -123,6 +124,11 @@
          <children>
             <Pane layoutX="255.0" layoutY="-3.0" prefHeight="45.0" prefWidth="795.0" style="-fx-background-color: #FFFFFF;">
                <children>
+                  <ImageView fx:id="img" fitHeight="26.0" fitWidth="27.0" layoutX="768.0" layoutY="1.0" onMouseClicked="#closePage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/close-removebg-preview.png" />
+                     </image>
+                  </ImageView>
                   <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="747.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/Windows_Settings_app_icon.png" />
@@ -131,11 +137,6 @@
                   <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="688.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/notification.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="img" fitHeight="26.0" fitWidth="27.0" layoutX="768.0" layoutY="1.0" onMouseClicked="#closePage" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/close-removebg-preview.png" />
                      </image>
                   </ImageView>
                </children>

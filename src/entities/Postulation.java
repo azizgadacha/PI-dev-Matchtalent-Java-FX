@@ -2,17 +2,17 @@ package entities;
 
 public class Postulation {
 
-private annonce annonce;
+private Annonce annonce;
 private Utilisateur utilisateur;
 private String etat ;
 private File file;
 
-    public Postulation(entities.annonce annonce, Utilisateur utilisateur, String etat, String file) {
+    public Postulation(entities.Annonce annonce, Utilisateur utilisateur, String etat, String file) {
         this.annonce = annonce;
         this.utilisateur = utilisateur;
         this.etat = etat;
     }
-    public Postulation(entities.annonce annonce, Utilisateur utilisateur, String etat, File file) {
+    public Postulation(entities.Annonce annonce, Utilisateur utilisateur, String etat, File file) {
         this.annonce = annonce;
         this.utilisateur = utilisateur;
         this.etat = etat;
@@ -23,11 +23,11 @@ private File file;
         this.file = file;
     }
 
-    public entities.annonce getAnnonce() {
+    public entities.Annonce getAnnonce() {
         return annonce;
     }
 
-    public void setAnnonce(entities.annonce annonce) {
+    public void setAnnonce(entities.Annonce annonce) {
         this.annonce = annonce;
     }
 

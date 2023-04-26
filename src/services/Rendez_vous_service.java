@@ -1,6 +1,7 @@
 package services;
 
-import entities.annonce;
+import entities.Annonce;
+import entities.categorie;
 import entities.rendez_vous;
 import entities.Utilisateur;
 import javafx.collections.FXCollections;
@@ -68,7 +69,7 @@ public class Rendez_vous_service  {
 
         while (resultat.next()) {
             System.out.println("d5alt mara");
-            rendez_vousListe.add(new rendez_vous(resultat.getInt("id_rendez_vous"), new Utilisateur(resultat.getInt("id_user"),resultat.getString("username")),resultat.getDate("date_rendez_vous"),resultat.getString("Heure_rendez_vous"),new annonce(resultat.getInt("id_annonce"),resultat.getString("titre"),resultat.getString("categorie"),resultat.getString("nom_societé"))));
+            rendez_vousListe.add(new rendez_vous(resultat.getInt("id_rendez_vous"), new Utilisateur(resultat.getInt("id_user"),resultat.getString("username")),resultat.getDate("date_rendez_vous"),resultat.getString("Heure_rendez_vous"),new Annonce(resultat.getInt("id_annonce"),resultat.getString("titre"),new categorie(resultat.getString("categorie")) ,resultat.getString("nom_societé"))));
         }
         return rendez_vousListe;
     }
@@ -88,7 +89,7 @@ public class Rendez_vous_service  {
         ObservableList<rendez_vous> rendez_vousListe= FXCollections.observableArrayList();
 
         while (resultat.next()) {
-            rendez_vousListe.add(new rendez_vous(resultat.getInt("id_rendez_vous"),new Utilisateur(resultat.getInt("id_user")),resultat.getDate("date_rendez_vous"),resultat.getString("Heure_rendez_vous"),new annonce(resultat.getInt("id_annonce"))));
+            rendez_vousListe.add(new rendez_vous(resultat.getInt("id_rendez_vous"),new Utilisateur(resultat.getInt("id_user")),resultat.getDate("date_rendez_vous"),resultat.getString("Heure_rendez_vous"),new Annonce(resultat.getInt("id_annonce"))));
         }
         return rendez_vousListe;
     }

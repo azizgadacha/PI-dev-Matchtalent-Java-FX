@@ -24,6 +24,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.mail.MessagingException;
@@ -32,9 +34,10 @@ import javax.mail.internet.InternetAddress;
 import services.UtilisateurService;
 import test.NewFXMain;
 import utils.SendMail;
+import utils.UserConnect;
 
 
-/**
+ /**
  * FXML Controller class
  *
  * @author nawelhammami
@@ -65,9 +68,10 @@ public class Login_formController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-    }    
-    
-    
+    }
+
+     @FXML
+     private BorderPane Borderpane;
     
     
     
@@ -102,7 +106,8 @@ public class Login_formController implements Initializable {
                       //  System.out.println("ffff  "+utilisateur_list.get(0).getRole().getNom_role());
                         //  ADMIN login:
                         System.out.println("est "+utilisateur_list.get(0).getRole().getNom_role());
-                        if(utilisateur_list.get(0).getRole().getNom_role().equals("ADMIN")) {
+                    new UserConnect(utilisateur_list.get(0));
+                        if(utilisateur_list.get(0).getRole().getNom_role().equals("admin")) {
                             NewFXMain M=new NewFXMain();
                             Stage primaryStage=(Stage) btn_login.getScene().getWindow();
 
@@ -201,28 +206,60 @@ public class Login_formController implements Initializable {
             alert.showAndWait();
         }
        */
-         FXMLLoader loader = new FXMLLoader();
-        Stage prStage = new Stage();
-        loader.setLocation(getClass().getResource("Motpasseoublie.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        prStage.setScene(scene);
-        prStage.setResizable(false);
-        prStage.show();}
+
+        Stage primaryStage=(Stage) btn_login.getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/ForgetPassword/Motpasseoublie.fxml"));
+        primaryStage.setScene(new Scene(root));
+        //set stage borderless
+
+        //drag it here
+        root.setOnMousePressed(event1 -> {
+            x = event1.getSceneX();
+            y = event1.getSceneY();
+        });
+        root.setOnMouseDragged(event1 -> {
+
+            primaryStage.setX(event1.getScreenX() - x);
+            primaryStage.setY(event1.getScreenY() - y);
+
+        });
+        primaryStage.show();
+
+
+
+
+       }
+     private double x, y;
 
     @FXML
     private void GoSignup(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader();
-        Stage prStage = new Stage();
-        loader.setLocation(getClass().getResource("SignUpUser.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        prStage.setScene(scene);
-        prStage.setResizable(false);
-        prStage.show();
-        
-    }
 
+        Stage primaryStage=(Stage) btn_login.getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/SignUp/SignUpUser.fxml"));
+        primaryStage.setScene(new Scene(root));
+        //set stage borderless
+
+        //drag it here
+        root.setOnMousePressed(event1 -> {
+            x = event1.getSceneX();
+            y = event1.getSceneY();
+        });
+        root.setOnMouseDragged(event1 -> {
+
+            primaryStage.setX(event1.getScreenX() - x);
+            primaryStage.setY(event1.getScreenY() - y);
+
+        });
+        primaryStage.show();
+
+    }
+     @FXML
+     void closePage(MouseEvent event) {
+         Stage stage = (Stage) btn_login.getScene().getWindow();
+         stage.close();
+     }
 
     
 }

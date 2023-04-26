@@ -179,11 +179,14 @@ private void showConfirmation(Utilisateur A) throws SQLException {
       if (option.get() == null) {
          this.label.setText("pas selection!");
       } else if (option.get() == ButtonType.OK) {
+          System.out.println("hiddddd iddd="+A);
+
           System.out.println("hiddddd iddd="+A.getId());
           a.supprimer(A);
           obList.clear();
           Afficher();
       } else if (option.get() == ButtonType.CANCEL) {
+          System.out.println("rani lena");
          this.label.setText("Exit!");
       } else {
          this.label.setText("-");
@@ -194,7 +197,7 @@ private void showConfirmation(Utilisateur A) throws SQLException {
     private void GoStat(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader();
                 Stage prStage =new Stage(); 
-                loader.setLocation(getClass().getResource("/gui/Statistique.fxml"));
+                loader.setLocation(getClass().getResource("/gui/StatistiqueUsersAdmin/Statistique.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 prStage.setScene(scene);

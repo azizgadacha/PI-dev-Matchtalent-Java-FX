@@ -20,7 +20,7 @@ public class Test extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-           Parent root = FXMLLoader.load(getClass().getResource("../gui/Login/login_form.fxml"));
+           /*Parent root = FXMLLoader.load(getClass().getResource("../gui/Login/login_form.fxml"));
             primaryStage.setScene(new Scene(root));
             //set stage borderless
             primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -37,7 +37,13 @@ public class Test extends Application {
 
             });
             primaryStage.show();
-
+*/
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListeAnnonce/AfficherAnnonce.fxml"));
+        Parent root = loader.load();
+        Scene sc = new Scene(root);
+        primaryStage.setTitle("Annonce");
+        primaryStage.setScene(sc);
+        primaryStage.show();
         }
 
 

@@ -17,6 +17,13 @@ public class Role {
         this.id_role = id_role;
         this.nom_role = nom_role;
         this.description = description;
+    }public Role(int id_role) {
+        this.id_role = id_role;
+
+    }public Role(int id_role,String nom_role) {
+        this.id_role = id_role;
+        this.nom_role = nom_role;
+
     }
 
     public Role(String nom_role, String description) {

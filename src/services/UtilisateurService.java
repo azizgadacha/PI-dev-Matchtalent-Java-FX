@@ -38,7 +38,7 @@ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();
                  + "address,biographie,nom_societe) "
                  + "VALUES"
                  + "("
-                   + t.getId_role()
+                   + t. getRole().getId_role()
                  + ",'" 
                  + t.getUsername() 
                  + "','" 
@@ -67,7 +67,7 @@ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();
        String req = "UPDATE Utilisateur SET id_role = ?,username = ?,mot_de_passe = ?,email = ?,contact = ?,address = ? ,biographie = ?,nom_societe = ? where id = ?" ;
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, t.getId());
-        ps.setInt(2, t.getId_role());
+        ps.setInt(2, t.getRole().getId_role());
         
         ps.setString(3, t.getUsername());
         ps.setString(4, t.getMot_de_passe());
@@ -93,14 +93,14 @@ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();
     @Override
     public ObservableList<Utilisateur>  recuperer() throws SQLException {
         List<Utilisateur> Utilisateur = new ArrayList<>();
-        String s = "select * from Utilisateur";
+        String s = "select * from Utilisateur,role where Utilisateur.id_role= role.id_role";
         Statement st = cnx.createStatement();
         ResultSet rs = st.executeQuery(s);
         while (rs.next()) {
             if(!rs.getString("username").equals("admin" )) {
                  Utilisateur u = new Utilisateur();
             u.setId(rs.getInt("id"));
-            u.setId_role(rs.getInt("id_role"));
+            u.setRole(new Role(rs.getInt("id_role"),rs.getString("nom_role")));
             u.setUsername(rs.getString("username"));
             u.setMot_de_passe(rs.getString("mot_de_passe"));
             u.setEmail(rs.getString("email"));
@@ -142,7 +142,7 @@ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();
             Utilisateur u = new Utilisateur();
             u.setRole(r);
             u.setId(rs.getInt("id"));
-            u.setId_role(rs.getInt("id"));
+            u.setRole(r);
             u.setUsername(rs.getString("username")); 
             u.setMot_de_passe(rs.getString("mot_de_passe"));
             u.setEmail(rs.getString("email"));
@@ -158,16 +158,18 @@ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();
     }
 
        public int getIdbyEmail(String mail) {
+int result =-1;
         try {
             PreparedStatement st = cnx.prepareStatement("select * from Utilisateur where email=?");
             st.setString(1, mail);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                return rs.getInt(1);
+                result=rs.getInt(1);
+                return result;
             }
         } catch (SQLException ex) {ex.printStackTrace();
         }
-        return 0;
+        return result;
 
     }
 

@@ -20,7 +20,7 @@ import java.io.BufferedInputStream;
 import java.io.*;
 
 //import com.pdfjet.Cell;
-import entities.annonce;
+import entities.Annonce;
 import entities.candidature;
 import gui.Candidature.TableElement.elementController;
 import gui.Chart.barChartControlleur;
@@ -430,7 +430,7 @@ table.drawOn(page)         ;
     }
     public void getFromDb() throws SQLException {
 
-            candidaturesListe= (ObservableList<candidature>) cs.recupererSuivantannance(new annonce(1));
+            candidaturesListe= (ObservableList<candidature>) cs.recupererSuivantannance(new Annonce(1));
             remplirliste(candidaturesListe);
 
 

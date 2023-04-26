@@ -13,7 +13,7 @@ public class Utilisateur {
 
 
 
-    private int id,id_role;
+    private int id;
     private String username,mot_de_passe,email,contact,address,biographie,nom_societe;
     private Role role;
     public Utilisateur() {
@@ -23,7 +23,6 @@ public class Utilisateur {
     //new utilisateur(resultat.getInt("id"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address"))
     public Utilisateur(int id,  String username, String email, String contact, String address) {
         this.id = id;
-        this.id_role = id_role;
         this.username = username;
         this.mot_de_passe = mot_de_passe;
         this.email = email;
@@ -34,7 +33,6 @@ public class Utilisateur {
     }
     public Utilisateur(int id, int id_role, String username, String mot_de_passe, String email, String contact, String address, String biographie, String nom_societe) {
         this.id = id;
-        this.id_role = id_role;
         this.username = username;
         this.mot_de_passe = mot_de_passe;
         this.email = email;
@@ -44,7 +42,7 @@ public class Utilisateur {
         this.nom_societe = nom_societe;
     } public Utilisateur(int id, int id_role, String username, String mot_de_passe, String email, String contact, String address, String biographie, String nom_societe,Role r) {
         this.id = id;
-        this.id_role = id_role;
+        this.role = new Role(id_role);
         this.username = username;
         this.mot_de_passe = mot_de_passe;
         this.email = email;
@@ -82,7 +80,7 @@ public Utilisateur(int id, String username,String email,String contact, String a
     }
 
     public Utilisateur(int id_role, String username, String mot_de_passe, String email, String contact, String address, String biographie, String nom_societe) {
-        this.id_role = id_role;
+        this.role = new Role(id_role);
         this.username = username;
         this.mot_de_passe = mot_de_passe;
         this.email = email;
@@ -117,13 +115,6 @@ public Utilisateur(int id, String username,String email,String contact, String a
         this.id = id;
     }
 
-    public int getId_role() {
-        return id_role;
-    }
-
-    public void setId_role(int id_role) {
-        this.id_role = id_role;
-    }
 
     public String getUsername() {
         return username;
@@ -182,8 +173,9 @@ public Utilisateur(int id, String username,String email,String contact, String a
     }
 
     @Override
+
     public String toString() {
-        return "Utilisateur{" + "id=" + id + ", id_role=" + id_role + ", username=" + username + ", mot_de_passe=" + mot_de_passe + ", email=" + email + ", contact=" + contact + ", address=" + address + ", biographie=" + biographie + ", nom_societe=" + nom_societe + '}';
+        return "Utilisateur{" + "id=" + id + ", id_role=" + role.getId_role() + ", username=" + username + ", mot_de_passe=" + mot_de_passe + ", email=" + email + ", contact=" + contact + ", address=" + address + ", biographie=" + biographie + ", nom_societe=" + nom_societe + '}';
     }
 
 

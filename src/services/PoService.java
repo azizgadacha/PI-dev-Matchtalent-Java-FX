@@ -2,7 +2,7 @@ package services;
 
 import entities.File;
 import entities.Postulation;
-import entities.annonce;
+import entities.Annonce;
 import entities.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +19,7 @@ public class PoService {
     public PoService() {
         cnx = MyDB.getInstance().getCnx();
     }
-    public List<Postulation> getSpecified(annonce Annonce) throws SQLException {
+    public List<Postulation> getSpecified(Annonce Annonce) throws SQLException {
         PreparedStatement s = cnx.prepareStatement("select * from postulation,utilisateur,annonce,file  where postulation.id_annonce=annonce.id_annonce and postulation.id_utilisateur=utilisateur.id and annonce.id_annonce =? and postulation.etat= 'en cours' and file.id_utilisateur =utilisateur.id");
        s.setInt(1,5);
 
@@ -37,7 +37,7 @@ public class PoService {
             e.setNameCV(resultat.getString("nameCv"));
             e.setNamedeplome(resultat.getString("nameDeplome"));
             e.setNamelettreMotivation(resultat.getString("nameMotivation"));
-            ListePostulation.add(new Postulation(new annonce(resultat.getInt("id_annonce")),new Utilisateur(resultat.getInt("id"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address")),resultat.getString("etat"),e));
+            ListePostulation.add(new Postulation(new Annonce(resultat.getInt("id_annonce")),new Utilisateur(resultat.getInt("id"),resultat.getString("username"),resultat.getString("email"),resultat.getString("contact"),resultat.getString("address")),resultat.getString("etat"),e));
         }
         return ListePostulation;
     }

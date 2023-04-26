@@ -31,8 +31,10 @@ public class SendMail
         props.put("mail.smtp.port", "587");	
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        String myAccountEmail ="nawel.hammami@esprit.tn";
-        String password ="223JFT3665";
+      //  String myAccountEmail ="nawel.hammami@esprit.tn";
+      String myAccountEmail ="validation.message@gmail.com";
+       // String password ="223JFT3665";
+        String password ="hmlebkdnynixtoil" ;
         Session session = Session.getDefaultInstance(props,new Authenticator() 
         {
             @Override
