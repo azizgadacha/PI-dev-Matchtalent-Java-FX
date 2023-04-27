@@ -47,7 +47,7 @@
             <Label layoutX="117.0" layoutY="311.0" text="Vous n'avez pas de compte?" textFill="#3f42c9" />
             <Button fx:id="btn_signup" layoutX="138.0" layoutY="334.0" mnemonicParsing="false" onAction="#GoSignup" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #3f3b6c;" text="S'inscrire" textFill="WHITE" />
             <Button fx:id="MotpassOublieeBtn" layoutX="24.0" layoutY="260.0" mnemonicParsing="false" onAction="#MotpassOubliee" text="Mot de passe oublié?" />
-            <ImageView fitHeight="18.0" fitWidth="16.0" layoutX="334.0" layoutY="6.0" onKeyPressed="#closePage" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="18.0" fitWidth="16.0" layoutX="334.0" layoutY="6.0" onMouseClicked="#closePage" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/cross.png" />
                </image>

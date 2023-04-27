@@ -34,6 +34,18 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
+                <Button fx:id="AnnonceButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#LoadAnnonceButton" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="Annonce">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/icons8_Xbox_Menu_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
                 <Button fx:id="AcceptPostulation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#loadPage3" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="Postulation Accept">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -72,18 +84,6 @@
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
-                <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../style.css" text="Menus">
-                    <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../images/icons8_Xbox_Menu_32px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <padding>
                         <Insets left="50.0" />
                     </padding>

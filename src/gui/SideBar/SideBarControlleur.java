@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,8 +37,7 @@ public class SideBarControlleur implements Initializable {
     private Button UserListeButton;
 
     @FXML
-    private Button btnMenus;
-
+    private Button AnnonceButton;
     @FXML
     private Button btnPackages;
 
@@ -66,7 +66,7 @@ public class SideBarControlleur implements Initializable {
         try {
         if (UserConnect.getUser().getRole().getNom_role().equals("ADMIN")){
             System.out.println("rani lena bb");
-            btnMenus.setVisible(false);
+            AnnonceButton.setVisible(false);
             btnPackages.setVisible(false);
             btnSettings.setVisible(false);
            AcceptPostulation.setVisible(false);
@@ -96,6 +96,13 @@ public class SideBarControlleur implements Initializable {
         // Set the first page as the content
 
     }*/
+
+    @FXML
+    void LoadAnnonceButton(ActionEvent event) throws IOException {
+        loadPageToContent("/gui/Annonce/ListeAnnonce/AfficherAnnonce.fxml");
+
+    }
+
     @FXML
     void closePage(MouseEvent event) {
         Stage stage = (Stage) img.getScene().getWindow();

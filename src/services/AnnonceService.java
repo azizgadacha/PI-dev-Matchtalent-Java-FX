@@ -38,7 +38,7 @@ public class AnnonceService implements IService<Annonce>{
     public void ajouter(Annonce t) throws SQLException {
         Date sqlDate = new Date(t.getDateDebut().getTime());
         Date sqlDate1 = new Date(t.getDateFin().getTime());
-       String req = "INSERT INTO annonce(id_utilisateur,id_categorie,id_quiz,titre,nom_societe,description,type_contrat,dateDebut,dateFin) VALUES(?, ?,?,?,?,?,?,?,?)";
+       String req = "INSERT INTO annonce(id_utilisateur,id_categorie,id_quiz,titre,nom_societé,description,type_contrat,dateDebut,dateFin) VALUES(?, ?,?,?,?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, 1);
         ps.setInt(2 ,t.getQuiz().getId_quiz());
@@ -56,7 +56,7 @@ public class AnnonceService implements IService<Annonce>{
     public void modifier(Annonce t) throws SQLException {
          Date sqlDate = new Date(t.getDateDebut().getTime());
         Date sqlDate1 = new Date(t.getDateFin().getTime());
-       String req = "UPDATE annonce  SET titre = ?,description= ?, quiz=?, categorie=?, dateDebut=?, dateFin=?, nom_societe=?, type_contrat=? where Id_utilisateur = ?";
+       String req = "UPDATE annonce  SET titre = ?,description= ?, quiz=?, categorie=?, dateDebut=?, dateFin=?, nom_societé=?, type_contrat=? where Id_utilisateur = ?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, t.getTitre());
         ps.setString(2, t.getDescription());
@@ -112,7 +112,7 @@ public class AnnonceService implements IService<Annonce>{
 
             Annonce a = new Annonce();
             a.setDescription(rs.getString("description"));
-            a.setNom_societe(rs.getString("nom_societe"));
+            a.setNom_societe(rs.getString("nom_societé"));
             a.setTitre(rs.getString("titre"));
             a.setType_contrat(rs.getString("type_contrat"));
             a.setCategorie(new categorie(rs.getInt("id_categorie"),rs.getString("nom_categorie")));
@@ -167,7 +167,7 @@ public List<Annonce> getAnnoncesByCategorie(String categorie) throws SQLExceptio
     while (rs.next()) {
         Annonce a = new Annonce();
         a.setDescription(rs.getString("description"));
-        a.setNom_societe(rs.getString("nom_societe"));
+        a.setNom_societe(rs.getString("nom_societé"));
         a.setTitre(rs.getString("titre"));
         a.setType_contrat(rs.getString("type_contrat"));
        // a.setCategorie(rs.getString("categorie"));

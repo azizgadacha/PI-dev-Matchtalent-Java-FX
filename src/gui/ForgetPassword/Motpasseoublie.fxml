@@ -33,7 +33,7 @@
             <ImageView fitHeight="150.0" fitWidth="24.0" layoutX="-24.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="btn_signup" layoutX="128.0" layoutY="200.0" mnemonicParsing="false" onAction="#MotpassOubliee" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #3f3b6c;" text="Envoyer" textFill="WHITE" />
             <Button fx:id="btn_signin1" layoutX="280.0" layoutY="343.0" mnemonicParsing="false" onAction="#ReturnLogin" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #3f3b6c;" text="or login" textFill="WHITE" />
-            <ImageView fitHeight="25.0" fitWidth="17.0" layoutX="349.0" layoutY="14.0" onKeyPressed="#closePage" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="17.0" layoutX="349.0" layoutY="14.0" onMouseClicked="#closePage" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/cross.png" />
                </image>

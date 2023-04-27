@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.ListeAnnonce;
+package gui.Annonce.ListeAnnonce;
 
 import entities.Annonce;
 import entities.categorie;
@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import gui.ElementOfViewAnnonce.AnnonceSeuleController;
+import gui.Annonce.ElementOfViewAnnonce.AnnonceSeuleController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -65,24 +65,35 @@ public class AfficherAnnonceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        annonceListGP.setHgap(5);
+        annonceListGP.setVgap(5);
+
         try {
             List<Annonce> annonces = ps.recuperer();
             int column = 1;
-            int row = 0;
+            int row = 1;
             for (int i = 0; i < annonces.size(); i++) {
             Annonce a = annonces.get(i);
 
         // load the content from the other FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("annonceSeule.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Annonce/ElementOfViewAnnonce/annonceSeule.fxml"));
         Parent content = null;
         content = loader.load();
           AnnonceSeuleController controller = loader.getController();
                 controller.infoAnnonce(annonces.get(i));
         
         // add the content to the grid at the specified position
+                System.out.println("eeeeee "+row);
+
         annonceListGP.add(content, column, row);
-        column++;
-        } row++;
+                if(column==4){
+                  row++;
+                column=1;
+
+                }else
+                    column++;
+
+        }
             
 //        loadDate();
 //               try {

@@ -24,6 +24,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -43,6 +44,8 @@ import utils.UserConnect;
  * @author nawelhammami
  */
 public class Login_formController implements Initializable {
+     @FXML
+     private ImageView img;
 
     private TextField username;
     @FXML
@@ -257,7 +260,7 @@ public class Login_formController implements Initializable {
     }
      @FXML
      void closePage(MouseEvent event) {
-         Stage stage = (Stage) btn_login.getScene().getWindow();
+         Stage stage = (Stage) img.getScene().getWindow();
          stage.close();
      }
 
