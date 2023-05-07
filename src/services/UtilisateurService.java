@@ -138,7 +138,7 @@ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();
             r.setNom_role(rs.getString("nom_role"));
             
             
-            System.out.println("rana *******");
+
             Utilisateur u = new Utilisateur();
             u.setRole(r);
             u.setId(rs.getInt("id"));
@@ -151,6 +151,55 @@ ObservableList<Utilisateur>obList = FXCollections.observableArrayList();
             u.setBiographie(rs.getString("biographie"));
             u.setNom_societe(rs.getString("nom_societe"));
             
+            Utilisateur_list.add(u);
+
+        }
+        return Utilisateur_list;
+    } public List<Utilisateur> recupererUser1(Utilisateur t) throws SQLException {
+        System.out.println("");
+        List<Utilisateur> Utilisateur_list = new ArrayList<>();
+        String s = "select * from user where  email = ? ";
+
+        PreparedStatement ps = cnx.prepareStatement(s);
+
+        System.out.println("test1 "+t.getEmail());
+        System.out.println("test2 "+t.getMot_de_passe());
+        ps.setString(1, t.getEmail());
+
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Role r=new Role();
+        //    r.setId_role(rs.getInt("id_role"));
+        //    r.setNom_role(rs.getString("nom_role"));
+
+String role=rs.getString("roles");
+
+           String leftOfColon = role.split(":")[1];
+
+            // Remove the first and last characters from the leftOfColon string
+            String processedString = leftOfColon.substring(1, leftOfColon.length() - 2);
+            if(processedString.equals("Offreur"))
+             r.setId_role(3);
+            else  if(processedString.equals("admin"))
+                r.setId_role(1);
+            else                 r.setId_role(2);
+
+
+            r.setNom_role(processedString);
+
+            Utilisateur u = new Utilisateur();
+           u.setRole(r);
+            u.setId(rs.getInt("id"));
+            u.setUsername(rs.getString("name"));
+            u.setMot_de_passe (rs.getString("password"));
+            u.setEmail(rs.getString("email"));
+            u.setContact(rs.getString("contact"));
+            u.setAddress(rs.getString("address"));
+            u.setBiographie(rs.getString("biographie"));
+            u.setNom_societe(rs.getString("nom_societe"));
+
             Utilisateur_list.add(u);
 
         }

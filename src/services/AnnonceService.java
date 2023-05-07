@@ -6,6 +6,7 @@
 package services;
 
 import entities.Annonce;
+import entities.Utilisateur;
 import entities.categorie;
 import java.sql.Connection;
 import java.sql.Date;
@@ -26,7 +27,7 @@ import utils.MyDB;
  *
  * @author acer
  */
-public class AnnonceService implements IService<Annonce>{
+public class AnnonceService{
     
     Connection cnx;
 
@@ -34,13 +35,14 @@ public class AnnonceService implements IService<Annonce>{
       cnx = MyDB.getInstance().getCnx();
     }
 
-    @Override
+    
     public void ajouter(Annonce t) throws SQLException {
+        System.out.println("dedsdqds "+t.getquiz().getId_quiz());
         Date sqlDate = new Date(t.getDateDebut().getTime());
         Date sqlDate1 = new Date(t.getDateFin().getTime());
-       String req = "INSERT INTO annonce(id_utilisateur,id_categorie,id_quiz,titre,nom_societé,description,type_contrat,dateDebut,dateFin) VALUES(?, ?,?,?,?,?,?,?,?)";
+       String req = "INSERT INTO annonce(id_utilisateur,id_categorie,id_quiz,titre,societe,description,type_contrat,dateDebut,dateFin) VALUES(?, ?,?,?,?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1, 1);
+        ps.setInt(1, t.getId_utilisateur().getId());
         ps.setInt(2 ,t.getQuiz().getId_quiz());
         ps.setInt(3 ,t.getCategorie().getId_categorie());
         ps.setString(4, t.getTitre());
@@ -49,10 +51,10 @@ public class AnnonceService implements IService<Annonce>{
         ps.setString(7, t.getType_contrat());
         ps.setDate(8,sqlDate );
         ps.setDate(9, sqlDate1);
-        
+
         ps.executeUpdate();
         System.out.println("chrs"); }
-    @Override
+    
     public void modifier(Annonce t) throws SQLException {
          Date sqlDate = new Date(t.getDateDebut().getTime());
         Date sqlDate1 = new Date(t.getDateFin().getTime());
@@ -69,7 +71,7 @@ public class AnnonceService implements IService<Annonce>{
         ps.executeUpdate();
     }
 
-    @Override
+    
     public void supprimer(Annonce t) throws SQLException {
         
         String req = "DELETE FROM annonce  WHERE id_annonce = ?";
@@ -77,8 +79,8 @@ public class AnnonceService implements IService<Annonce>{
         ps.setInt(1, t.getId_annonce());
         ps.executeUpdate();
     }
-    @Override
-    public List<Annonce> recuperer() throws SQLException {
+    
+    public List<Annonce> recuperer(Utilisateur user) throws SQLException {
       
       
 //    String query = "CREATE TRIGGER insert_and_delete\n" +
@@ -101,10 +103,10 @@ public class AnnonceService implements IService<Annonce>{
 //    System.err.println("Error creating trigger: " + ex.getMessage());
 //}
     List<Annonce> annonces = new ArrayList<>();
-        String s = "select * from annonce,categorie where categorie.id_categorie = annonce.id_categorie";
-        
-        Statement st = cnx.createStatement();
-        ResultSet rs =  st.executeQuery(s);
+        String s = "select * from annonce,categorie,user where categorie.id_categorie = annonce.id_categorie and user.id=annonce.id_utilisateur and user.id=?";
+        PreparedStatement ps = cnx.prepareStatement(s);
+        ps.setInt(1, user.getId());
+        ResultSet rs = ps.executeQuery();
                     System.out.println("hhhhhhhhhhhh2");
 
         while(rs.next()){
@@ -112,7 +114,7 @@ public class AnnonceService implements IService<Annonce>{
 
             Annonce a = new Annonce();
             a.setDescription(rs.getString("description"));
-            a.setNom_societe(rs.getString("nom_societé"));
+            a.setNom_societe(rs.getString("societe"));
             a.setTitre(rs.getString("titre"));
             a.setType_contrat(rs.getString("type_contrat"));
             a.setCategorie(new categorie(rs.getInt("id_categorie"),rs.getString("nom_categorie")));
@@ -120,6 +122,7 @@ public class AnnonceService implements IService<Annonce>{
            a.setDateDebut(rs.getDate("dateDebut"));
             a.setDateFin(rs.getDate("dateFin"));
             a.setId_annonce(rs.getInt("id_annonce"));
+            a.setId_utilisateur(new Utilisateur(rs.getInt("id")));
             
             
             annonces.add(a);

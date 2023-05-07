@@ -16,7 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="jfoenix-9.0.10" level="project" />
     <orderEntry type="module-library">
       <library>
@@ -38,5 +37,16 @@
     </orderEntry>
     <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/OneDrive/Bureau/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/OneDrive/Bureau/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

@@ -64,7 +64,7 @@ public class SideBarControlleur implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-        if (UserConnect.getUser().getRole().getNom_role().equals("ADMIN")){
+        if (UserConnect.getUser().getRole().getNom_role().equals("admin")){
             System.out.println("rani lena bb");
             AnnonceButton.setVisible(false);
             btnPackages.setVisible(false);

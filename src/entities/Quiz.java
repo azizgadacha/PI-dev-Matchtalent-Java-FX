@@ -24,6 +24,7 @@ public class Quiz {
     public String sujet_quiz;
     public String bareme;
     public int state;
+    public Utilisateur user;
 
 
     public Quiz(int id_quiz, int nb_question, String sujet_quiz, String bareme) {
@@ -31,6 +32,13 @@ public class Quiz {
         this.nb_question = nb_question;
         this.sujet_quiz = sujet_quiz;
         this.bareme = bareme;
+
+    } public Quiz(int id_quiz, int nb_question, String sujet_quiz, String bareme,Utilisateur user) {
+        this.id_quiz = id_quiz;
+        this.nb_question = nb_question;
+        this.sujet_quiz = sujet_quiz;
+        this.bareme = bareme;
+        this.user=user;
 
     }
 

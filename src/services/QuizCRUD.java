@@ -13,6 +13,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import entities.Utilisateur;
+import entities.categorie;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.MyDB;
 
 /**
@@ -93,7 +97,7 @@ public class QuizCRUD {
         
         
         //afficher les quiz disponibles dans la table quiz
-       /* public static List<Quiz> selectQuizzes() {
+      /* public static List<Quiz> selectQuizzes() {
     List<Quiz> quizzes = new ArrayList<>();
     String query = "SELECT * FROM Quiz";
     try {
@@ -112,26 +116,47 @@ public class QuizCRUD {
         System.out.println(ex.getMessage());
     }
     return quizzes;
-}
-       */ 
+}*/
+
     public List<Quiz> Affichertout(){
-    List<Quiz> list = new ArrayList<>();
+        List<Quiz> list = new ArrayList<>();
         String requete = "SELECT * FROM Quiz WHERE state='1'";
         try {
-           
+
             PreparedStatement ps = c.prepareStatement(requete);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-            list.add(new Quiz(rs.getInt("id_Quiz"),rs.getInt("nombre_questions"),rs.getString("sujet_Quiz"),rs.getString("bareme")));            
-            }   
-        
-            
+                list.add(new Quiz(rs.getInt("id_Quiz"),rs.getInt("nombre_questions"),rs.getString("sujet_Quiz"),rs.getString("bareme")));
+            }
+
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return list;
-    
+
+    } public List<Quiz> AffichertoutParUser(Utilisateur user){
+        ObservableList<Quiz> Quizes = FXCollections.observableArrayList();
+        String requete = "SELECT * FROM Quiz WHERE id_utilisateur=?";
+        try {
+            String req = "SELECT * FROM QUIZ  WHERE id_utilisateur = ?";
+            PreparedStatement ps = c.prepareStatement(req);
+            ps.setInt(1, user.getId());
+
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Quizes.add(new Quiz(rs.getInt("id_Quiz"),rs.getInt("nombre_questions"),rs.getString("sujet_Quiz"),rs.getString("barem")));
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return Quizes;
+
     }
         // rafraichir le nombre de question d'un quiz sur la table question 
         //cette fonction est exécuté à chaque ajout ou suppression d'une question

@@ -20,13 +20,18 @@ import java.util.logging.Logger;
 import gui.Annonce.ElementOfViewAnnonce.AnnonceSeuleController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import services.AnnonceService;
+import utils.UserConnect;
 
 /**
  * FXML Controller class
@@ -53,9 +58,32 @@ public class AfficherAnnonceController implements Initializable {
     private ScrollPane annonceListSpane;
     @FXML
     private GridPane annonceListGP;
+    @FXML
+    private Pane pnlOverview;
+    private Node loadPage(String fxmlFileName) throws IOException {
+        URL fxmlUrl = getClass().getResource(fxmlFileName);
+        FXMLLoader loader = new FXMLLoader(fxmlUrl);
+        return loader.load();
+    }
+    @FXML
+    void addAn(ActionEvent event) throws IOException {
+        FXMLLoader newLoader = new FXMLLoader(getClass().getResource("/gui/Annonce/AjoutAnnonce/AjoutAnnonce.fxml"));
+        Parent newRoot = newLoader.load();
 
-    
-    
+        pnlOverview.getChildren().clear();
+
+        // Add the new content to the content region
+        pnlOverview.getChildren().add(loadPage("/gui/Annonce/AjoutAnnonce/AjoutAnnonce.fxml"));
+        Stage primaryStage=(Stage) pnlOverview.getScene().getWindow();
+        primaryStage.show();
+
+// Get the parent node of the existing FXML file
+       // Node parentNode = pnlOverview.getParent();
+
+// Replace the existing FXML file with the new one
+        //parentNode. getChildren().clear();
+        //parentNode.getChildren().add(newRoot);
+    }
     
     
     
@@ -69,7 +97,9 @@ public class AfficherAnnonceController implements Initializable {
         annonceListGP.setVgap(5);
 
         try {
-            List<Annonce> annonces = ps.recuperer();
+            UserConnect user=new UserConnect();
+            UserConnect.getUser();
+            List<Annonce> annonces = ps.recuperer(UserConnect.getUser());
             int column = 1;
             int row = 1;
             for (int i = 0; i < annonces.size(); i++) {

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package gui.Login;
+ import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 import java.util.ResourceBundle;
@@ -96,25 +97,42 @@ public class Login_formController implements Initializable {
                 alert.setContentText("les champs sont vides");
                 alert.showAndWait();
             } else {
+                System.out.println("im here1");
              UtilisateurService us =  new UtilisateurService();
                List<Utilisateur> utilisateur_list = new ArrayList<>();
                System.out.println(email.getText());
-               utilisateur_list=us.recupererUser(new Utilisateur(emailUser,motpass));
-                if (utilisateur_list.size()==1) {
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("information Message");
-                        alert.setHeaderText(null);
-                        alert.setContentText("successfully Login");
-                        alert.showAndWait();
-                      //  System.out.println("ffff  "+utilisateur_list.get(0).getRole().getNom_role());
-                        //  ADMIN login:
-                        System.out.println("est "+utilisateur_list.get(0).getRole().getNom_role());
-                    new UserConnect(utilisateur_list.get(0));
-                        if(utilisateur_list.get(0).getRole().getNom_role().equals("admin")) {
-                            NewFXMain M=new NewFXMain();
-                            Stage primaryStage=(Stage) btn_login.getScene().getWindow();
+                String hashedPassword = BCrypt.hashpw(motpass, BCrypt.gensalt());
+                System.out.println("jell");
+                System.out.println(hashedPassword);
+                utilisateur_list=us.recupererUser1(new Utilisateur(emailUser,motpass));
 
-                            M.start(primaryStage);
+
+
+              // utilisateur_list=us.recupererUser(new Utilisateur(emailUser,motpass));
+                System.out.println("eed");
+               // boolean isValid = BCrypt.checkpw(motpass, utilisateur_list.get(0).getMot_de_passe());
+               // System.out.println("resutk "+isValid);
+                if (utilisateur_list.size()==1) {
+                    String res = utilisateur_list.get(0).getMot_de_passe().replace("$2y$", "$2a$");
+                    boolean bresult = BCrypt.checkpw(motpass, res);
+                    System.out.println(BCrypt.checkpw(motpass, res));
+
+                    if (bresult){
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("successfully Login");
+                    alert.showAndWait();
+                    //  System.out.println("ffff  "+utilisateur_list.get(0).getRole().getNom_role());
+                    //  ADMIN login:
+                    System.out.println("est " + utilisateur_list.get(0).getRole().getNom_role());
+                    new UserConnect(utilisateur_list.get(0));
+                    if (utilisateur_list.get(0).getRole().getNom_role().equals("admin")) {
+
+                        NewFXMain M = new NewFXMain();
+                        Stage primaryStage = (Stage) btn_login.getScene().getWindow();
+
+                        M.start(primaryStage);
                             /*     System.out.println("sssssss");
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("../Admin/ListUsers.fxml"));
                             Parent root = loader.load();
@@ -128,11 +146,12 @@ public class Login_formController implements Initializable {
                                                      Stage primaryStage=(Stage) btn_login.getScene().getWindow();
 
                              M.start(primaryStage);
-                      */  }else if(true) {
-                             NewFXMain M=new NewFXMain();
-                                                     Stage primaryStage=(Stage) btn_login.getScene().getWindow();
+                      */
+                    } else if (true) {
+                        NewFXMain M = new NewFXMain();
+                        Stage primaryStage = (Stage) btn_login.getScene().getWindow();
 
-                             M.start(primaryStage);
+                        M.start(primaryStage);
                         
                           /* //  Parent root = FXMLLoader.load(getClass().getResource("/gui/SideBar/SideBar.fxml"));
                           FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/SideBar/SideBar.fxml"));
@@ -144,13 +163,17 @@ public class Login_formController implements Initializable {
                         primaryStage.setTitle("List Utilisateurs");
                         
                         primaryStage.show();*/
-                            
-                        }
-                        
-                        
-                        
-                   
 
+                    }
+
+
+                }else {
+                        alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Incorrect email or password");
+                        alert.showAndWait();
+                    }
                     
                 } else {
                     alert = new Alert(Alert.AlertType.ERROR);

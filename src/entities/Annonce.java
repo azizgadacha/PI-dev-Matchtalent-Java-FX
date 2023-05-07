@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
  * @author acer
  */
 public class Annonce {
-   private int id_annonce,id_utilisateur,id_categorie,id_quiz;
+    private Utilisateur id_utilisateur;
+   private int id_annonce,id_categorie,id_quiz;
    private categorie categorie;
    private Utilisateur utilisateur;
     private Quiz quiz;
@@ -30,7 +31,7 @@ public class Annonce {
         this.id_annonce=id_annonce;
     }
 
-    public Annonce(int id_utilisateur, int id_categorie, int id_quiz, categorie categorie, Utilisateur utilisateur, String titre, String nom_societe, String description, String type_contrat, Date dateDebut, Date dateFin) {
+    public Annonce(Utilisateur id_utilisateur, int id_categorie, int id_quiz, categorie categorie, Utilisateur utilisateur, String titre, String nom_societe, String description, String type_contrat, Date dateDebut, Date dateFin) {
         this.id_utilisateur = id_utilisateur;
         this.id_categorie = id_categorie;
         this.id_quiz = id_quiz;
@@ -44,7 +45,7 @@ public class Annonce {
         this.dateFin = dateFin;
     }
 
-    public Annonce(int id_utilisateur, int id_categorie, int id_quiz, categorie categorie, Utilisateur utilisateur, Quiz quiz, String titre, String nom_societe, String description, String type_contrat, Date dateDebut, Date dateFin) {
+    public Annonce(Utilisateur id_utilisateur, int id_categorie, int id_quiz, categorie categorie, Utilisateur utilisateur, Quiz quiz, String titre, String nom_societe, String description, String type_contrat, Date dateDebut, Date dateFin) {
         this.id_utilisateur = id_utilisateur;
         this.id_categorie = id_categorie;
         this.id_quiz = id_quiz;
@@ -70,11 +71,11 @@ public class Annonce {
         this.id_annonce = id_annonce;
     }
 
-    public int getId_utilisateur() {
+    public Utilisateur getId_utilisateur() {
         return id_utilisateur;
     }
 
-    public void setId_utilisateur(int id_utilisateur) {
+    public void setId_utilisateur(Utilisateur id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
     }
 
@@ -154,12 +155,12 @@ public class Annonce {
         this.dateFin = dateFin;
     }
 
-    public int getId_quiz() {
-        return id_quiz;
+    public Quiz getquiz() {
+        return quiz;
     }
 
-    public void setId_quiz(int id_quiz) {
-        this.id_quiz = id_quiz;
+    public void setquiz(Quiz id_quiz) {
+        this.quiz = id_quiz;
     }
 
     public Quiz getQuiz() {
