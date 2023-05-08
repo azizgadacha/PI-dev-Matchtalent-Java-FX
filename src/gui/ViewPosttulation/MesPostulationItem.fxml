@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<HBox fx:id="Hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="164.0" prefWidth="477.0">
+         <children>
+            <Text fx:id="nomuser" fill="#2715ae" strokeType="OUTSIDE" strokeWidth="0.0" text="titre" wrappingWidth="232.546875">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="type" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="397.8203125">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Text>
+         </children>
+      </VBox>
+      <HBox fx:id="hbox" prefHeight="59.0" prefWidth="208.0">
+         <children>
+            <ImageView fx:id="imv" fitHeight="96.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+   </children>
+</HBox>

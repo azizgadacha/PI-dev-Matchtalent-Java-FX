@@ -114,6 +114,11 @@ public class SideBarControlleur implements Initializable {
 
         loadPageToContent("../Candidature/Candidature.fxml");
     }
+    @FXML
+    void loaadFile(ActionEvent event) throws IOException {
+        loadPageToContent("/gui/File/File.fxml");
+
+    }
 
     @FXML
     private void loadPage2() throws IOException {

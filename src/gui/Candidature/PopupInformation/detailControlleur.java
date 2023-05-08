@@ -54,9 +54,9 @@ Postulation p=null;
     @FXML
     void UploadDiplome(MouseEvent event) {
 
-        String destination = "../" + p.getFile().getNamedeplome(); // localisation de mes documents
+        String destination = "../" + p.getIdFile().getNamedeplome(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {
-            outputStream.write(p.getFile().getDeplome());
+            outputStream.write(p.getIdFile().getDeplome());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -67,9 +67,9 @@ Postulation p=null;
     @FXML
     void UploadLettre(MouseEvent event) {
 
-        String destination = "../" + p.getFile().getNamelettreMotivation(); // localisation de mes documents
+        String destination = "../" + p.getIdFile().getNamelettreMotivation(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {
-            outputStream.write(p.getFile().getLettremotivation());
+            outputStream.write(p.getIdFile().getLettremotivation());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -80,9 +80,9 @@ Postulation p=null;
     @FXML
     void uploadCV(MouseEvent event) {
 
-        String destination = "../" + p.getFile().getCv(); // localisation de mes documents
+        String destination = "../" + p.getIdFile().getNameCV(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {
-            outputStream.write(p.getFile().getCv());
+            outputStream.write(p.getIdFile().getCv());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

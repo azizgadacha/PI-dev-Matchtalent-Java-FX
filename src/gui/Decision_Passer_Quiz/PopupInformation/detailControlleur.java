@@ -57,7 +57,7 @@ Postulation p=null;
 }
     @FXML
     void UploadDiplome(MouseEvent event) {
-        File f = p.getFile();
+        File f = p.getIdFile();
 
         String destination = "../" + f.getNamedeplome(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {
@@ -72,7 +72,7 @@ Postulation p=null;
 
     @FXML
     void UploadLettre(MouseEvent event) {
-        File f = p.getFile();
+        File f = p.getIdFile();
 
         String destination = "../" + f.getNamelettreMotivation(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {
@@ -86,7 +86,7 @@ Postulation p=null;
 
     @FXML
     void uploadCV(MouseEvent event) {
-        File f = p.getFile();
+        File f = p.getIdFile();
 
         String destination = "../" + f.getNameCV(); // localisation de mes documents
         try (FileOutputStream outputStream = new FileOutputStream(destination)) {

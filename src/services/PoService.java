@@ -43,7 +43,7 @@ public class PoService {
     }
     public int supprimer(Postulation postulation) throws SQLException {
         PreparedStatement s = cnx.prepareStatement("delete from postulation  where postulation.id_anonce=? and postulation.id_demandeur=? ");
-       s.setInt(1,postulation.getAnnonce().getId_annonce());
+       s.setInt(1,postulation.getIdAnnonce().getId_annonce());
        s.setInt(2,postulation.getUtilisateur().getId());
          s.executeUpdate();
 
@@ -52,7 +52,7 @@ public class PoService {
     public int modifier(Postulation postulation,String etat) throws SQLException {
         PreparedStatement s = cnx.prepareStatement("update postulation  set postulation.etat=? where id_annonce=? and id_demandeur=? ");
        s.setString(1,etat);
-       s.setInt(2,postulation.getAnnonce().getId_annonce());
+       s.setInt(2,postulation.getIdAnnonce().getId_annonce());
        s.setInt(3,postulation.getUtilisateur().getId());
          s.executeUpdate();
 

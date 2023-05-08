@@ -1,7 +1,12 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package entities;
-
-
+/**
+ *
+ * @author Istabrak
+ */
 public class File {
     private int idFile;
     private int idUtilisateur;
@@ -9,14 +14,16 @@ public class File {
     private byte [] cv ;
     private byte [] lettremotivation ;
     private byte [] deplome ;
-
+    
     private String nameCV ;
     private String namelettreMotivation ;
     private String namedeplome ;
-
-
-    public File(){
-    }
+    
+    
+public File(int id){
+    this.idFile=id;
+}public File(){
+}
 
 
     public int getIdFile() {
@@ -90,7 +97,7 @@ public class File {
         return "File{" + "idFile=" + idFile + ", idUtilisateur=" + idUtilisateur + ", cv=" + cv + ", lettremotivation=" + lettremotivation + ", deplome=" + deplome + ", nameCV=" + nameCV + ", namelettreMotivation=" + namelettreMotivation + ", namedeplome=" + namedeplome + '}';
     }
 
-
-
-
+    
+    
+    
 }

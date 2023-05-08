@@ -37,7 +37,7 @@ public class CondidatureService  {
         public void ajouter_from_postulation(Postulation o) throws SQLException {
 
             PreparedStatement s = cnx.prepareStatement("INSERT INTO candidature(id_annonce,id_demandeur,note,reponse) VALUES(?,?,?,?)");
-            s.setInt(1, o.getAnnonce().getId_annonce());
+            s.setInt(1, o.getIdAnnonce().getId_annonce());
             s.setInt(2, o.getUtilisateur().getId());
             s.setFloat(3, 0);
             s.setString(4, "");
